@@ -1,0 +1,140 @@
+body {
+  background-color: #555;
+}
+a:visited{
+  color:goldenrod;
+}
+
+a:link{
+  color:goldenrod;
+}
+
+/* Estilos Default */
+
+#relogio {
+  font-weight: 600;
+}
+
+.dashboard-panel {
+  background-color: #333;
+  height: 45px;
+  color: goldenrod;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+}
+
+.icon-left{
+  font-size:25px;
+  margin-left:15px;
+  position:absolute;
+}
+
+.icon-right{
+  font-size:25px;
+  margin-left:10px;
+  position:absolute;
+}
+
+
+.title-panel{
+  font-size:18px;
+  text-align:left;
+  margin-left:10px;
+}
+
+#dashboard-panel-left {
+  margin-top: 10px;
+  text-align:left;
+}
+
+#dashboard-panel-center {
+  margin-top: 10px;
+}
+
+#dashboard-panel-right {
+  margin-top: 10px;
+ 
+}
+
+/* view home */
+
+.dashboard {
+  margin-top: 45px;
+  text-align: left;
+}
+
+.dashboard-configuracao{
+  margin-top: 15px;
+  text-align: left;
+}
+#main-footer {
+  font-size: 10px;
+  position: relative;
+  top: 30%;
+  background-color: #333;
+  height: 30px;
+  color: goldenrod;
+  padding: 3px;
+  text-align: center;
+}
+
+/* view configuracao */
+.configuracao-dashboard-panel {
+  background-color: #333;
+  height: 45px;
+  color: goldenrod;
+  text-align: center;
+  position:fixed;
+  width: 100%;
+}
+
+/* view addcomodo */
+.addcomodo-dashboard-panel {
+  background-color: #333;
+  height: 45px;
+  color: goldenrod;
+  text-align: center;
+
+  width: 100%;
+}
+#form {
+  margin-top: 30px;
+}
+
+.footer-panel {
+  position: fixed;
+  bottom: 0;
+  padding: 10px;
+  background: #444444;
+  width: 100%;
+}
+
+.lista-titulo {
+  padding: 5px;
+  background-color: #333;
+  width: 100%;
+  font-size: 14px;
+  text-align: left;
+  font-weight: 200;
+  color: goldenrod;
+}
+
+#btnVoltar,
+#btnAdd {
+  width: 100%;
+  margin: 5px;
+}
+
+#div-body {
+  background-color: red;
+}
+
+#lista-comodos {
+  margin-top: 12px;
+  width: 100%;
+}
+.table {
+  color: #f2f2f2;
+  text-align: left;
+}
