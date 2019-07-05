@@ -16,7 +16,7 @@ class ComponentesModel
     {
         $this->schema = "public";
         $this->dsn =
-            "pgsql:host=192.168.0.100;
+            "pgsql:host=187.105.41.24;
               port=5432;
               dbname=controlhome;
               user=postgres;

@@ -80,12 +80,12 @@ class ComponentesController extends Controller
 
     public function delete($id)
     {
-  
+        
         $model = new ComponentesModel();
         if ($model->delete($id) == "excluido com sucesso!") {
-            return header("location: ../../../../lista");
+            return header("location: ../show");
         } else {
-            return header("location: ../../../../lista");
+            return header("location: ../show");
         }
     }
 }
