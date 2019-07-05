@@ -18,7 +18,7 @@ use Bramus\Router\Router;
    $router->get('componentes/create','App\Controller\ComponentesController@create');
    $router->post('componentes/save','App\Controller\ComponentesController@save');
    $router->get('componentes/delete/{id}','App\Controller\ComponentesController@delete');
- 
+   $router->get('componentes/edit/{id}','App\Controller\ComponentesController@edit');
    $router->get('about', 'App\Controller\Controller@about');
-
+   $router->post('componentes/update','App\Controller\ComponentesController@update');
     $router->run();

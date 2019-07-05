@@ -9,8 +9,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   
-  <link rel="stylesheet" href="../../../../css/main.css">
-  <link href="../../../../../libs/font-awesome/css/all.css" rel="stylesheet"> <!--load all styles -->
+  <link rel="stylesheet" href="../../../public/css/main.css">
+  <link href="../../../libs/font-awesome/css/all.css" rel="stylesheet"> <!--load all styles -->
 
 </head>
 
@@ -30,7 +30,7 @@
       </div>
       
       <div class="container dashboard">
-        <form action="../../../atualiza" method="POST">
+        <form action="../update" method="POST">
          
           <div class="form-group col-sm-11 " style="margin-left: 0px;">
             <select class="browser-default custom-select" name="tipo">

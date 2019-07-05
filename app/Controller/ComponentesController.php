@@ -47,7 +47,6 @@ class ComponentesController extends Controller
 
     public function update()
     {
-        
         $dados = [];
         $dados['id'] = $_POST['id'];
         $dados['tipo'] = $_POST['tipo'];
@@ -59,9 +58,9 @@ class ComponentesController extends Controller
     
             if ($model->update($dados) == "atualizado com sucesso!") {
                
-                return header("location: ../componentes/lista");
+                return header("location: show");
             } else {
-                return header("location: ../componentes/lista");
+                return header("location: show");
             }
        
     }
