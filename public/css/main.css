@@ -111,13 +111,16 @@ a:link{
 }
 
 .lista-titulo {
-  padding: 5px;
-  background-color: #333;
+  padding: 10px;
+  margin-left: 10px;
+  margin-top: 9px;
+  background: #222 ;
   width: 100%;
-  font-size: 14px;
+  font-size: 15px;
   text-align: left;
   font-weight: 200;
   color: goldenrod;
+  position: relative;
 }
 
 #btnVoltar,

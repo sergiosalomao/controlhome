@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 
 require_once("../vendor/autoload.php");
 
@@ -14,8 +14,8 @@ use Bramus\Router\Router;
    $router->post('comodos/update','App\Controller\ComodosController@update');
    $router->get('comodos/delete/{id}','App\Controller\ComodosController@delete');
 
-   $router->get('componentes/show','App\Controller\ComponentesController@showcomponentes');
-   $router->get('componentes/create','App\Controller\ComponentesController@create');
+   $router->get('componentes/show/{idcomodo}','App\Controller\ComponentesController@show');
+   $router->get('componentes/create/{idcomodo}','App\Controller\ComponentesController@create');
    $router->post('componentes/save','App\Controller\ComponentesController@save');
    $router->get('componentes/delete/{id}','App\Controller\ComponentesController@delete');
    $router->get('componentes/edit/{id}','App\Controller\ComponentesController@edit');

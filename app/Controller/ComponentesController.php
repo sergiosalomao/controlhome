@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Controller;
 
 use App\Models\ComponentesModel\ComponentesModel;
@@ -10,26 +11,30 @@ class ComponentesController extends Controller
     protected $descricao;
     protected $tipo;
     protected $codigo;
+    protected $idcomodo;
 
-    public function showcomponentes()
+    public function show($idcomodo)
     {
+        $this->idcomodo = $idcomodo;
+        $_SESSION['idcomodo'] = $idcomodo;
         $this->render('componentes','componentes');
     }
 
-    public function create()
+    public function create($idcomodo)
     {
+        $this->idcomodo = $idcomodo;
         $this->render('componentes', 'create');
     }
 
 
     public function save()
     {
-     
+
    
         $model = new  ComponentesModel();
         $dados = [];
      
-
+        $dados['idcomodo'] = $_POST['idcomodo'];
         $dados['tipo'] = $_POST['tipo'];
         $dados['descricao'] = $_POST['descricao'];
         $dados['codigo'] = $_POST['codigo'];
@@ -38,7 +43,7 @@ class ComponentesController extends Controller
         
         
         if ($model->save($dados) == "salvo com sucesso!") {
-                return header("location: ../componentes/show");
+                return header("location: ../componentes/show/{$_POST['idcomodo']}");
             } else {
                 return header("location: create");
             }
@@ -58,16 +63,16 @@ class ComponentesController extends Controller
     
             if ($model->update($dados) == "atualizado com sucesso!") {
                
-                return header("location: show");
+                return header("location: show/{$_SESSION['idcomodo']}");
             } else {
-                return header("location: show");
+                return header("location: show/{$_SESSION['idcomodo']}");
             }
        
     }
 
     public function edit($id)
     {
-    
+        $this->idcomodo = $_SESSION['idcomodo'];
         $model = new ComponentesModel();
         $dados = $model->listById($id);
         $this->id = $dados['id']; 
@@ -79,12 +84,12 @@ class ComponentesController extends Controller
 
     public function delete($id)
     {
-        
+     
         $model = new ComponentesModel();
         if ($model->delete($id) == "excluido com sucesso!") {
-            return header("location: ../show");
+            return header("location: ../show/{$_SESSION['idcomodo']}");
         } else {
-            return header("location: ../show");
+            return header("location: ../show/{$_SESSION['idcomodo']}");
         }
     }
 }

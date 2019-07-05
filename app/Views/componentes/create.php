@@ -9,8 +9,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-  <link rel="stylesheet" href="../../public/css/main.css">
-  <link href="../../libs/font-awesome/css/all.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../../public/css/main.css">
+  <link href="../../../libs/font-awesome/css/all.css" rel="stylesheet">
   <!--load all styles -->
 
 </head>
@@ -19,7 +19,7 @@
   <div class="addcomodo-dashboard-panel">
     <div class="row ">
       <div id="dashboard-panel-left" class="col-3">
-        <a href="../lista"><i class="fas fa-arrow-circle-left icon-left"></i></a>
+        <a href="../show/<?php echo $this->idcomodo?>"><i class="fas fa-arrow-circle-left icon-left"></i></a>
       </div>
       <div id="dashboard-panel-center" class="col-4">
         <span class="title-panel">ControlHome</span>
@@ -31,8 +31,8 @@
       </div>
 
       <div class="container dashboard">
-        <form action="save" method="POST">
-     
+        <form action="../save" method="POST">
+        <input type="text" class="form-control" id="idcomodo" name="idcomodo" value="<?php echo $this->idcomodo?>" hidden>
           <div class="form-group col-sm-11 " style="margin-left: 0px;">
             <select class="browser-default custom-select" name="tipo">
               <option selected>Selecione um tipo de componente</option>
@@ -49,7 +49,7 @@
 
           <div class="form-group col-sm-11 " style="margin-left: 0px;">
             <label for="nome">Codigo de integração:</label>
-            <input type="text" class="form-control" id="nome" name="codigo" placeholder="TS01">
+            <input type="text" class="form-control" id="nome" name="codigo" placeholder="LAMP-S01" maxlength="12">
           </div>
 
 

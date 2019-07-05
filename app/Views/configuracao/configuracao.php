@@ -41,7 +41,7 @@ use App\Models\ComodosModel\ComodosModel;
                     <td style="width:60%;border:none"><?php echo $dados[$key]['descricao']?></td>
                     <td style="width:10%;border:none"><a href="comodos/showedit/<?php echo $dados[$key]['id'] ?>" ><i class="fas fa-edit"></i></a></td>
                     <td style="width:10%;border:none"><a href="<?php echo "comodos/delete/" . $dados[$key]['id']?> "><i class="fas fa-trash"></i></a></td>
-                    <td style="width:10%;border:none"><a href="componentes/show"><i class="fas fa-wrench"></i></a></td>
+                    <td style="width:10%;border:none"><a href="componentes/show/<?php echo $dados[$key]['id'] ?>"><i class="fas fa-wrench"></i></a></td>
                 </tr>
             <?php } ?>
 

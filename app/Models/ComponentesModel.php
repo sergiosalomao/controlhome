@@ -16,7 +16,7 @@ class ComponentesModel
     {
         $this->schema = "public";
         $this->dsn =
-            "pgsql:host=187.105.41.24;
+            "pgsql:host=192.168.0.100;
               port=5432;
               dbname=controlhome;
               user=postgres;
@@ -36,6 +36,14 @@ class ComponentesModel
         return $st->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function listByComodo($id)
+    {
+         $sql = "SELECT * from {$this->schema}.componentes WHERE idcomodo = {$id}";
+        $st = $this->conexao->prepare($sql);
+        $st->execute();
+        return $st->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function listById($id)
     {
         $sql = "SELECT * from {$this->schema}.componentes WHERE id = {$id}";
@@ -51,8 +59,9 @@ class ComponentesModel
         #verifica se salva ou edita
         if ($dados['descricao'] != '') {
             $sql = "INSERT INTO {$this->schema}.componentes
-             (tipo,descricao,codigo) VALUES
+             (idcomodo,tipo,descricao,codigo) VALUES
               (
+              '{$dados['idcomodo']}',
               '{$dados['tipo']}',
               '{$dados['descricao']}',
               '{$dados['codigo']}'
