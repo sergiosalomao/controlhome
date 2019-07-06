@@ -8,8 +8,25 @@ a:visited{
 a:link{
   color:goldenrod;
 }
-
+ 
 /* Estilos Default */
+
+.icon-home{
+  color:goldenrod;
+  font-size: 40px;
+  border: 1px solid goldenrod;
+  padding-left: 26px;
+  padding-top: 22px;
+  height: 86px;
+  width: 86px;
+  margin:0px;
+}
+
+.icon-acionador{
+  font-size: 30px;
+
+  
+}
 
 #relogio {
   font-weight: 600;
@@ -70,13 +87,15 @@ a:link{
 }
 #main-footer {
   font-size: 10px;
-  position: relative;
-  top: 30%;
+ position: fixed;
+  top: 94.4%;
   background-color: #333;
   height: 30px;
   color: goldenrod;
-  padding: 3px;
+  padding: 8px;
   text-align: center;
+  width: 100%;
+  margin: 0px;
 }
 
 /* view configuracao */
@@ -116,9 +135,9 @@ a:link{
   margin-top: 9px;
   background: #222 ;
   width: 100%;
-  font-size: 15px;
+
   text-align: left;
-  font-weight: 200;
+
   color: goldenrod;
   position: relative;
 }

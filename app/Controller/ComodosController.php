@@ -9,8 +9,11 @@ class ComodosController extends Controller
 {
     protected $id;
     protected $nome;
+    protected $idmenu;
+
 
    
+
     public function listaComodos()
     {
         $model = new ComodosModel();
@@ -24,10 +27,10 @@ class ComodosController extends Controller
 
     public function save()
     {
-   
+
         $model = new ComodosModel();
 
-   
+
         if (isset($_POST['nome'])) {
             $nome = $_POST['nome'];
             if ($model->save($nome) == "salvo com sucesso!") {
@@ -47,7 +50,7 @@ class ComodosController extends Controller
 
         if ($id != null) {
             if ($model->update($id, $nome) == "atualizado com sucesso!") {
-               
+
                 return header("location: ../configuracao");
             } else {
                 return header("location: ../configuracao");
@@ -57,11 +60,11 @@ class ComodosController extends Controller
 
     public function showedit($id)
     {
-   
+
         $model = new ComodosModel();
         $dados = $model->listById($id);
-        $this->id = $dados['id']; 
-        $this->nome = $dados['descricao']; 
+        $this->id = $dados['id'];
+        $this->nome = $dados['descricao'];
         $this->render('comodos', 'editacomodo');
     }
 

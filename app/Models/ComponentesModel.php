@@ -36,9 +36,15 @@ class ComponentesModel
         return $st->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function listByComodo($id)
+    public function listByComodo($id,$tipo = null)
     {
-         $sql = "SELECT * from {$this->schema}.componentes WHERE idcomodo = {$id}";
+        $sql = "SELECT * from {$this->schema}.componentes WHERE idcomodo = {$id}";
+       
+        if ($tipo != null)
+         $sql = "SELECT * from {$this->schema}.componentes WHERE idcomodo = {$id} AND tipo = {$tipo}";
+
+       
+       
         $st = $this->conexao->prepare($sql);
         $st->execute();
         return $st->fetchAll(PDO::FETCH_ASSOC);
