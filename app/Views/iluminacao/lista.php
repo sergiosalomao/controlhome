@@ -73,3 +73,23 @@ use App\Models\ComodosModel\ComodosModel;
 
             </div>
 </body>
+
+<script>
+$.get("http://localhost/teste/control.html", function(res){
+  
+  if (res == "ligado"){
+   $("#green").show();
+   $("#red").hide();
+  }
+
+  if (res == "desligado"){
+   $("#green").hide();
+   $("#red").show();
+  }
+  
+  if ((res != "ligado" ) && (res != "desligado" )){
+   alert("Erro")
+  }
+})
+}
+</script>
