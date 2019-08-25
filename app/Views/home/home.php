@@ -16,11 +16,80 @@
 <body>
   <div class="container dashboard-panel">
     <div class="row">
-      <div id="dashboard-panel-left" class="col-3"><i class="fas fa-thermometer-quarter"></i><span> 30°C<span></div>
+      <div id="dashboard-panel-left" class="col-3"><i class="fas fa-thermometer-quarter"></i><span id="sensor-T1">??<span></div>
       <div id="dashboard-panel-center" class="col-5"><span class="title-panel">ControlHome</span></div>
       <div id="dashboard-panel-right" class="col-4"><span id="relogio"></span>pm<div>
     </div>
 </div>
+
+
+
+<script>
+
+$.ajax ({ 
+  url : "http://192.168.0.99",
+  
+  })
+  .done( function ( data ) { 
+  console.log(data);
+  })
+  
+</script>
+
+
+<script>
+function verificaTemperatura(sensor){
+
+$.ajax({
+    url : 'http://192.168.0.99/'+ sensor,
+   success: function(data){
+    dados = data.split("|");
+    dados.forEach(verifica);
+   
+      function verifica(item, index, arr) 
+      {
+        var i = item.split(":");
+        val = i[1];
+        
+        if(i[0] == "T1" && val <= 25){
+               $("#sensor-T1").text(" "+val.substring(0,4)+"°C"); 
+               //$("#comp-"+ i).removeClass("fa-toggle-off");   
+              // $("#comp-"+ i).addClass("fa-toggle-on"); 
+              // $("#comp-"+ i).attr("status","1"); 
+           }
+          else
+           if(i[0] == "T1" && val > 25){
+            $("#sensor-T1").text(" "+val.substring(0,4)+"°C"); 
+               //$("#comp-"+ i).removeClass("fa-toggle-on");   
+              // $("#comp-"+ i).addClass("fa-toggle-off");   
+              // $("#comp-"+ i).attr("status","0"); 
+           }
+           console.log(i[1])
+       }
+    
+    
+   
+    
+    
+    
+    
+      
+   },   
+       
+    error : function(error) {
+        alert("erro")
+    }
+
+});
+
+}
+
+
+setInterval(function(){
+ verificaTemperatura();
+},2000)
+
+</script>
 
       
         <div class="container">

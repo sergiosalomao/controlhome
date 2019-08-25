@@ -24,13 +24,19 @@ a:link{
 
 .icon-acionador{
   font-size: 30px;
-
-  
 }
 
 #relogio {
   font-weight: 600;
 }
+
+#sensor-T1 {
+  font-weight: 500;
+  position: absolute;
+  width: 200px;
+  margin-left:10px; 
+}
+
 
 .dashboard-panel {
   background-color: #333;
@@ -63,6 +69,7 @@ a:link{
 #dashboard-panel-left {
   margin-top: 10px;
   text-align:left;
+  
 }
 
 #dashboard-panel-center {

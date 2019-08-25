@@ -1,9 +1,6 @@
 <?php
-   header('Access-Control-Allow-Origin: *');
-   header('Access-Control-Allow-Methods: POST, GET, DELETE, PUT, PATCH, OPTIONS');
-   header('Access-Control-Allow-Headers: token, Content-Type');
-   header('Access-Control-Max-Age: 1728000');
-  
+ 
+
   
 
 
@@ -88,13 +85,8 @@ $(document).ready(function(){
 function ativa(modulo){
 
 $.get({
-    crossDomain: true,
-    type : "GET",
     url : 'http://192.168.0.99/'+ modulo +"/1",
-    dataType : "text",
-    
-    contentType: "text/plan",
-   
+
    
    success: function(data){
     console.log('http://192.168.0.99/'+ modulo + "/1")
@@ -111,13 +103,7 @@ $.get({
 function desativa(modulo){
 
 $.get({
-    crossDomain: true,
-    type : "GET",
     url : 'http://192.168.0.99/'+ modulo+"/0",
-    dataType : "text",
-    contentType: "text/plan",
-  
-   
    success: function(data){
       console.log('http://192.168.0.99/'+ modulo+"/0")
    },   
@@ -134,12 +120,7 @@ $.get({
 function consulta(){
 
 $.get({
-    crossDomain: true,
-    type : "GET",
     url : 'http://192.168.0.99/',
-    dataType : "text",
-    
-    contentType: "text/plan",
     data : 'status',
     success: function(data){
       
@@ -163,10 +144,6 @@ $.get({
                 $("#comp-"+ i).addClass("fa-toggle-off");   
                 $("#comp-"+ i).attr("status","0"); 
             }
-        
-                
-       
-     
         }
        
     },
@@ -185,10 +162,97 @@ M1R6 = "M1R6";
 M1R7 = "M1R7";
 M1R8 = "M1R8";
 
+         $("#comp-"+M1R1).click(function()
+         {
+            if($("#comp-"+M1R1).attr("status") == 1){
+                $("#comp-"+ M1R1).addClass("fa-toggle-off");   
+                $("#comp-"+ M1R1).removeClass("fa-toggle-on"); 
+                $("#comp-"+ M1R1).attr("status","0"); 
+                desativa(M1R1);
+            }
+            else
+            if($("#comp-"+M1R1).attr("status") == 0){
+                $("#comp-"+ M1R1).addClass("fa-toggle-on");   
+                $("#comp-"+ M1R1).removeClass("fa-toggle-off");   
+                $("#comp-"+ M1R1).attr("status","1"); 
+                ativa(M1R1);
+                
+            };
+         })
 
+        $("#comp-"+M1R2).click(function()
+         {
+            if($("#comp-"+M1R2).attr("status") == 1){
+                $("#comp-"+ M1R2).addClass("fa-toggle-off");   
+                $("#comp-"+ M1R2).removeClass("fa-toggle-on"); 
+                $("#comp-"+ M1R2).attr("status","0"); 
+                desativa(M1R2);
+            }
+            else
+            if($("#comp-"+M1R2).attr("status") == 0){
+                $("#comp-"+ M1R2).addClass("fa-toggle-on");   
+                $("#comp-"+ M1R2).removeClass("fa-toggle-off");   
+                $("#comp-"+ M1R2).attr("status","1"); 
+                ativa(M1R2);
+                
+            };
+         })
 
+         $("#comp-"+M1R3).click(function()
+         {
+            if($("#comp-"+M1R3).attr("status") == 1){
+                $("#comp-"+ M1R3).addClass("fa-toggle-off");   
+                $("#comp-"+ M1R3).removeClass("fa-toggle-on"); 
+                $("#comp-"+ M1R3).attr("status","0"); 
+                desativa(M1R3);
+            }
+            else
+            if($("#comp-"+M1R3).attr("status") == 0){
+                $("#comp-"+ M1R3).addClass("fa-toggle-on");   
+                $("#comp-"+ M1R3).removeClass("fa-toggle-off");   
+                $("#comp-"+ M1R3).attr("status","1"); 
+                ativa(M1R3);
+                
+            };
+         })
 
-$("#comp-"+M1R6).click(function()
+        $("#comp-"+M1R4).click(function()
+         {
+            if($("#comp-"+M1R4).attr("status") == 1){
+                $("#comp-"+ M1R4).addClass("fa-toggle-off");   
+                $("#comp-"+ M1R4).removeClass("fa-toggle-on"); 
+                $("#comp-"+ M1R4).attr("status","0"); 
+                desativa(M1R4);
+            }
+            else
+            if($("#comp-"+M1R4).attr("status") == 0){
+                $("#comp-"+ M1R4).addClass("fa-toggle-on");   
+                $("#comp-"+ M1R4).removeClass("fa-toggle-off");   
+                $("#comp-"+ M1R4).attr("status","1"); 
+                ativa(M1R4);
+                
+            };
+         })
+
+         $("#comp-"+M1R5).click(function()
+         {
+            if($("#comp-"+M1R5).attr("status") == 1){
+                $("#comp-"+ M1R5).addClass("fa-toggle-off");   
+                $("#comp-"+ M1R5).removeClass("fa-toggle-on"); 
+                $("#comp-"+ M1R5).attr("status","0"); 
+                desativa(M1R5);
+            }
+            else
+            if($("#comp-"+M1R5).attr("status") == 0){
+                $("#comp-"+ M1R5).addClass("fa-toggle-on");   
+                $("#comp-"+ M1R5).removeClass("fa-toggle-off");   
+                $("#comp-"+ M1R5).attr("status","1"); 
+                ativa(M1R5);
+                
+            };
+         })
+
+        $("#comp-"+M1R6).click(function()
          {
             if($("#comp-"+M1R6).attr("status") == 1){
                 $("#comp-"+ M1R6).addClass("fa-toggle-off");   
@@ -221,6 +285,24 @@ $("#comp-"+M1R6).click(function()
                 $("#comp-"+ M1R7).removeClass("fa-toggle-off");   
                 $("#comp-"+ M1R7).attr("status","1"); 
                 ativa(M1R7);
+                
+            };
+         })
+
+         $("#comp-"+M1R8).click(function()
+         {
+            if($("#comp-"+M1R8).attr("status") == 1){
+                $("#comp-"+ M1R8).addClass("fa-toggle-off");   
+                $("#comp-"+ M1R8).removeClass("fa-toggle-on"); 
+                $("#comp-"+ M1R8).attr("status","0"); 
+                desativa(M1R8);
+            }
+            else
+            if($("#comp-"+M1R8).attr("status") == 0){
+                $("#comp-"+ M1R8).addClass("fa-toggle-on");   
+                $("#comp-"+ M1R8).removeClass("fa-toggle-off");   
+                $("#comp-"+ M1R8).attr("status","1"); 
+                ativa(M1R8);
                 
             };
          })
