@@ -6,6 +6,7 @@ require_once("../vendor/autoload.php");
 use Bramus\Router\Router;
 use App\Controller\IluminacaoController;
 
+
 // Create a Router
 $router = new Router();
 #HOME
@@ -32,6 +33,9 @@ $router->get('iluminacao', 'App\Controller\IluminacaoController@index');
 $router->get('iluminacao/componentes/{idComodo}', 'App\Controller\IluminacaoController@listaComponentes');
 
 
+// header('Access-Control-Allow-Origin:  *');
+// header('Access-Control-Allow-Methods:  POST, GET, OPTIONS, PUT, DELETE');
+// header('Access-Control-Allow-Headers:  Content-Type, X-Auth-Token, Origin, Authorization');
 
 
 $router->run();
