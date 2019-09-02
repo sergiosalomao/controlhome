@@ -12,14 +12,15 @@ class ComponentesModel
 
     function __construct()
     {
-        $this->schema = "public";
+         $this->schema = DBSCHEMA;
         $this->dsn =
-            "pgsql:host=192.168.0.100;
-              port=5432;
-              dbname=controlhome;
-              user=postgres;
-              password=210981;";
+            "pgsql:host=". DBHOST . ";
+              port=". DBPORTA . ";
+              dbname=". DBDEFAULT.";
+              user=". DBUSUARIO . ";
+              password=". DBSENHA. ";";
         $this->conexao = new PDO($this->dsn);
+        
     }
 
     public function listAll()

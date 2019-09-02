@@ -12,7 +12,7 @@ class Controller{
    }
 
    public function layout(){
-    include_once 'Views/layout/header.php';
+    include_once './Views/layout/header.php';
    }
 
    public function render($controller, $view){

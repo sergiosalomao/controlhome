@@ -1,25 +1,11 @@
+<script>
+//TEMPO DOS SENSORES DE TEMPERATURA
+setInterval(function() {
+  verificaSensorTemperatura("http://<?php echo HOST ?>/sensores/temperatura/all");
+}, 
+<?php echo TEMPO_SENSOR_TEMPERATURA ?>)
 
-<!DOCTYPE html>
-<html>
-
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- bootstrap -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <!-- AdminLTE -->
-  <link rel="stylesheet" href="../libs/dist/css/AdminLTE.min.css">
-  <!-- Main CSS global -->
-  <link rel="stylesheet" href="../public/css/main.css">
-  <!-- font-awesome -->
-  <link href="../libs/font-awesome/css/all.css" rel="stylesheet">
-  <!--load all styles -->
-
-  <!-- Scripts  -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <script src="../public/js/functions.js"></script>
-</head>
+</script>
 
 <body>
   <div class="container dashboard-panel">
@@ -29,20 +15,6 @@
       <div id="dashboard-panel-right" class="col-4"><span id="relogio"></span>pm<div>
         </div>
       </div>
-
-<script>
-  
-        setInterval(function() {
-          verificaTemperatura("ST1");
-
-        }, 4000)
-
-        setInterval(function() {
-
-          verificaSensorPresenca("SP22");
-        }, 20000000)
-      </script>
-
 
       <div class="container">
         <div class="dashboard">
