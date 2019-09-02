@@ -1,6 +1,4 @@
 <?php
-
-
 namespace App\Controller;
 
 use App\Models\ComponentesModel\ComponentesModel;
@@ -29,25 +27,18 @@ class ComponentesController extends Controller
 
     public function save()
     {
-
-   
         $model = new  ComponentesModel();
         $dados = [];
-     
         $dados['idcomodo'] = $_POST['idcomodo'];
         $dados['tipo'] = $_POST['tipo'];
         $dados['descricao'] = $_POST['descricao'];
         $dados['codigo'] = $_POST['codigo'];
-           
-       
-        
         
         if ($model->save($dados) == "salvo com sucesso!") {
                 return header("location: ../componentes/show/{$_POST['idcomodo']}");
             } else {
                 return header("location: create");
             }
-        
     }
 
     public function update()
@@ -59,7 +50,6 @@ class ComponentesController extends Controller
         $dados['codigo'] = $_POST['codigo'];
         
         $model = new ComponentesModel();
-
     
             if ($model->update($dados) == "atualizado com sucesso!") {
                
@@ -67,7 +57,6 @@ class ComponentesController extends Controller
             } else {
                 return header("location: show/{$_SESSION['idcomodo']}");
             }
-       
     }
 
     public function edit($id)
@@ -84,7 +73,6 @@ class ComponentesController extends Controller
 
     public function delete($id)
     {
-     
         $model = new ComponentesModel();
         if ($model->delete($id) == "excluido com sucesso!") {
             return header("location: ../show/{$_SESSION['idcomodo']}");

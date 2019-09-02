@@ -1,11 +1,11 @@
 <?php
-session_start();
 
+session_start();
+require_once("../config/system.config.php");
 require_once("../vendor/autoload.php");
 
 use Bramus\Router\Router;
 use App\Controller\IluminacaoController;
-
 
 // Create a Router
 $router = new Router();
@@ -31,8 +31,5 @@ $router->post('componentes/update', 'App\Controller\ComponentesController@update
 #ILUMINACAO
 $router->get('iluminacao', 'App\Controller\IluminacaoController@index');
 $router->get('iluminacao/componentes/{idComodo}', 'App\Controller\IluminacaoController@listaComponentes');
-
-
-
 
 $router->run();

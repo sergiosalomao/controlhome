@@ -1,18 +1,13 @@
 <?php
-
 namespace App\Controller;
 
 use App\Models\ComodosModel\ComodosModel;
-
 
 class ComodosController extends Controller
 {
     protected $id;
     protected $nome;
     protected $idmenu;
-
-
-   
 
     public function listaComodos()
     {
@@ -22,14 +17,13 @@ class ComodosController extends Controller
 
     public function create()
     {
+        $this->layout();
         $this->render('comodos', 'create');
     }
 
     public function save()
     {
-
         $model = new ComodosModel();
-
 
         if (isset($_POST['nome'])) {
             $nome = $_POST['nome'];
@@ -47,7 +41,6 @@ class ComodosController extends Controller
         $nome = $_POST['nome'];
         $model = new ComodosModel();
 
-
         if ($id != null) {
             if ($model->update($id, $nome) == "atualizado com sucesso!") {
 
@@ -60,11 +53,11 @@ class ComodosController extends Controller
 
     public function showedit($id)
     {
-
         $model = new ComodosModel();
         $dados = $model->listById($id);
         $this->id = $dados['id'];
         $this->nome = $dados['descricao'];
+        $this->layout();
         $this->render('comodos', 'editacomodo');
     }
 

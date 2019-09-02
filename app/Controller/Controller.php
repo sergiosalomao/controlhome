@@ -14,7 +14,7 @@ class Controller{
    public function layout(){
     include_once 'Views/layout/header.php';
    }
-    
+
    public function render($controller, $view){
         $this->view = $view;
         $this->controller = $controller;
@@ -23,9 +23,7 @@ class Controller{
     }
 
     public function view(){
-     
         include_once 'Views/'.$this->controller.'/'.$this->view.'.php';
-       
     }
 
 }

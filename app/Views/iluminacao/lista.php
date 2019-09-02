@@ -77,10 +77,9 @@ use App\Models\ComodosModel\ComodosModel;
 
 <script>
 
-$(document).ready(function(){
-    consulta()
-});
-
+setInterval(function(){
+ consultaModulos();
+},1000)
 
 function ativa(modulo){
 
@@ -93,7 +92,7 @@ $.get({
    },   
        
     error : function(error) {
-        alert("erro")
+        console.log("erro ao ativar modulo "+modulo)
     }
 
 });
@@ -109,7 +108,7 @@ $.get({
    },   
        
     error : function(error) {
-        alert("erro")
+        console.log("erro ao desativar modulo"+modulo)
     }
 
 });
@@ -117,10 +116,10 @@ $.get({
 
 
 
-function consulta(){
+function consultaModulos(){
 
 $.get({
-    url : 'http://192.168.0.99/',
+    url : 'http://192.168.0.99',
     data : 'status',
     success: function(data){
       
@@ -148,7 +147,7 @@ $.get({
        
     },
     error : function(error) {
-        alert("erro")
+        console.log("erro ao consultar status")
     }
 });
 }

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models\ComodosModel;
 
 use PDO;
@@ -10,7 +9,6 @@ class ComodosModel
     private $dsn;
     private $schema;
     private $table = 'comodos';
-
 
     function __construct()
     {
@@ -24,12 +22,9 @@ class ComodosModel
         $this->conexao = new PDO($this->dsn);
     }
 
-
     public function listAll()
     {
-
         $sql = "SELECT * from {$this->schema}.comodos ORDER BY descricao,id asc";
-
         $st = $this->conexao->prepare($sql);
         $st->execute();
 
