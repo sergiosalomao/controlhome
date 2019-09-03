@@ -1,7 +1,7 @@
 <script>
 //TEMPO DOS SENSORES DE TEMPERATURA
 setInterval(function() {
-  verificaSensorTemperatura("http://<?php echo HOST ?>/sensores/temperatura/all");
+  verificaSensorTemperatura("http://<?php echo HOST_CENTRAL_1 ?>/sensores/temperatura/all");
 }, 
 <?php echo TEMPO_SENSOR_TEMPERATURA ?>)
 

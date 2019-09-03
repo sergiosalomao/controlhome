@@ -11,9 +11,12 @@ if (!$confIni)
     exit("<div class='alert alert-danger'>ERRO[65382] - Erro ao tentar se conectar com o servidor. Entre em contato com o administrador do sistama!</div>");
 
 
-#SERVIDOR
+#SERVIDOR_APP
 define('HOST', $confIni['SERVIDOR']['HOST']);
 define('PORTA', $confIni['SERVIDOR']['PORTA']);
+#SERVIDOR_CENTRAL_1
+define('HOST_CENTRAL_1', $confIni['SERVIDOR_CENTRAL_1']['HOST_CENTRAL_1']);
+define('PORTA_CENTRAL_1', $confIni['SERVIDOR_CENTRAL_1']['PORTA_CENTRAL_1']);
 #BANCO
 define('DBHOST', $confIni['BANCO']['HOST']);
 define('DBPORTA', $confIni['BANCO']['PORTA']);
