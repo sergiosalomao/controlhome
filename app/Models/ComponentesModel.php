@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models\ComponentesModel;
 
 use PDO;
@@ -12,15 +13,9 @@ class ComponentesModel
 
     function __construct()
     {
-         $this->schema = DBSCHEMA;
-        $this->dsn =
-            "pgsql:host=". DBHOST . ";
-              port=". DBPORTA . ";
-              dbname=". DBDEFAULT.";
-              user=". DBUSUARIO . ";
-              password=". DBSENHA. ";";
+        $this->schema = DBSCHEMA;
+        $this->dsn = DSN;
         $this->conexao = new PDO($this->dsn);
-        
     }
 
     public function listAll()
@@ -34,27 +29,34 @@ class ComponentesModel
 
     public function listaSensores($tiposSensores)
     {
-        $sql = "SELECT C.descricao as descricaoSensor, C.codigo as codigoSensor, Com.descricao as DescricaoComodo, C.idcomodo,C.tipo,Com.id as idComodo,CompTipo.id as idTipoComponente, CompTipo.descricao as descricaoTipoComponente from {$this->schema}.componentes AS C";
-        $sql.= " JOIN comodos AS Com ON C.idcomodo = Com.id ";
-        $sql.= " JOIN componentes_tipos AS CompTipo ON C.tipo = CompTipo.id ";
-        $sql.= " WHERE tipo IN ({$tiposSensores}) ORDER BY C.tipo,C.descricao asc ";
+        $sql = "SELECT ";
+        $sql .= "cmp.id_componente as id_componente,";
+        $sql .= "cmp.descricao as descricao_componente,";
+        $sql .= "cmp.codigo as codigo_componente,";
+        $sql .= "cmp.tipo as tipo_componente,";
+        $sql .= "cmp.id_ambiente as id_ambiente,";
+        $sql .= "amb.descricao as descricao_ambiente,";
+        $sql .= "ct.descricao as descricao_tipo_componente";
+        $sql .= " FROM {$this->schema}.{$this->table} AS cmp ";
+        $sql .= "JOIN ambientes AS amb ON cmp.id_ambiente = amb.id_ambiente ";
+        $sql .= "JOIN componentes_tipos AS ct ON cmp.tipo = ct.id_componente_tipo ";
+        $sql .= "WHERE cmp.tipo IN ({$tiposSensores}) ";
+        $sql .= "ORDER BY cmp.tipo,cmp.descricao asc ";
 
 
-
-        
         $st = $this->conexao->prepare($sql);
         $st->execute();
 
         return $st->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function listByComodo($id,$tipo = null)
+    public function listByAmbiente($id, $tipo = null)
     {
-        $sql = "SELECT * from {$this->schema}.componentes WHERE idcomodo = {$id}";
-       
+        $sql = "SELECT * from {$this->schema}.{$this->table} WHERE id_ambiente = {$id}";
+
         if ($tipo != null)
-         $sql = "SELECT * from {$this->schema}.componentes WHERE idcomodo = {$id} AND tipo = {$tipo}";
-       
+            $sql = "SELECT * from {$this->schema}.{$this->table} WHERE id_ambiente = {$id} AND tipo = {$tipo}";
+
         $st = $this->conexao->prepare($sql);
         $st->execute();
         return $st->fetchAll(PDO::FETCH_ASSOC);
@@ -62,20 +64,20 @@ class ComponentesModel
 
     public function listById($id)
     {
-        $sql = "SELECT * from {$this->schema}.componentes WHERE id = {$id}";
+        $sql = "SELECT * from {$this->schema}.{$this->table} WHERE id_componente = {$id}";
         $st = $this->conexao->prepare($sql);
         $st->execute();
         return $st->fetch();
     }
-    
+
     public function save($dados)
     {
         #verifica se salva ou edita
         if ($dados['descricao'] != '') {
-            $sql = "INSERT INTO {$this->schema}.componentes
-             (idcomodo,tipo,descricao,codigo) VALUES
+            $sql = "INSERT INTO {$this->schema}.{$this->table}
+             (id_ambiente,tipo,descricao,codigo) VALUES
               (
-              '{$dados['idcomodo']}',
+              '{$dados['id_ambiente']}',
               '{$dados['tipo']}',
               '{$dados['descricao']}',
               '{$dados['codigo']}'
@@ -92,12 +94,12 @@ class ComponentesModel
 
     public function update($dados)
     {
-         $sql = "UPDATE {$this->schema}.componentes SET 
+        $sql = "UPDATE {$this->schema}.{$this->table} SET 
          tipo = '{$dados['tipo']}',
          descricao = '{$dados['descricao']}',
          codigo = '{$dados['codigo']}'
           WHERE id = {$dados['id']}";
-      
+
         try {
             $st = $this->conexao->prepare($sql);
             $st->execute();
@@ -109,7 +111,7 @@ class ComponentesModel
 
     public function delete($id)
     {
-        echo $sql = "DELETE from {$this->schema}.componentes where id={$id}";
+        $sql = "DELETE from {$this->schema}.{$this->table} where id={$id}";
         try {
             $st = $this->conexao->prepare($sql);
             $st->execute();

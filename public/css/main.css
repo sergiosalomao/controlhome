@@ -115,8 +115,8 @@ a:link{
   width: 100%;
 }
 
-/* view addcomodo */
-.addcomodo-dashboard-panel {
+/* view addambiente */
+.addambiente-dashboard-panel {
   background-color: #333;
   height: 45px;
   color: goldenrod;
@@ -159,7 +159,7 @@ a:link{
   background-color: red;
 }
 
-#lista-comodos {
+#lista-ambientes {
   margin-top: 12px;
   width: 100%;
 }

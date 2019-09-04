@@ -7,6 +7,7 @@ class ConfiguracaoController extends Controller
 {
     public function showconfiguracao()
     {
-         $this->render('configuracao','configuracao');
+        $this->layout();
+        $this->render('configuracao','configuracao');
     }
 }

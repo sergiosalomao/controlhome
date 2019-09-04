@@ -1,6 +1,5 @@
     <?php
     use App\Models\ComponentesModel\ComponentesModel;
-    use App\Models\ComodosModel\ComodosModel;
 
 ?>
 
@@ -17,8 +16,8 @@
                     <table class="table table-striped ">
                         
                         <?php
-                        $comp = new ComponentesModel();
-                        $dados = $comp->listByComodo($this->idcomodo,2);
+                        $objComponentes = new ComponentesModel();
+                        $dados = $objComponentes->listByAmbiente($this->id_ambiente,2);
                         foreach ($dados as $key => $lista){
                         
                         //    legenda de icones

@@ -18,7 +18,7 @@ class Controller{
    public function render($controller, $view){
         $this->view = $view;
         $this->controller = $controller;
-        $this->layout();
+        
         $this->view();
     }
 

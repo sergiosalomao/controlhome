@@ -2,7 +2,7 @@
 
 
 use App\Models\ComponentesModel\ComponentesModel;
-use App\Models\ComodosModel\ComodosModel;
+use App\Models\AmbientesModel\AmbientesModel;
 
 ?>
 
@@ -15,14 +15,14 @@ use App\Models\ComodosModel\ComodosModel;
         <div class="row">
             <div id="dashboard-panel-left" class="col-3"> <a href="../../configuracao"><i class="fas fa-arrow-circle-left icon-left"></i></a></div>
             <div id="dashboard-panel-center" class="col-5"><span class="title-panel">ControlHome</span></div>
-            <div id="dashboard-panel-right" class="col-4"><a href="../create/<?php echo $this->idcomodo?>"><i class="fas fa-plus-circle icon-right"></i></a>
+            <div id="dashboard-panel-right" class="col-4"><a href="../create/<?php echo $this->id_ambiente?>"><i class="fas fa-plus-circle icon-right"></i></a>
                 <div>
                 </div>
             </div>
 
             <?php 
-                $comodo = new ComodosModel();
-                $dados = $comodo->listById($this->idcomodo);
+                $objAmbiente = new AmbientesModel();
+                $dados = $objAmbiente->listById($this->id_ambiente);
            
             ?>
 
@@ -32,8 +32,8 @@ use App\Models\ComodosModel\ComodosModel;
                 <table class="table table-hover table-striped">
 
                     <?php
-                       $comp = new ComponentesModel();
-                       $dados = $comp->listByComodo($this->idcomodo);
+                       $objComponentes = new ComponentesModel();
+                       $dados = $objComponentes->listByAmbiente($this->id_ambiente);
                     foreach ($dados as $key => $lista){
                       
                     if ($dados[$key]['tipo'] == 1) {

@@ -1,5 +1,5 @@
 <body>
-<div class="addcomodo-dashboard-panel">
+<div class="addambiente-dashboard-panel">
     <div class="row ">
       <div id="dashboard-panel-left" class="col-3">
         <a href="../../configuracao"><i class="fas fa-arrow-circle-left icon-left"></i></a>
@@ -16,8 +16,8 @@
       <div class="container dashboard">
         <form action="../update" method="POST">
           <div class="form-group col-sm-11 " style="margin-left: 0px;">
-            <label for="nome">Alterar nome do comodo</label>
-            <input type="text" class="form-control" id="id" name="id" placeholder="Ex.:Sala" value="<?php echo $this->id ?>" hidden>
+            <label for="nome">Alterar nome do Ambiente</label>
+            <input type="text" class="form-control" id="id_ambiente" name="id_ambiente" placeholder="Ex.:Sala" value="<?php echo $this->id_ambiente ?>" hidden>
             <input type="text" class="form-control" id="nome" name="nome" placeholder="Ex.:Sala" value="<?php echo $this->nome ?>">
           </div>
           <div class="form-group col-sm-11 ">

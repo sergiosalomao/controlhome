@@ -41,8 +41,7 @@
             </tr>
 
           </table>
-          <div id="dashboard-panel-left" class="col-3"><span id="sensor-SP1">WAIT<span></div>
-          <div id="dashboard-panel-left" class="col-3"><span id="sensor-SPT1">WAIT<span></div>
+         
         </div>
       </div>
       <div id="main-footer"><span>Developer Sergio Salomão</span></div>

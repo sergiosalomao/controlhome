@@ -3,10 +3,10 @@
 
 
 <body>
-  <div class="addcomodo-dashboard-panel">
+  <div class="addambiente-dashboard-panel">
     <div class="row ">
       <div id="dashboard-panel-left" class="col-3">
-        <a href="../show/<?php echo $this->idcomodo?>"><i class="fas fa-arrow-circle-left icon-left"></i></a>
+        <a href="../show/<?php echo $this->id_ambiente?>"><i class="fas fa-arrow-circle-left icon-left"></i></a>
       </div>
       <div id="dashboard-panel-center" class="col-4">
         <span class="title-panel">ControlHome</span>
@@ -19,7 +19,7 @@
 
       <div class="container dashboard">
         <form action="../save" method="POST">
-        <input type="text" class="form-control" id="idcomodo" name="idcomodo" value="<?php echo $this->idcomodo?>" hidden>
+        <input type="text" class="form-control" id="id_ambiente" name="id_ambiente" value="<?php echo $this->id_ambiente?>" hidden>
           <div class="form-group col-sm-11 " style="margin-left: 0px;">
             <select class="browser-default custom-select" name="tipo">
               <option selected>Selecione um tipo de componente</option>

@@ -7,6 +7,7 @@ class HomeController extends Controller
 {
     public function showhome()
     {
-       $this->render("home","home");
+        $this->layout();
+        $this->render("home","home");
     }
 }
