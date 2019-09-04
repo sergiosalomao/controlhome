@@ -25,6 +25,7 @@ define('DBDRIVER', $confIni['BANCO']['DRIVER']);
 define('DBSCHEMA', $confIni['BANCO']['SCHEMA']);
 define('DBUSUARIO', $confIni['BANCO']['USUARIO']);
 define('DBSENHA', $confIni['BANCO']['SENHA']);
+define('DSN',"pgsql:host=" . DBHOST . ";port=" . DBPORTA . ";dbname=" . DBDEFAULT . ";user=" . DBUSUARIO . ";password=" . DBSENHA . ";");
 #APP
 define('TEMPO_SENSOR_PRESENCA', $confIni['APP']['TEMPO_SENSOR_PRESENCA']);
 define('TEMPO_SENSOR_TEMPERATURA', $confIni['APP']['TEMPO_SENSOR_TEMPERATURA']);

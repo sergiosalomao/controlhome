@@ -9,18 +9,22 @@ class ComponentesController extends Controller
     protected $descricao;
     protected $tipo;
     protected $codigo;
-    protected $idcomodo;
+    protected $id_ambiente;
 
-    public function show($idcomodo)
+    public function show($id_ambiente)
     {
-        $this->idcomodo = $idcomodo;
-        $_SESSION['idcomodo'] = $idcomodo;
+        $this->id_ambiente = $id_ambiente;
+        $_SESSION['id_ambiente'] = $id_ambiente;
+        
+        $this->layout();
         $this->render('componentes','componentes');
     }
 
-    public function create($idcomodo)
+    public function create($id_ambiente)
     {
-        $this->idcomodo = $idcomodo;
+        $this->id_ambiente = $id_ambiente;
+        
+        $this->layout();
         $this->render('componentes', 'create');
     }
 
@@ -29,13 +33,13 @@ class ComponentesController extends Controller
     {
         $model = new  ComponentesModel();
         $dados = [];
-        $dados['idcomodo'] = $_POST['idcomodo'];
+        $dados['id_ambiente'] = $_POST['id_ambiente'];
         $dados['tipo'] = $_POST['tipo'];
         $dados['descricao'] = $_POST['descricao'];
         $dados['codigo'] = $_POST['codigo'];
         
         if ($model->save($dados) == "salvo com sucesso!") {
-                return header("location: ../componentes/show/{$_POST['idcomodo']}");
+                return header("location: ../componentes/show/{$_POST['id_ambiente']}");
             } else {
                 return header("location: create");
             }
@@ -53,21 +57,23 @@ class ComponentesController extends Controller
     
             if ($model->update($dados) == "atualizado com sucesso!") {
                
-                return header("location: show/{$_SESSION['idcomodo']}");
+                return header("location: show/{$_SESSION['id_ambiente']}");
             } else {
-                return header("location: show/{$_SESSION['idcomodo']}");
+                return header("location: show/{$_SESSION['id_ambiente']}");
             }
     }
 
     public function edit($id)
     {
-        $this->idcomodo = $_SESSION['idcomodo'];
+        $this->id_ambiente = $_SESSION['id_ambiente'];
         $model = new ComponentesModel();
         $dados = $model->listById($id);
         $this->id = $dados['id']; 
         $this->descricao = $dados['descricao']; 
         $this->codigo = $dados['codigo']; 
         $this->tipo = $dados['tipo']; 
+        
+        $this->layout();
         $this->render('componentes', 'editacomponente');
     }
 
@@ -75,9 +81,9 @@ class ComponentesController extends Controller
     {
         $model = new ComponentesModel();
         if ($model->delete($id) == "excluido com sucesso!") {
-            return header("location: ../show/{$_SESSION['idcomodo']}");
+            return header("location: ../show/{$_SESSION['id_ambiente']}");
         } else {
-            return header("location: ../show/{$_SESSION['idcomodo']}");
+            return header("location: ../show/{$_SESSION['id_ambiente']}");
         }
     }
 }

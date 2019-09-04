@@ -15,10 +15,10 @@
 </head>
 
 <body>
-<div class="addcomodo-dashboard-panel">
+<div class="addambiente-dashboard-panel">
     <div class="row ">
       <div id="dashboard-panel-left" class="col-3">
-        <a href="../show/<?php echo $this->idcomodo?>"><i class="fas fa-arrow-circle-left icon-left"></i></a>
+        <a href="../show/<?php echo $this->id_ambiente?>"><i class="fas fa-arrow-circle-left icon-left"></i></a>
       </div>
       <div id="dashboard-panel-center" class="col-4">
         <span class="title-panel">ControlHome</span>

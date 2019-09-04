@@ -28,10 +28,10 @@ use App\Models\ComponentesModel\ComponentesModel;
                     $componentes = new ComponentesModel();
                     $dados = $componentes->listaSensores(3);
                     foreach ($dados as $key => $lista) {
-                        $item = $dados[$key]['codigosensor'] . '-' . $dados[$key]['descricaotipocomponente'] . '<br>Ambiente : ' . $dados[$key]['descricaocomodo'];
+                        $item = $dados[$key]['codigo_componente'] . '-' . $dados[$key]['descricao_tipo_componente'] . '<br>Ambiente : ' . $dados[$key]['descricao_ambiente'];
                         ?>
                         <tr>
-                            <td style="width:1%;border:none;color:goldenrod"><i class="fas fa-stroopwafel" style="margin-left:5px"></i></a></td>
+                            <td style="width:1%;border:none;color:goldenrod"><i class="fas fa-stroopwafel" style="margin-left:5px"></i></td>
                             <td style="width:1%;border:none;color:goldenrod"><?php echo $item ?></a></td>
                             <td style="width:1%;border:none;color:goldenrod">
                                 Temperatura: <span id="sensor-" + <?php echo $codigo ?>></span><br>

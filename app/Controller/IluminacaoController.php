@@ -4,17 +4,19 @@ namespace App\Controller;
 
 class IluminacaoController extends Controller
 {
-    protected $idcomodo;
+  protected $id_ambiente;
+
+  public function index()
+  {
+    $this->render("iluminacao", 'index');
+    $this->layout();
+  }
+
+  public function listaComponentes($id)
+  {
+    $this->id_ambiente = $id;
     
-    public function index()
-    {
-    $this->render("iluminacao",'index');
-    }
-
-    public function listaComponentes($idComodo)
-    {
-    $this->idcomodo = $idComodo;
-      $this->render("iluminacao",'lista');
-    }
-
+    $this->layout();
+    $this->render("iluminacao", 'lista');
+  }
 }
