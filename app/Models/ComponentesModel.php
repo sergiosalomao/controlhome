@@ -32,6 +32,22 @@ class ComponentesModel
         return $st->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function listaSensores($tiposSensores)
+    {
+        $sql = "SELECT C.descricao as descricaoSensor, C.codigo as codigoSensor, Com.descricao as DescricaoComodo, C.idcomodo,C.tipo,Com.id as idComodo,CompTipo.id as idTipoComponente, CompTipo.descricao as descricaoTipoComponente from {$this->schema}.componentes AS C";
+        $sql.= " JOIN comodos AS Com ON C.idcomodo = Com.id ";
+        $sql.= " JOIN componentes_tipos AS CompTipo ON C.tipo = CompTipo.id ";
+        $sql.= " WHERE tipo IN ({$tiposSensores}) ORDER BY C.tipo,C.descricao asc ";
+
+
+
+        
+        $st = $this->conexao->prepare($sql);
+        $st->execute();
+
+        return $st->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function listByComodo($id,$tipo = null)
     {
         $sql = "SELECT * from {$this->schema}.componentes WHERE idcomodo = {$id}";

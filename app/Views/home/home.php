@@ -1,11 +1,4 @@
-<script>
-//TEMPO DOS SENSORES DE TEMPERATURA
-setInterval(function() {
-  verificaSensorTemperatura("http://<?php echo HOST_CENTRAL_1 ?>/sensores/temperatura/all");
-}, 
-<?php echo TEMPO_SENSOR_TEMPERATURA ?>)
 
-</script>
 
 <body>
   <div class="container dashboard-panel">
@@ -24,7 +17,7 @@ setInterval(function() {
               <td style="border:none"><a href="temperatura.php"><img src="../public/images/temperatura.png" width="86pxpx" height="86pxpx"></a></td>
               <td style="border:none"><a href="iluminacao"><img src="../public/images/iluminacao.png" width="86pxpx" height="86pxpx"></a></td> -->
               <td style="border:none"><a href="seguranca.php"><i class="fas fa-user icon-home"></i></a></td>
-              <td style="border:none"><a href="temperatura.php"><i class="fas fa-temperature-low icon-home"></i></a></td>
+              <td style="border:none"><a href="sensores"><i class="fas fa-temperature-low icon-home"></i></a></td>
               <td style="border:none"><a href="iluminacao"><i class="fas fa-lightbulb icon-home"></i></a></td>
             </tr>
 
