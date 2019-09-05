@@ -28,7 +28,7 @@ class AmbientesController extends Controller
         if (isset($_POST['nome'])) {
             $nome = $_POST['nome'];
             if ($objAmbientes->save($nome) == "salvo com sucesso!") {
-                return header("location: ../");
+                return header("location: ../../../configuracao/ambientes");
             } else {
                 return header("location: ambientes/create");
             }
@@ -44,9 +44,9 @@ class AmbientesController extends Controller
         if ($id != null) {
             if ($objAmbientes->update($id, $nome) == "atualizado com sucesso!") {
 
-                return header("location: ../configuracao");
+                return header("location: ../../configuracao/ambientes");
             } else {
-                return header("location: ../configuracao");
+                return header("location: ../../configuracao/ambientes");
             }
         }
     }
@@ -66,9 +66,9 @@ class AmbientesController extends Controller
     {
         $objAmbientes = new AmbientesModel();
         if ($objAmbientes->delete($id) == "excluido com sucesso!") {
-            return header("location: ../../configuracao");
+            return header("location: ../../../configuracao/ambientes");
         } else {
-            return header("location: ../../configuracao");
+            return header("location: ../../ambientes/configuracao");
         }
     }
 }

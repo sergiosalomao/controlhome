@@ -23,12 +23,12 @@
     $router->post('configuracao/ambientes/save', 'App\Controller\AmbientesController@save');
 
     #COMPONENTES
-    $router->get('componentes/show/{id_ambiente}', 'App\Controller\ComponentesController@show');
-    $router->get('componentes/create/{id_ambiente}', 'App\Controller\ComponentesController@create');
-    $router->get('componentes/delete/{id}', 'App\Controller\ComponentesController@delete');
-    $router->get('componentes/edit/{id}', 'App\Controller\ComponentesController@edit');
-    $router->post('componentes/save', 'App\Controller\ComponentesController@save');
-    $router->post('componentes/update', 'App\Controller\ComponentesController@update');
+    $router->get('configuracao/componentes/show/{id_ambiente}', 'App\Controller\ComponentesController@show');
+    $router->get('configuracao/componentes/create/{id_ambiente}', 'App\Controller\ComponentesController@create');
+    $router->get('configuracao/componentes/delete/{id}', 'App\Controller\ComponentesController@delete');
+    $router->get('configuracao/componentes/edit/{id}', 'App\Controller\ComponentesController@edit');
+    $router->post('configuracao/componentes/save', 'App\Controller\ComponentesController@save');
+    $router->post('configuracao/componentes/update', 'App\Controller\ComponentesController@update');
 
     #ILUMINACAO
     $router->get('iluminacao', 'App\Controller\IluminacaoController@index');

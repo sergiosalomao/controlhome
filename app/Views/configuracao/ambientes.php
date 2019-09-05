@@ -22,7 +22,7 @@ use App\Models\AmbientesModel\AmbientesModel;
                         <td style="width:10%;border:none"><a href="configuracao"><i class="fas fa-map" style="margin-left:5px"></i></a></td>
                         <td style="width:60%;border:none"><?php echo $dados[$key]['descricao'] ?></td>
                         <td style="width:10%;border:none"><a href="ambientes/showedit/<?php echo $dados[$key]['id_ambiente'] ?>"><i class="fas fa-edit"></i></a></td>
-                        <td style="width:10%;border:none"><a href="<?php echo "ambientes/delete/" . $dados[$key]['id_ambiente'] ?> "><i class="fas fa-trash"></i></a></td>
+                        <td style="width:10%;border:none"><a href="ambientes/delete/<?php echo $dados[$key]['id_ambiente'] ?> "><i class="fas fa-trash"></i></a></td>
                         <td style="width:10%;border:none"><a href="componentes/show/<?php echo $dados[$key]['id_ambiente'] ?>"><i class="fas fa-wrench"></i></a></td>
                     </tr>
                 <?php } ?>
