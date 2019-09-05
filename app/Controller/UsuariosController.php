@@ -7,6 +7,12 @@ class UsuariosController extends Controller
 {
     protected $id_usuario;
     protected $nome;
+    protected $email;
+    protected $senha;
+    protected $tipo;
+    protected $mac;
+    
+    
     protected $idmenu;
 
     public function listaUsuarios()
@@ -36,14 +42,14 @@ class UsuariosController extends Controller
 
     public function update()
     {
-        $objUsuarios = new UsuariosModel();
-
+       $objUsuarios = new UsuariosModel();
+       
         if ($_POST['id_usuario'] != null) {
             if ($objUsuarios->update($_POST) == "atualizado com sucesso!") {
 
                 return header("location: ../../configuracao/usuarios");
             } else {
-                return header("location: ../../configuracao/usuarioss");
+                return header("location: ../../configuracao/usuarios");
             }
         }
     }
@@ -55,6 +61,10 @@ class UsuariosController extends Controller
         
         $this->id_usuario = $dados['id_usuario'];
         $this->nome = $dados['nome'];
+        $this->email = $dados['email'];
+        $this->senha = $dados['senha'];
+        $this->tipo = $dados['tipo'];
+        $this->mac = $dados['mac'];
         
         $this->layout();
         $this->render('usuarios', 'edit');

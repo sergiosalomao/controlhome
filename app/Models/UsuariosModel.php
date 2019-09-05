@@ -67,9 +67,11 @@ class UsuariosModel
         $sql.= "nome = '{$dados['nome']}', ";
         $sql.= "email = '{$dados['email']}', ";
         $sql.= "senha = '{$dados['senha']}', ";
-        $sql.= "tipo = '{$dados['mac']}' ";
+        $sql.= "tipo = {$dados['tipo']}, ";
+        $sql.= "mac = '{$dados['mac']}' ";
         $sql.= "WHERE id_usuario = {$dados['id_usuario']}";
 
+      
         try {
             $st = $this->conexao->prepare($sql);
             $st->execute();
