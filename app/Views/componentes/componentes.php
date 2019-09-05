@@ -13,7 +13,7 @@ use App\Models\AmbientesModel\AmbientesModel;
 <body>
     <div class="configuracao-dashboard-panel">
         <div class="row">
-            <div id="dashboard-panel-left" class="col-3"> <a href="../../configuracao"><i class="fas fa-arrow-circle-left icon-left"></i></a></div>
+            <div id="dashboard-panel-left" class="col-3"> <a href="../../../configuracao/ambientes"><i class="fas fa-arrow-circle-left icon-left"></i></a></div>
             <div id="dashboard-panel-center" class="col-5"><span class="title-panel">ControlHome</span></div>
             <div id="dashboard-panel-right" class="col-4"><a href="../create/<?php echo $this->id_ambiente?>"><i class="fas fa-plus-circle icon-right"></i></a>
                 <div>
