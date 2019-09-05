@@ -28,7 +28,7 @@ class AmbientesController extends Controller
         if (isset($_POST['nome'])) {
             $nome = $_POST['nome'];
             if ($objAmbientes->save($nome) == "salvo com sucesso!") {
-                return header("location: ../../../configuracao/ambientes");
+                return header("location: ../../configuracao/ambientes");
             } else {
                 return header("location: ambientes/create");
             }
