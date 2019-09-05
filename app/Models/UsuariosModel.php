@@ -71,7 +71,7 @@ class UsuariosModel
         $sql.= "mac = '{$dados['mac']}' ";
         $sql.= "WHERE id_usuario = {$dados['id_usuario']}";
 
-      
+        var_dump($sql);
         try {
             $st = $this->conexao->prepare($sql);
             $st->execute();

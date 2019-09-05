@@ -29,9 +29,12 @@ class UsuariosController extends Controller
 
     public function save()
     {
+        //if (password_verify('rasmuslerdorf', $hash)) {
         $objUsuarios = new UsuariosModel();
         if (isset($_POST['nome'])) {
-
+            
+            $_POST['senha'] = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+            
             if ($objUsuarios->save($_POST) == "salvo com sucesso!") {
                 return header("location: ../../configuracao/usuarios");
             } else {
@@ -44,6 +47,7 @@ class UsuariosController extends Controller
     {
        $objUsuarios = new UsuariosModel();
        
+       $_POST['senha'] = password_hash($_POST['senha'], PASSWORD_DEFAULT);
         if ($_POST['id_usuario'] != null) {
             if ($objUsuarios->update($_POST) == "atualizado com sucesso!") {
 
