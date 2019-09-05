@@ -12,13 +12,15 @@
     $router->get('/', 'App\Controller\HomeController\HomeController@showhome');
     #CONFIGURACAO
     $router->get('configuracao', 'App\Controller\ConfiguracaoController\ConfiguracaoController@showconfiguracao');
+    $router->get('configuracao/ambientes', 'App\Controller\ConfiguracaoController\ConfiguracaoController@showAmbiente');
+    $router->get('configuracao/usuarios', 'App\Controller\ConfiguracaoController\ConfiguracaoController@showUsuario');
     
     #AMBIENTES
-    $router->get('ambientes/create', 'App\Controller\AmbientesController@create');
-    $router->get('ambientes/showedit/{id}', 'App\Controller\AmbientesController@showedit');
-    $router->get('ambientes/delete/{id}', 'App\Controller\AmbientesController@delete');
-    $router->post('ambientes/update', 'App\Controller\AmbientesController@update');
-    $router->post('ambientes/save', 'App\Controller\AmbientesController@save');
+    $router->get('configuracao/ambientes/create', 'App\Controller\AmbientesController@create');
+    $router->get('configuracao/ambientes/showedit/{id}', 'App\Controller\AmbientesController@showedit');
+    $router->get('configuracao/ambientes/delete/{id}', 'App\Controller\AmbientesController@delete');
+    $router->post('configuracao/ambientes/update', 'App\Controller\AmbientesController@update');
+    $router->post('configuracao/ambientes/save', 'App\Controller\AmbientesController@save');
 
     #COMPONENTES
     $router->get('componentes/show/{id_ambiente}', 'App\Controller\ComponentesController@show');
