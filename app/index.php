@@ -22,6 +22,13 @@
     $router->post('configuracao/ambientes/update', 'App\Controller\AmbientesController@update');
     $router->post('configuracao/ambientes/save', 'App\Controller\AmbientesController@save');
 
+     #USUARIOS
+     $router->get('configuracao/usuarios/create', 'App\Controller\UsuariosController@create');
+     $router->get('configuracao/usuarios/showedit/{id}', 'App\Controller\UsuariosController@showedit');
+     $router->get('configuracao/usuarios/delete/{id}', 'App\Controller\UsuariosController@delete');
+     $router->post('configuracao/usuarios/update', 'App\Controller\UsuariosController@update');
+     $router->post('configuracao/usuarios/save', 'App\Controller\UsuariosController@save');
+
     #COMPONENTES
     $router->get('configuracao/componentes/show/{id_ambiente}', 'App\Controller\ComponentesController@show');
     $router->get('configuracao/componentes/create/{id_ambiente}', 'App\Controller\ComponentesController@create');

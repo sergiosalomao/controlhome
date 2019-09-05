@@ -22,4 +22,6 @@ class ConfiguracaoController extends Controller
         $this->layout();
         $this->render('configuracao','ambientes');
     }
+
+    
 }

@@ -1,11 +1,11 @@
 <body>
-    <div class="container dashboard-panel">
-        <div class="row">
-            <div id="dashboard-panel-left" class="col-3"> <a href="./"><i class="fas fa-arrow-circle-left icon-left"></i></a></div>
-            <div id="dashboard-panel-center" class="col-5"><span class="title-panel">ControlHome</span></div>
-            <div id="dashboard-panel-right" class="col-4">
-            </div>
-        </div>
+<div class="configuracao-dashboard-panel">
+    <div class="row">
+        <div id="dashboard-panel-left" class="col-3"><a href="./"><i class="fas fa-home icon-left"></i></a></div>
+        <div id="dashboard-panel-center" class="col-5"><span class="title-panel">ControlHome</span></div>
+        <div id="dashboard-panel-right" class="col-4"></div>
+
+        <div class="lista-titulo"><i class="fas fa-dice-d6" style="margin-left:10px" ></i><span style="margin-left:10px"> Menu de Configuracoes </span></div>
 
         <div class="container">
             <div class="dashboard">
