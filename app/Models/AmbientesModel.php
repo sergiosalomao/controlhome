@@ -29,7 +29,7 @@ class AmbientesModel
 
     public function listById($id)
     {
-        $sql = "SELECT * from {$this->schema}.{$this->table} WHERE id = {$id}";
+        $sql = "SELECT * from {$this->schema}.{$this->table} WHERE id_ambiente = {$id}";
         $st = $this->conexao->prepare($sql);
         $st->execute();
         return $st->fetch();
@@ -54,7 +54,7 @@ class AmbientesModel
 
     public function update($id, $nome)
     {
-        $sql = "UPDATE {$this->schema}.{$this->table} SET descricao = '{$nome}' WHERE id = {$id}";
+        $sql = "UPDATE {$this->schema}.{$this->table} SET descricao = '{$nome}' WHERE id_ambiente = {$id}";
 
         try {
             $st = $this->conexao->prepare($sql);
@@ -68,7 +68,7 @@ class AmbientesModel
 
     public function delete($id)
     {
-        $sql = "DELETE from {$this->schema}.{$this->table} where id={$id}";
+        $sql = "DELETE from {$this->schema}.{$this->table} where id_ambiente={$id}";
         try {
             $st = $this->conexao->prepare($sql);
             $st->execute();

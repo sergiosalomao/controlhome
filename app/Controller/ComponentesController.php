@@ -5,7 +5,7 @@ use App\Models\ComponentesModel\ComponentesModel;
 
 class ComponentesController extends Controller
 {
-    protected $id;
+    protected $id_componente;
     protected $descricao;
     protected $tipo;
     protected $codigo;
@@ -48,11 +48,10 @@ class ComponentesController extends Controller
     public function update()
     {
         $dados = [];
-        $dados['id'] = $_POST['id'];
+        $dados['id_componente'] = $_POST['id_componente'];
         $dados['tipo'] = $_POST['tipo'];
         $dados['descricao'] = $_POST['descricao'];
         $dados['codigo'] = $_POST['codigo'];
-        
         $model = new ComponentesModel();
     
             if ($model->update($dados) == "atualizado com sucesso!") {
@@ -65,10 +64,10 @@ class ComponentesController extends Controller
 
     public function edit($id)
     {
-        $this->id_ambiente = $_SESSION['id_ambiente'];
-        $model = new ComponentesModel();
-        $dados = $model->listById($id);
-        $this->id = $dados['id']; 
+        $this->id_componente = $_SESSION['id_componente'];
+        $objComponentes = new ComponentesModel();
+        $dados = $objComponentes->listById($id);
+        $this->id_componente = $dados['id_componente']; 
         $this->descricao = $dados['descricao']; 
         $this->codigo = $dados['codigo']; 
         $this->tipo = $dados['tipo']; 
@@ -79,8 +78,9 @@ class ComponentesController extends Controller
 
     public function delete($id)
     {
-        $model = new ComponentesModel();
-        if ($model->delete($id) == "excluido com sucesso!") {
+        $this->layout();
+        $objComponentes = new ComponentesModel();
+        if ($objComponentes->delete($id) == "excluido com sucesso!") {
             return header("location: ../show/{$_SESSION['id_ambiente']}");
         } else {
             return header("location: ../show/{$_SESSION['id_ambiente']}");

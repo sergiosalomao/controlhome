@@ -20,7 +20,7 @@ class ComponentesModel
 
     public function listAll()
     {
-        $sql = "SELECT * from {$this->schema}.componentes ORDER BY tipo,descricao asc";
+        $sql = "SELECT * from {$this->schema}.{$this->table} ORDER BY tipo,descricao asc";
         $st = $this->conexao->prepare($sql);
         $st->execute();
 
@@ -52,10 +52,12 @@ class ComponentesModel
 
     public function listByAmbiente($id, $tipo = null)
     {
-        $sql = "SELECT * from {$this->schema}.{$this->table} WHERE id_ambiente = {$id}";
-
-        if ($tipo != null)
-            $sql = "SELECT * from {$this->schema}.{$this->table} WHERE id_ambiente = {$id} AND tipo = {$tipo}";
+        $sql = "SELECT ";
+        $sql.= "cmp.descricao as descricao_componente,ct.descricao as descricao_tipo_componente,icone,codigo,id_ambiente,tipo ";
+        $sql.= "from {$this->schema}.{$this->table} as cmp ";
+        $sql.= "JOIN componentes_tipos as ct ON ct.id_componente_tipo = cmp.tipo ";
+        $sql.= "WHERE id_ambiente = {$id}";
+        $sql.= ($tipo != '') ? " AND tipo = {$tipo}" : "";
 
         $st = $this->conexao->prepare($sql);
         $st->execute();
@@ -95,10 +97,10 @@ class ComponentesModel
     public function update($dados)
     {
         $sql = "UPDATE {$this->schema}.{$this->table} SET 
-         tipo = '{$dados['tipo']}',
+         tipo = {$dados['tipo']},
          descricao = '{$dados['descricao']}',
          codigo = '{$dados['codigo']}'
-          WHERE id = {$dados['id']}";
+          WHERE id_componente = {$dados['id_componente']}";
 
         try {
             $st = $this->conexao->prepare($sql);
@@ -111,7 +113,8 @@ class ComponentesModel
 
     public function delete($id)
     {
-        $sql = "DELETE from {$this->schema}.{$this->table} where id={$id}";
+        $sql = "DELETE from {$this->schema}.{$this->table} where id_componente={$id}";
+    
         try {
             $st = $this->conexao->prepare($sql);
             $st->execute();

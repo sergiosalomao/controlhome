@@ -5,7 +5,7 @@ use App\Models\AmbientesModel\AmbientesModel;
 
 class AmbientesController extends Controller
 {
-    protected $id;
+    protected $id_ambiente;
     protected $nome;
     protected $idmenu;
 
@@ -37,7 +37,7 @@ class AmbientesController extends Controller
 
     public function update()
     {
-        $id = $_POST['id'];
+        $id = $_POST['id_ambiente'];
         $nome = $_POST['nome'];
         $objAmbientes = new AmbientesModel();
 
@@ -55,7 +55,7 @@ class AmbientesController extends Controller
     {
         $objAmbientes = new AmbientesModel();
         $dados = $objAmbientes->listById($id);
-        $this->id = $dados['id'];
+        $this->id_ambiente = $dados['id_ambiente'];
         $this->nome = $dados['descricao'];
         
         $this->layout();

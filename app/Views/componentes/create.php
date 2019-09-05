@@ -1,7 +1,6 @@
-<!DOCTYPE html>
-<html>
-
-
+<?php
+use App\Models\TiposComponentesModel\TiposComponentesModel;
+?>
 <body>
   <div class="addambiente-dashboard-panel">
     <div class="row ">
@@ -21,11 +20,15 @@
         <form action="../save" method="POST">
         <input type="text" class="form-control" id="id_ambiente" name="id_ambiente" value="<?php echo $this->id_ambiente?>" hidden>
           <div class="form-group col-sm-11 " style="margin-left: 0px;">
-            <select class="browser-default custom-select" name="tipo">
-              <option selected>Selecione um tipo de componente</option>
-              <option value="1">Tomada</option>
-              <option value="2">Luz</option>
-              <option value="3">Sensor</option>
+          <select class="browser-default custom-select" name="tipo">
+            <option selected value="<?php echo $this->tipo ?>">Selecione um tipo de componente</option>
+              <?php 
+              $objTipoComponente = new TiposComponentesModel();
+              
+              foreach ($objTipoComponente->listAll() as $dado) { ?>
+              
+                <option value="<?php echo $dado['id_componente_tipo'] ?>"><?php echo $dado['descricao'] ?></option>
+              <?php } ?>
             </select>
           </div>
 
