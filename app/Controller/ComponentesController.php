@@ -13,6 +13,7 @@ class ComponentesController extends Controller
 
     public function show($id_ambiente)
     {
+        
         $this->id_ambiente = $id_ambiente;
         $_SESSION['id_ambiente'] = $id_ambiente;
         
@@ -31,6 +32,8 @@ class ComponentesController extends Controller
 
     public function save()
     {
+       
+      
         $model = new  ComponentesModel();
         $dados = [];
         $dados['id_ambiente'] = $_POST['id_ambiente'];
@@ -39,7 +42,10 @@ class ComponentesController extends Controller
         $dados['codigo'] = $_POST['codigo'];
         
         if ($model->save($dados) == "salvo com sucesso!") {
-                return header("location: ../componentes/show/{$_POST['id_ambiente']}");
+           
+           
+                    
+            return header("location: ../componentes/show/{$_POST['id_ambiente']}");
             } else {
                 return header("location: create");
             }
@@ -47,6 +53,7 @@ class ComponentesController extends Controller
 
     public function update()
     {
+        
         $dados = [];
         $dados['id_componente'] = $_POST['id_componente'];
         $dados['tipo'] = $_POST['tipo'];
@@ -55,7 +62,7 @@ class ComponentesController extends Controller
         $model = new ComponentesModel();
     
             if ($model->update($dados) == "atualizado com sucesso!") {
-               
+              
                 return header("location: show/{$_SESSION['id_ambiente']}");
             } else {
                 return header("location: show/{$_SESSION['id_ambiente']}");
@@ -81,6 +88,7 @@ class ComponentesController extends Controller
         $this->layout();
         $objComponentes = new ComponentesModel();
         if ($objComponentes->delete($id) == "excluido com sucesso!") {
+           
             return header("location: ../show/{$_SESSION['id_ambiente']}");
         } else {
             return header("location: ../show/{$_SESSION['id_ambiente']}");

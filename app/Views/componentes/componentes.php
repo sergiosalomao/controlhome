@@ -39,7 +39,7 @@ use App\Models\AmbientesModel\AmbientesModel;
                      ?>
                         <tr>
                             <td style="width:10%;border:none"><a href="configuracao"><i class="<?php echo $dadosComponentes[$key]['icone'] ?>" style="margin-left:5px"></i></a></td>
-                            <td style="width:60%;border:none"><?php echo $dadosComponentes[$key]['descricao'] ?></td>
+                            <td style="width:60%;border:none"><?php echo $dadosComponentes[$key]['descricao_componente'] ?></td>
                             <td style="width:60%;border:none"><?php echo $dadosComponentes[$key]['codigo'] ?></td>
                             <td style="width:10%;border:none"><a href="../edit/<?php echo $dadosComponentes[$key]['id_componente'] ?>"><i class="fas fa-edit"></i></a></td>
                             <td style="width:10%;border:none"><a href="<?php echo "../delete/" . $dadosComponentes[$key]['id_componente'] ?> "><i class="fas fa-trash"></i></a></td>

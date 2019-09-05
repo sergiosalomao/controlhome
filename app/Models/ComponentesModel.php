@@ -53,7 +53,7 @@ class ComponentesModel
     public function listByAmbiente($id, $tipo = null)
     {
         $sql = "SELECT ";
-        $sql.= "cmp.descricao as descricao_componente,ct.descricao as descricao_tipo_componente,icone,codigo,id_ambiente,tipo ";
+        $sql.= "cmp.id_componente,cmp.descricao as descricao_componente,ct.descricao as descricao_tipo_componente,icone,codigo,id_ambiente,tipo ";
         $sql.= "from {$this->schema}.{$this->table} as cmp ";
         $sql.= "JOIN componentes_tipos as ct ON ct.id_componente_tipo = cmp.tipo ";
         $sql.= "WHERE id_ambiente = {$id}";

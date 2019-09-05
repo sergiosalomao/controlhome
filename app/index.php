@@ -1,13 +1,10 @@
     <?php
-   
-   if(!isset($_SESSION)) {
-    session_start();
-}
+    if (!headers_sent()) session_start();    
     require_once("../config/system.config.php");
     require_once("../vendor/autoload.php");
     
     use Bramus\Router\Router;
-    
+
 
     // Create a Router
     $router = new Router();
@@ -38,3 +35,4 @@
     #SENSORES
     $router->get('sensores', 'App\Controller\SensoresController@index');
     $router->run();
+  
