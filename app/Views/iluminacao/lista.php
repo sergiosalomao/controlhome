@@ -38,19 +38,19 @@
 
         function mudaStatusComponente(idInterruptor){
         console.log(idInterruptor)
-    //     $.get({
-    //     url : "../../configuracao/componentes/atualizastatus",
-    //     dados: idInterruptor
-    //     success: function(data){
-    //       console.log("teste de retorno")
+        $.get({
+        url : "../../configuracao/componentes/atualizastatus/",
+        dados: idInterruptor,
+        success: function(data){
+          console.log("teste de retorno")
           
          
             
-    //       },
-    //       error : function(error) {
-    //       console.log("erro");
-    //       }
-    //   });
+          },
+          error : function(error) {
+          console.log("erro");
+          }
+      });
       }
 
       
