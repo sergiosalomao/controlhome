@@ -35,7 +35,7 @@ use App\Models\UsuariosTiposModel\UsuariosTiposModel;
 
           <div class="form-group col-sm-11 " style="margin-left: 0px;">
             <label for="nome">Nome:</label>
-            <input type="text" class="form-control" id="nome" name="nome" placeholder="Ex.:Sala">
+            <input type="text" class="form-control" id="nome" name="nome" ">
           </div>
           <div class="form-group col-sm-11 " style="margin-left: 0px;">
             <label for="email">Email:</label>
@@ -56,7 +56,7 @@ use App\Models\UsuariosTiposModel\UsuariosTiposModel;
 
           <div class="form-group col-sm-11 " style="margin-left: 0px;">
             <label for="mac">MAC:</label>
-            <input type="text" class="form-control" id="mac" name="mac">
+            <input type="text" class="form-control" id="mac" name="mac" placeholder="00:00:00:00:00:00">
           </div>
 
 
