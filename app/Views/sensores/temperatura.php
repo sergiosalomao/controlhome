@@ -1,21 +1,11 @@
-<script>
-    //TEMPO DOS SENSORES DE TEMPERATURA
-    setInterval(function() {
-            verificaSensorTemperatura("http://<?php echo HOST_CENTRAL_1 ?>/sensores/temperatura/all");
-        },
-        <?php echo TEMPO_SENSOR_TEMPERATURA ?>)
-</script>
 <?php
-
 use App\Models\ComponentesModel\ComponentesModel;
 ?>
-<!DOCTYPE html>
-<html>
 
 <body>
     <div class="configuracao-dashboard-panel">
         <div class="row">
-            <div id="dashboard-panel-left" class="col-3"><a href="."><i class="fas fa-home icon-left"></i></a></div>
+            <div id="dashboard-panel-left" class="col-3"><a href="../"><i class="fas fa-home icon-left"></i></a></div>
             <div id="dashboard-panel-center" class="col-5"><span class="title-panel">ControlHome</span></div>
             <div id="dashboard-panel-right" class="col-4">
                 <div>

@@ -27,32 +27,10 @@
                             <tr>
                                 <td style="width:10%;border:none"><a href="#"><i class="<?php echo $dadosComponentes[$key]['icone'] ?>" style="margin-left:5px"></i></a></td>
                                 <td style="width:80%;border:none"><?php echo $dadosComponentes[$key]['descricao_componente'] ?></td>
-                                <td class="icon-acionador" style="width:10%;border:none;" onclick="mudaStatusComponente('<?php echo $dadosComponentes[$key]['codigo'] ?>')"><i id="comp-<?php echo $dadosComponentes[$key]['codigo'] ?>" class="<?php echo $classEstado ?> "></i></td>
+                                <td class="icon-acionador" style="width:10%;border:none;" onclick="atualizaStatusComponente('<?php echo $dadosComponentes[$key]['codigo'] ?>')"><i id="comp-<?php echo $dadosComponentes[$key]['codigo'] ?>" class="<?php echo $classEstado ?> "></i></td>
                             </tr>
                         <?php } ?>
 
                     </table>
                 </div>
     </body>
-    <script>
-
-        function mudaStatusComponente(idInterruptor){
-        console.log(idInterruptor)
-        $.get({
-        url : "../../configuracao/componentes/atualizastatus/"+idInterruptor,
-        success: function(data){
-          console.log("recarrega")
-          window.location.reload()
-
-
-         
-            
-          },
-          error : function(error) {
-          console.log("erro");
-          }
-      });
-      }
-
-      
-    </script>

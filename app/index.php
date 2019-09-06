@@ -37,12 +37,17 @@
     $router->post('configuracao/componentes/save', 'App\Controller\ComponentesController@save');
     $router->post('configuracao/componentes/update', 'App\Controller\ComponentesController@update');
     $router->get('configuracao/componentes/atualizastatus/{idcomponente}', 'App\Controller\ComponentesController@atualizaStatus');
+    $router->get('configuracao/componentes/verificastatus/{codigo}', 'App\Controller\ComponentesController@verificaStatus');
 
     #ILUMINACAO
     $router->get('iluminacao', 'App\Controller\IluminacaoController@index');
     $router->get('iluminacao/componentes/{id_ambiente}', 'App\Controller\IluminacaoController@listaComponentes');
 
     #SENSORES
-    $router->get('sensores', 'App\Controller\SensoresController@index');
+    $router->get('sensores/temperatura', 'App\Controller\SensoresController@showTemperatura');
+    $router->get('sensores/presenca', 'App\Controller\SensoresController@showPresenca');
+    $router->get('sensores/agua', 'App\Controller\SensoresController@showNivelAgua');
+    $router->get('sensores/portas', 'App\Controller\SensoresController@showPorta');
+    $router->get('sensores/energia', 'App\Controller\SensoresController@showEnergia');
     $router->run();
   

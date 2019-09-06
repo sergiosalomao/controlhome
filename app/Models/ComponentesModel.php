@@ -139,9 +139,9 @@ class ComponentesModel
         return "excluido com sucesso!";
     }
 
-    public function verificaStatus($idcomponente)
+    public function verificaStatus($codigo)
     {
-        $sql = "SELECT status from {$this->schema}.{$this->table} WHERE codigo = '{$idcomponente}'";
+        $sql = "SELECT status from {$this->schema}.{$this->table} WHERE codigo = '{$codigo}'";
         $st = $this->conexao->prepare($sql);
       
         $st->execute();

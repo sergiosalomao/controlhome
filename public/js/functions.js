@@ -13,78 +13,35 @@
           if (visivel) document.getElementById("relogio").innerHTML = displayDate;         
           
     }
-
-    // //chama o primeiro acesso ao servidor para testar o CORS (temporarioo)
-    // $.ajax({
-    // url: "localhost"}).done(function() {
-    // //console.log("iniciando" + data);
-    // })
-    
-    function verificaSensorTemperatura(central) {
-      temperatura = 0;
-      umidade = 0;
-      $.ajax({
-          url: central,
-            success: function(data) {
-        
-            var objeto = JSON.parse(data);
-            console.log(objeto[0]['temperatura']);
-          //COMPONENTES INSTALADOS
-              
-            if (objeto[0]['id'] == "ST1" && parseFloat(objeto[0]['temperatura']) <= 26) document.getElementById("sensor-ST1").innerText = objeto[0]['temperatura'].substring(0, 4) + "°C";
-            if (objeto[0]['id'] == "ST1" && parseFloat(objeto[0]['temperatura']) > 26)  document.getElementById("sensor-ST1").innerText =  objeto[0]['temperatura'].substring(0, 4) + "°C [H]";
-            if (objeto[0]['id'] == "ST1" && parseFloat(objeto[0]['umidade']) <= 50) document.getElementById("sensor-SU1").innerText =  objeto[0]['umidade'].substring(0, 4) + "%";
-            if (objeto[0]['id'] == "ST1" && parseFloat(objeto[0]['umidade']) > 50)  document.getElementById("sensor-SU1").innerText = objeto[0]['umidade'].substring(0, 4) + "% [H]";
-              
-            if (objeto[1]['id'] == "ST2" && parseFloat(objeto[1]['temperatura']) <= 26) document.getElementById("sensor-ST2").innerText = objeto[1]['temperatura'].substring(0, 4) + "°C";
-            if (objeto[1]['id'] == "ST2" && parseFloat(objeto[1]['temperatura']) > 26)  document.getElementById("sensor-ST2").innerText =  objeto[1]['temperatura'].substring(0, 4) + "°C [H]";
-            if (objeto[1]['id'] == "ST2" && parseFloat(objeto[1]['umidade']) <= 50) document.getElementById("sensor-SU2").innerText =  objeto[1]['umidade'].substring(0, 4) + "%";
-            if (objeto[1]['id'] == "ST2" && parseFloat(objeto[1]['umidade']) > 50)  document.getElementById("sensor-SU2").innerText = objeto[1]['umidade'].substring(0, 4) + "% [H]";
-
-            if (objeto[2]['id'] == "ST3" && parseFloat(objeto[2]['temperatura']) <= 26) document.getElementById("sensor-ST3").innerText = objeto[2]['temperatura'].substring(0, 4) + "°C";
-            if (objeto[2]['id'] == "ST3" && parseFloat(objeto[2]['temperatura']) > 26)  document.getElementById("sensor-ST3").innerText =  objeto[2]['temperatura'].substring(0, 4) + "°C [H]";
-            if (objeto[2]['id'] == "ST3" && parseFloat(objeto[2]['umidade']) <= 50) document.getElementById("sensor-SU3").innerText =  objeto[2]['umidade'].substring(0, 4) + "%";
-            if (objeto[2]['id'] == "ST3" && parseFloat(objeto[2]['umidade']) > 50)  document.getElementById("sensor-SU3").innerText = objeto[2]['umidade'].substring(0, 4) + "% [H]";
-
-
-
-
-
-
-
-          },
-          error: function(error) {
-            console.log("nao foi possivel ler os sensores");
+    //====================================================================================
+    function verificaSensores(codigo) {
+      $.get({
+        url: "configuracao/componentes/verificastatus/" + codigo,
+        success: function(data) {
+          data = data.split('|')
+          temperatura = data[0];
+          document.getElementById("sensor-ST1").innerText = temperatura + "°C";
+          if (temperatura > 26) document.getElementById("sensor-ST1").innerText = temperatura + "°C[H]";
+  
+        },
+        error: function(error) {
+          console.log("erro");
         }
       });
     }
+    
+    //====================================================================================
 
-    // function ativa(central,idInterruptor){
-
-    //   $.get({
-    //       url : central + "/" + idInterruptor +"/1",
-    //   success: function(data){
-    //       console.log(central + idInterruptor + "/1")
-    //   },   
-    //       error : function(error) {
-    //           console.log("erro ao ativar modulo "+modulo)
-    //       }
-    //   });
-    //   }
-
-    //   function desativa(central,idInterruptor){
-
-    //   $.get({
-    //       url : central + "/" + idInterruptor +"/0",
-    //   success: function(data){
-    //       console.log(central + idInterruptor + "/0")
-    //   },   
-    //       error : function(error) {
-    //           console.log("erro ao desativar modulo"+idInterruptor)
-    //       }
-
-    //   });
-    //   }
-
-
-     
+    function atualizaStatusComponente(idInterruptor){
+      console.log(idInterruptor)
+      $.get({
+      url : "../../configuracao/componentes/atualizastatus/"+idInterruptor,
+      success: function(data){
+        console.log("recarrega")
+        window.location.reload()
+        },
+        error : function(error) {
+        console.log("erro");
+        }
+    });
+    }

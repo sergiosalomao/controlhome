@@ -11,6 +11,7 @@ class ComponentesController extends Controller
     protected $tipo;
     protected $codigo;
     protected $id_ambiente;
+    protected $status;
 
     public function show($id_ambiente)
     {
@@ -96,4 +97,13 @@ class ComponentesController extends Controller
         if ($codigo == 1) $dados['status'] = 0;
         $model->updateStatus($dados);
     }
+    
+    public function verificaStatus($codigo)
+    {
+        $model = new ComponentesModel();
+        $codigo = $model->verificaStatus($codigo);
+        echo $codigo['status'];
+        return $codigo['status'];
+    }
+
 }
