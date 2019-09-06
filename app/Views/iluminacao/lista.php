@@ -39,7 +39,7 @@
         function mudaStatusComponente(idInterruptor){
         
         $.get({
-        url : "../../configuracao/componentes/updatecomponente/" + idInterruptor,
+        url : "../../configuracao/componentes/atualizastatus/" + idInterruptor,
           success: function(data){
           console.log("teste de retorno")
           
