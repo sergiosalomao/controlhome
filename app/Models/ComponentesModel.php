@@ -30,19 +30,19 @@ class ComponentesModel
     public function listaSensores($tiposSensores)
     {
         $sql = "SELECT ";
+        $sql .= "cmp.status as status,";
         $sql .= "cmp.id_componente as id_componente,";
         $sql .= "cmp.descricao as descricao_componente,";
         $sql .= "cmp.codigo as codigo_componente,";
         $sql .= "cmp.tipo as tipo_componente,";
         $sql .= "cmp.id_ambiente as id_ambiente,";
         $sql .= "amb.descricao as descricao_ambiente,";
-        $sql .= "ct.descricao as descricao_tipo_componente";
-        $sql .= " FROM {$this->schema}.{$this->table} AS cmp ";
+        $sql .= "ct.descricao as descricao_tipo_componente ";
+        $sql .= "FROM {$this->schema}.{$this->table} AS cmp ";
         $sql .= "JOIN ambientes AS amb ON cmp.id_ambiente = amb.id_ambiente ";
         $sql .= "JOIN componentes_tipos AS ct ON cmp.tipo = ct.id_componente_tipo ";
         $sql .= "WHERE cmp.tipo IN ({$tiposSensores}) ";
         $sql .= "ORDER BY cmp.tipo,cmp.descricao asc ";
-
 
         $st = $this->conexao->prepare($sql);
         $st->execute();
