@@ -14,8 +14,10 @@ class ComponentesController extends Controller
 
     public function show($id_ambiente)
     {
-       $this->id_ambiente = $id_ambiente;
+        $this->id_ambiente = $id_ambiente;
+
         $_SESSION['id_ambiente'] = $id_ambiente;
+
         $this->layout();
         $this->render('componentes', 'componentes');
     }
@@ -92,9 +94,6 @@ class ComponentesController extends Controller
         $codigo = intval($codigo['status']);
         if ($codigo == 0) $dados['status'] = 1;
         if ($codigo == 1) $dados['status'] = 0;
-        
-        if ($model->updateStatus($dados) == "atualizado com sucesso!") {
-            header("Refresh: 0");
-        }
+        $model->updateStatus($dados);
     }
 }

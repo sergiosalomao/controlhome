@@ -41,8 +41,10 @@
         $.get({
         url : "../../configuracao/componentes/atualizastatus/"+idInterruptor,
         success: function(data){
-          console.log("teste de retorno")
-          
+          console.log("recarrega")
+          window.location.reload()
+
+
          
             
           },
