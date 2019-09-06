@@ -115,8 +115,7 @@ class ComponentesModel
     {
         $sql = "UPDATE {$this->schema}.{$this->table} SET 
          status = {$dados['status']}
-          WHERE id_componente = {$dados['id_componente']}";
-
+          WHERE codigo = '{$dados['codigo']}'";
         try {
             $st = $this->conexao->prepare($sql);
             $st->execute();
@@ -137,5 +136,14 @@ class ComponentesModel
             return "erro: " . $e->getMessage();
         }
         return "excluido com sucesso!";
+    }
+
+    public function verificaStatus($idcomponente)
+    {
+        $sql = "SELECT status from {$this->schema}.{$this->table} WHERE codigo = '{$idcomponente}'";
+        $st = $this->conexao->prepare($sql);
+      
+        $st->execute();
+        return $st->fetch();
     }
 }

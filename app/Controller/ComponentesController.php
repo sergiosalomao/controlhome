@@ -83,18 +83,18 @@ class ComponentesController extends Controller
         }
     }
 
-    public function atualizaStatus($idcomponente)
+    public function atualizaStatus($codigo)
     {
         $dados = [];
-        $dados['id_componente'] = $idcomponente;
-        
-        var_dump($idcomponente);
-        
+        $dados['codigo'] = $codigo;
         $model = new ComponentesModel();
+        $codigo = $model->verificaStatus($codigo);
+        $codigo = intval($codigo['status']);
+        if ($codigo == 0) $dados['status'] = 1;
+        if ($codigo == 1) $dados['status'] = 0;
+        
         if ($model->updateStatus($dados) == "atualizado com sucesso!") {
-            return header("location: show/{$_SESSION['id_ambiente']}");
-        } else {
-            return header("location: show/{$_SESSION['id_ambiente']}");
+            header("Refresh: 0");
         }
     }
 }

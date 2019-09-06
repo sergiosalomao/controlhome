@@ -36,7 +36,7 @@
     $router->get('configuracao/componentes/edit/{id}', 'App\Controller\ComponentesController@edit');
     $router->post('configuracao/componentes/save', 'App\Controller\ComponentesController@save');
     $router->post('configuracao/componentes/update', 'App\Controller\ComponentesController@update');
-    $router->post('configuracao/componentes/atualizastatus/{idcomponente}', 'App\Controller\ComponentesController@atualizaStatus');
+    $router->get('configuracao/componentes/atualizastatus/{idcomponente}', 'App\Controller\ComponentesController@atualizaStatus');
 
     #ILUMINACAO
     $router->get('iluminacao', 'App\Controller\IluminacaoController@index');
