@@ -52,9 +52,5 @@
       });
       }
 
-        //LER INTERRUPTORES
-        setInterval(function() {
-                mudamudaStatusInterruptor("http://<?php echo HOST_CENTRAL_1 ?>/interruptores/all");
-            },
-            <?php echo TEMPO_LEITURA_INTERRUPTORES ?>)
+      
     </script>

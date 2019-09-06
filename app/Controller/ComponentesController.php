@@ -83,12 +83,12 @@ class ComponentesController extends Controller
         }
     }
 
-    public function atualizaStatus($idComponente)
+    public function atualizaStatus($idcomponente)
     {
         $dados = [];
-        $dados['id_componente'] = $idComponente;
+        $dados['id_componente'] = $idcomponente;
         
-        var_dump($idComponente);
+        var_dump($idcomponente);
         
         $model = new ComponentesModel();
         if ($model->updateStatus($dados) == "atualizado com sucesso!") {
