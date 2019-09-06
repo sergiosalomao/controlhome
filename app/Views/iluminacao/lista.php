@@ -37,7 +37,7 @@
     <script>
 
         function mudaStatusComponente(idInterruptor){
-        
+        console.log(idInterruptor)
         $.get({
         url : "../../configuracao/componentes/atualizastatus",
         dados: idInterruptor
