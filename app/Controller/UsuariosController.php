@@ -11,8 +11,6 @@ class UsuariosController extends Controller
     protected $senha;
     protected $tipo;
     protected $mac;
-    
-    
     protected $idmenu;
 
     public function listaUsuarios()
@@ -25,6 +23,12 @@ class UsuariosController extends Controller
     {
         $this->layout();
         $this->render('usuarios', 'create');
+    }
+
+    public function showLogin()
+    {
+        $this->layout();
+        $this->render('usuarios', 'login');
     }
 
     public function save()
