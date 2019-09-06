@@ -83,7 +83,7 @@ class ComponentesController extends Controller
         }
     }
 
-    public function updateComponente($idComponente)
+    public function atualizaStatus($idComponente)
     {
         $dados = [];
         $dados['id_componente'] = $idComponente;
