@@ -53,7 +53,7 @@ class ComponentesModel
     public function listByAmbiente($id, $tipo = null)
     {
         $sql = "SELECT ";
-        $sql.= "cmp.id_componente,cmp.descricao as descricao_componente,ct.descricao as descricao_tipo_componente,icone,codigo,id_ambiente,tipo ";
+        $sql.= "cmp.status,cmp.id_componente,cmp.descricao as descricao_componente,ct.descricao as descricao_tipo_componente,icone,codigo,id_ambiente,tipo ";
         $sql.= "from {$this->schema}.{$this->table} as cmp ";
         $sql.= "JOIN componentes_tipos as ct ON ct.id_componente_tipo = cmp.tipo ";
         $sql.= "WHERE id_ambiente = {$id}";
@@ -100,6 +100,21 @@ class ComponentesModel
          tipo = {$dados['tipo']},
          descricao = '{$dados['descricao']}',
          codigo = '{$dados['codigo']}'
+          WHERE id_componente = {$dados['id_componente']}";
+
+        try {
+            $st = $this->conexao->prepare($sql);
+            $st->execute();
+        } catch (Exception $e) {
+            return "erro: " .  $e->getMessage();
+        }
+        return "atualizado com sucesso!";
+    }
+
+    public function updateStatus($dados)
+    {
+        $sql = "UPDATE {$this->schema}.{$this->table} SET 
+         status = {$dados['status']}
           WHERE id_componente = {$dados['id_componente']}";
 
         try {

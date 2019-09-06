@@ -87,4 +87,33 @@
     //   }
 
 
-     
+      function verificaInterruptores(central){
+    console.log(central);
+      $.get({
+          url : central,
+          success: function(data){
+                
+           
+            var objeto = JSON.parse(data);
+                
+            console.log(objeto[0]['status'])
+                  if(objeto[0]['status'] == 1){
+                        $("#comp-M1R7").removeClass("fa-toggle-off");   
+                        $("#comp-M1R7").addClass("fa-toggle-on"); 
+                        $("#comp-M1R7").attr("status","1"); 
+                    }
+      
+                    if(objeto[0]['status'] ==0){
+                        $("#comp-M1R7").removeClass("fa-toggle-on");   
+                        $("#comp-M1R7").addClass("fa-toggle-off");   
+                        $("#comp-M1R7").attr("status","0"); 
+                    }
+              
+         
+            
+          },
+          error : function(error) {
+          console.log("erro");
+          }
+      });
+      }
