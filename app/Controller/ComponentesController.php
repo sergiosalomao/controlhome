@@ -124,10 +124,6 @@ class ComponentesController extends Controller
     }
 
 
-
-
-
-
     public function RecebeDados()
     {
         $objComponentes = new ComponentesModel();

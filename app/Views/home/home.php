@@ -3,9 +3,9 @@
 <body>
   <div class="container dashboard-panel">
     <div class="row">
-      <div id="dashboard-panel-left" class="col-3"><i class="fas fa-thermometer-quarter"></i><span id="sensor-ST1"><span></div>
-      <div id="dashboard-panel-center" class="col-5"><span class="title-panel">ControlHome</span></div>
-      <div id="dashboard-panel-right" class="col-4"><span id="relogio"></span>
+      <div id="dashboard-panel-left" class="col-4"><i class="fas fa-thermometer-quarter"></i><span id="sensor-ST1"><span></div>
+      <div id="dashboard-panel-center" class="col-5"><span class="title-panel-home">ControlHome</span></div>
+      <div id="dashboard-panel-right" class="col-3"><span id="relogio"></span>
         <div>
         </div>
       </div>

@@ -25,7 +25,6 @@
         "psr-0": {
             "Bramus": "src/",
             "App\\Controller\\": "app/Controller/",
-            "App\\Services\\": "app/Services/",
             "App\\Models\\": "app/Models/"
         }
     },

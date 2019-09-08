@@ -66,6 +66,12 @@ a:link{
   margin-left:10px;
 }
 
+.title-panel-home{
+  font-size:18px;
+  text-align:left;
+  margin-left:-5px;
+}
+
 #dashboard-panel-left {
   margin-top: 10px;
   text-align:left;
