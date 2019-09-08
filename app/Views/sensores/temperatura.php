@@ -43,16 +43,16 @@ use App\Models\ComponentesModel\ComponentesModel;
 <script>
   //TEMPO DOS SENSORES DE TEMPERATURA
   setInterval(function() {
-      verificaSensores("ST1");
-      verificaSensores("ST2");
-      verificaSensores("ST3");
-      verificaSensores("ST4");
-      verificaSensores("ST5");
-      verificaSensores("ST6");
-      verificaSensores("ST7");
-      verificaSensores("ST8");
-      verificaSensores("ST9");
-      verificaSensores("ST10");
+      verificaSensoresTemperatura("ST1");
+      verificaSensoresTemperatura("ST2");
+      verificaSensoresTemperatura("ST3");
+      verificaSensoresTemperatura("ST4");
+      verificaSensoresTemperatura("ST5");
+      verificaSensoresTemperatura("ST6");
+      verificaSensoresTemperatura("ST7");
+      verificaSensoresTemperatura("ST8");
+      verificaSensoresTemperatura("ST9");
+      verificaSensoresTemperatura("ST10");
       
     },
     <?php echo TEMPO_SENSOR_TEMPERATURA ?>)

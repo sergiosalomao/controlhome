@@ -37,10 +37,11 @@
       }
     });
   }
-  
+   //====================================================================================
+   
 
     //====================================================================================
-    function verificaSensores(codigo) {
+    function verificaSensoresTemperatura(codigo) {
     
       $.get({
         url: "../configuracao/componentes/verificastatus/" + codigo,
