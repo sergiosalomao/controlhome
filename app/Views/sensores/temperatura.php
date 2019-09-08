@@ -17,20 +17,43 @@ use App\Models\ComponentesModel\ComponentesModel;
                     <?php
                     $componentes = new ComponentesModel();
                     $dados = $componentes->listaSensores(3);
+                  
+                 
                     foreach ($dados as $key => $lista) {
-                        $codigo = $dados[$key]['codigo_componente'];
-                        $item = $dados[$key]['codigo_componente'] . '-' . $dados[$key]['descricao_tipo_componente'] . '<br>Ambiente : ' . $dados[$key]['descricao_ambiente'];
-                        $status = explode("|",$dados[$key]['status']);
+                        
+                        $codigo = $lista['codigo_componente'];
+                        $item = $lista['codigo_componente'] . '-' . $lista['descricao_tipo_componente'] . '<br>Ambiente : ' . $dados[$key]['descricao_ambiente'];
+                        $status = explode(";",$lista['status']);
+                        
+                        
                         ?>
                         <tr>
                             <td style="width:1%;border:none;color:goldenrod"><i class="fas fa-stroopwafel" style="margin-left:5px"></i></td>
                             <td style="width:1%;border:none;color:goldenrod"><?php echo $item ?></a></td>
                             <td style="width:1%;border:none;color:goldenrod">
-                                Temperatura: <span id="sensor-<?php echo $codigo?>" ><?php isset($status[0])? $status[0]:""?></span><br>
-                                Umidade: <span id="sensor-SU<?php echo $key+1?>"><?php echo isset($status[1])? $status[1]:""?></span>
+                                Temperatura: <span id="sensor-<?php echo $codigo?>" ><?php echo  $status[0];?></span><br>
+                                Umidade: <span id="sensor-SU<?php echo $codigo[2]?>"><?php echo  $status[1];?></span>
                             </td>
                         </tr>
                     <?php } ?>
                 </table>
             </div>
 </body>
+
+<script>
+  //TEMPO DOS SENSORES DE TEMPERATURA
+  setInterval(function() {
+      verificaSensores("ST1");
+      verificaSensores("ST2");
+      verificaSensores("ST3");
+      verificaSensores("ST4");
+      verificaSensores("ST5");
+      verificaSensores("ST6");
+      verificaSensores("ST7");
+      verificaSensores("ST8");
+      verificaSensores("ST9");
+      verificaSensores("ST10");
+      
+    },
+    <?php echo TEMPO_SENSOR_TEMPERATURA ?>)
+</script>

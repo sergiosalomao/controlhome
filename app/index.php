@@ -31,6 +31,8 @@
      $router->post('configuracao/usuarios/save', 'App\Controller\UsuariosController@save');
 
     #COMPONENTES
+    $router->post('componentes/registrahardware', 'App\Controller\ComponentesController@RegistraHardware');
+    $router->post('componentes/recebedados', 'App\Controller\ComponentesController@RecebeDados');
     $router->get('configuracao/componentes/show/{id_ambiente}', 'App\Controller\ComponentesController@show');
     $router->get('configuracao/componentes/create/{id_ambiente}', 'App\Controller\ComponentesController@create');
     $router->get('configuracao/componentes/delete/{id}', 'App\Controller\ComponentesController@delete');
@@ -41,7 +43,7 @@
     $router->get('configuracao/componentes/verificastatus/{codigo}', 'App\Controller\ComponentesController@verificaStatus');
 
     #ILUMINACAO
-    $router->get('iluminacao', 'App\Controller\IluminacaoController@index');
+    $router->get('iluminacao', 'App\Controller\IluminacaoController@ShowIndex');
     $router->get('iluminacao/componentes/{id_ambiente}', 'App\Controller\IluminacaoController@listaComponentes');
 
     #SENSORES
@@ -50,5 +52,7 @@
     $router->get('sensores/agua', 'App\Controller\SensoresController@showNivelAgua');
     $router->get('sensores/portas', 'App\Controller\SensoresController@showPorta');
     $router->get('sensores/energia', 'App\Controller\SensoresController@showEnergia');
+
+       
     $router->run();
   

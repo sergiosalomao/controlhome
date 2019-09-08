@@ -1,10 +1,4 @@
-<script>
-  //TEMPO DOS SENSORES DE TEMPERATURA
-  setInterval(function() {
-      verificaSensores("ST1");
-    },
-    <?php echo TEMPO_SENSOR_TEMPERATURA ?>)
-</script>
+
 
 <body>
   <div class="container dashboard-panel">
@@ -54,3 +48,11 @@
       <div id="main-footer"><span>Developer Sergio Salomão</span></div>
 
 </body>
+
+<script>
+  //TEMPO DOS SENSORES DE TEMPERATURA
+  setInterval(function() {
+      verificaSensorHome("ST1");
+    },
+    <?php echo TEMPO_SENSOR_TEMPERATURA ?>)
+</script>

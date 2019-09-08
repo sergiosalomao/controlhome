@@ -114,10 +114,14 @@ class ComponentesModel
 
     public function updateStatus($dados)
     {
-        $sql = "UPDATE {$this->schema}.{$this->table} SET 
-         status = {$dados['status']}
-          WHERE codigo = '{$dados['codigo']}'";
-        try {
+       
+      $sql = "UPDATE {$this->schema}.{$this->table} SET 
+         status = '{$dados[1]}'
+          WHERE codigo = '{$dados[0]}'";
+       
+  
+       
+       try {
             $st = $this->conexao->prepare($sql);
             $st->execute();
         } catch (Exception $e) {
@@ -147,4 +151,45 @@ class ComponentesModel
         $st->execute();
         return $st->fetch();
     }
+
+    
+
+    public function adicionaDados($dados)
+    {
+        
+      #verifica se salva ou edita
+      if ($dados['descricao'] != '') {
+        $sql = "INSERT INTO {$this->schema}.{$this->table}
+         (id_ambiente,tipo,descricao,codigo) VALUES
+          (
+          '{$dados['id_ambiente']}',
+          '{$dados['tipo']}',
+          '{$dados['descricao']}',
+          '{$dados['codigo']}'
+          )";
+
+
+    }
+    try {
+        $st = $this->conexao->prepare($sql);
+        $st->execute();
+    } catch (Exception $e) {
+        return "erro: " .  $e->getMessage();
+    }
+    return "salvo com sucesso!";
+    }
+
+    public function listByCodigo($codigo)
+    {
+        $sql = "SELECT * from {$this->schema}.{$this->table} WHERE codigo = '{$codigo}'";
+   
+      
+        $st = $this->conexao->prepare($sql);
+        $st->execute();
+        return $st->fetch();
+    }
+
+
+
+
 }

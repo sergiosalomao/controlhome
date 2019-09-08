@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Models\ComponentesModel\ComponentesModel;
+use App\Models\HardwaresModel\HardwaresModel;
 
 class ComponentesController extends Controller
 {
@@ -105,5 +106,42 @@ class ComponentesController extends Controller
         echo $codigo['status'];
         return $codigo['status'];
     }
+
+
+
+
+    public function RegistraHardware()
+    {
+          
+      if ($_POST['id_hardware'] != ''){      
+      $objHardware = new HardwaresModel();
+      $id_hardware = $objHardware->listById($_POST['id_hardware']);
+      if ($id_hardware > 0)
+      $dadosHardware = $objHardware->atualizaHardware($_POST);
+      if ($id_hardware <= 0)
+      $dadosHardware = $objHardware->adicionaHardware($_POST);
+      }
+    }
+
+
+
+
+
+
+    public function RecebeDados()
+    {
+        $objComponentes = new ComponentesModel();
+       foreach($_POST as $componente){
+        $dadosRecebidos = explode("|",$componente);
+      
+        if (($dado = $objComponentes->listByCodigo($dadosRecebidos[0])) > 0 ){
+            $objComponentes->updateStatus($dadosRecebidos);
+        }
+           
+       }
+
+      
+    }
+
 
 }
