@@ -89,21 +89,28 @@ class ComponentesController extends Controller
 
     public function atualizaStatus($codigo)
     {
+
+      
         $dados = [];
         $dados['codigo'] = $codigo;
+     
+       
         $model = new ComponentesModel();
-        $codigo = $model->verificaStatus($codigo);
-        $codigo = intval($codigo['status']);
-        if ($codigo == 0) $dados['status'] = 1;
-        if ($codigo == 1) $dados['status'] = 0;
-        $model->updateStatus($dados);
+        $codigoEncontrado = $model->verificaStatus($codigo);
+        
+        $codigoEncontrado = intval($codigoEncontrado['status']);
+ 
+        if ($codigoEncontrado == 0) $dados['status'] = 1;
+        if ($codigoEncontrado == 1) $dados['status'] = 0;
+      
+        $model->updateStatusComponente($dados);
     }
     
     public function verificaStatus($codigo)
     {
         $model = new ComponentesModel();
         $codigo = $model->verificaStatus($codigo);
-        echo $codigo['status'];
+     
         return $codigo['status'];
     }
 

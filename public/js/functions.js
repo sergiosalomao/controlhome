@@ -66,17 +66,3 @@
     }
     
     //====================================================================================
-
-    function atualizaStatusComponente(idInterruptor){
-      console.log(idInterruptor)
-      $.get({
-      url : "../../configuracao/componentes/atualizastatus/"+idInterruptor,
-      success: function(data){
-        console.log("recarrega")
-        window.location.reload()
-        },
-        error : function(error) {
-        console.log("erro");
-        }
-    });
-    }
