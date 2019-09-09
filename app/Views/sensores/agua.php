@@ -18,19 +18,50 @@ use App\Models\ComponentesModel\ComponentesModel;
                     $componentes = new ComponentesModel();
                     $dados = $componentes->listaSensores(7);
                     foreach ($dados as $key => $lista) {
-                        $codigo = $dados[$key]['codigo_componente'];
-                        $item = $dados[$key]['codigo_componente'] . '-' . $dados[$key]['descricao_tipo_componente'] . '<br>Ambiente : ' . $dados[$key]['descricao_ambiente'];
-                        $status = explode("|",$dados[$key]['status']);
+                        $codigo = $lista['codigo_componente'];
+                        $item = $lista['codigo_componente'] . '-' . $lista['descricao_tipo_componente'] . '<br>Ambiente : ' . $dados[$key]['descricao_ambiente'];
+                        
                         ?>
                         <tr>
                             <td style="width:1%;border:none;color:goldenrod"><i class="fas fa-stroopwafel" style="margin-left:5px"></i></td>
                             <td style="width:1%;border:none;color:goldenrod"><?php echo $item ?></a></td>
                             <td style="width:1%;border:none;color:goldenrod">
-                                Capacidade: <span id="sensor-<?php echo $codigo?>" ><?php isset($status[0])? $status[0]:""?></span><br>
-                                Litros: <span id="sensor-<?php echo $codigo?>" ><?php isset($status[0])? $status[0]:""?></span><br>
+                                Capacidade: <span id="capacidade-<?php echo $codigo?>" ><?php echo $lista['status']?></span><br>
+                                Litros: <span id="sensor-<?php echo $codigo?>" ><?php echo $lista['status']?></span><br>
                             </td>
                         </tr>
                     <?php } ?>
                 </table>
             </div>
 </body>
+<script>
+  //TEMPO DOS SENSORES DE TEMPERATURA
+  setInterval(function() {
+    verificaSensoresNivelAgua("CX1");
+   
+      
+    },
+    <?php echo TEMPO_SENSOR_TEMPERATURA ?>)
+
+
+    function verificaSensoresNivelAgua(codigo) {
+
+    $.get({
+      url: "../configuracao/componentes/verificastatus/" + codigo,
+      success: function(data) {
+         document.getElementById("sensor-"+ codigo).innerText = data ;
+         console.log(data)
+       },
+      error: function(error) {
+        console.log("erro");
+        document.getElementById("sensor-"+ codigo).innerText = "E";
+      
+      }
+    });
+  }
+
+
+
+
+
+</script>

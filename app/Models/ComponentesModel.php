@@ -130,6 +130,25 @@ class ComponentesModel
         return "atualizado com sucesso!";
     }
 
+
+    public function updateStatusComponente($dados)
+    {
+      $sql = "UPDATE {$this->schema}.{$this->table} SET 
+         status = '{$dados['status']}'
+          WHERE codigo = '{$dados['codigo']}'";
+       //var_dump($sql);
+  
+       
+       try {
+            $st = $this->conexao->prepare($sql);
+            $st->execute();
+        } catch (Exception $e) {
+            return "erro: " .  $e->getMessage();
+        }
+        return "atualizado com sucesso!";
+    }
+
+
     public function delete($id)
     {
         $sql = "DELETE from {$this->schema}.{$this->table} where id_componente={$id}";

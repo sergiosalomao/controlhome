@@ -53,6 +53,7 @@ use App\Models\ComponentesModel\ComponentesModel;
       verificaSensoresTemperatura("ST8");
       verificaSensoresTemperatura("ST9");
       verificaSensoresTemperatura("ST10");
+   
       
     },
     <?php echo TEMPO_SENSOR_TEMPERATURA ?>)
