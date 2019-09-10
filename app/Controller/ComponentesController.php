@@ -17,9 +17,7 @@ class ComponentesController extends Controller
     public function show($id_ambiente)
     {
         $this->id_ambiente = $id_ambiente;
-
         $_SESSION['id_ambiente'] = $id_ambiente;
-
         $this->layout();
         $this->render('componentes', 'componentes');
     }
@@ -89,37 +87,28 @@ class ComponentesController extends Controller
 
     public function atualizaStatus($codigo)
     {
-
-      
         $dados = [];
         $dados['codigo'] = $codigo;
-     
-       
         $model = new ComponentesModel();
         $codigoEncontrado = $model->verificaStatus($codigo);
-        
         $codigoEncontrado = intval($codigoEncontrado['status']);
- 
         if ($codigoEncontrado == 0) $dados['status'] = 1;
         if ($codigoEncontrado == 1) $dados['status'] = 0;
-      
         $model->updateStatusComponente($dados);
     }
     
     public function verificaStatus($codigo)
     {
         $model = new ComponentesModel();
-        $codigo = $model->verificaStatus($codigo);
-     
-        return $codigo['status'];
+        $codigoEncontrado = $model->verificaStatus($codigo);
+        return print_r($codigoEncontrado['status']);
+      
     }
-
 
 
 
     public function RegistraHardware()
     {
-          
       if ($_POST['id_hardware'] != ''){      
       $objHardware = new HardwaresModel();
       $id_hardware = $objHardware->listById($_POST['id_hardware']);
@@ -136,15 +125,9 @@ class ComponentesController extends Controller
         $objComponentes = new ComponentesModel();
        foreach($_POST as $componente){
         $dadosRecebidos = explode("|",$componente);
-      
         if (($dado = $objComponentes->listByCodigo($dadosRecebidos[0])) > 0 ){
             $objComponentes->updateStatus($dadosRecebidos);
         }
-           
        }
-
-      
     }
-
-
 }

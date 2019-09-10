@@ -16,7 +16,7 @@
               <td style="border:none"><a href="iluminacao"><img src="../public/images/iluminacao.png" width="86pxpx" height="86pxpx"></a></td> -->
                         <td style="border:none"><a href="configuracao/usuarios"><i class="fas fa-user icon-home"></i></a></td>
                         <td style="border:none"><a href="configuracao/ambientes"><i class="fas fa-map icon-home"></i></a></td>
-
+                        <td style="border:none"><a href="configuracao/reservatorios"><i class="fas fa-water  icon-home"></i></a></td>
                     </tr>
 
 

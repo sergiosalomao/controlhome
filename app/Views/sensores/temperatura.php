@@ -17,8 +17,7 @@ use App\Models\ComponentesModel\ComponentesModel;
                     <?php
                     $componentes = new ComponentesModel();
                     $dados = $componentes->listaSensores(3);
-                  
-                 
+                
                     foreach ($dados as $key => $lista) {
                         
                         $codigo = $lista['codigo_componente'];
@@ -44,17 +43,37 @@ use App\Models\ComponentesModel\ComponentesModel;
   //TEMPO DOS SENSORES DE TEMPERATURA
   setInterval(function() {
       verificaSensoresTemperatura("ST1");
-      verificaSensoresTemperatura("ST2");
-      verificaSensoresTemperatura("ST3");
-      verificaSensoresTemperatura("ST4");
-      verificaSensoresTemperatura("ST5");
-      verificaSensoresTemperatura("ST6");
-      verificaSensoresTemperatura("ST7");
-      verificaSensoresTemperatura("ST8");
-      verificaSensoresTemperatura("ST9");
-      verificaSensoresTemperatura("ST10");
+  
    
       
     },
     <?php echo TEMPO_SENSOR_TEMPERATURA ?>)
+
+    function verificaSensoresTemperatura(codigo) {
+    
+    
+    $.get({
+        dataType: 'text',   
+        url: "../configuracao/componentes/verificastatus/" + codigo,
+      success: function(data) {
+        console.log(data);
+        data = data.split(';')
+        temperatura = data[0];
+        umidade = data[1];
+        document.getElementById("sensor-"+ codigo).innerText = temperatura + "°C";
+        if (temperatura > 26) document.getElementById("sensor-" + codigo).innerText = temperatura + "°C[H]";
+   
+         document.getElementById("sensor-SU"+ codigo[2]).innerText = umidade + "%";
+         if (umidade < 55) document.getElementById("sensor-SU"+  codigo[2]).innerText = umidade + "%[L]";
+      
+       
+      },
+      error: function(error) {
+        console.log("erro");
+        document.getElementById("sensor-"+ codigo).innerText = "E°C";
+        document.getElementById("sensor-SU"+ codigo[2]).innerText = "E%";
+      }
+    });
+  }
+
 </script>

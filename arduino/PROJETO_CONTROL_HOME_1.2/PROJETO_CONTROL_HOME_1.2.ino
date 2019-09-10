@@ -22,91 +22,112 @@ byte subnet[] = {255, 255, 255, 0};                //subnet mask
 EthernetServer server(80);                         //server port
 EthernetClient client;
 String readString;
-long previousMillis = 0; /* Variável de controle do tempo */
-long tempo = 1000;       /* Tempo em ms do intervalo a ser executado o post dos dados */
+
+
+/*Variaveis de configuracao dos componentes*/
+const float VelSom = 34000.0;           /* Velocidade do Som em cm/s utilizada no componente ultrasonico */
+long tempoAnterior = 0;                 /* Variável de controle do tempo usada para definir o tempo anterior do envio das informacoes ao servidor*/
+long tempoEnvio = 1000;                 /* Variável de controle do tempo usada para definir o tempo de envio das informações ao servidor*/
 
 /*Definicao dos pinos digitais 
 *******************************/
-int PIN_ANALOGIC_01 = A1; /*Reservado */
+int PIN_ANALOGIC_01 = 1; /*Reservado */
+int PIN_ANALOGIC_02 = 2; /*Reservado */
+int PIN_ANALOGIC_03 = 3; /*Reservado */
+int PIN_ANALOGIC_04 = 4; /*Reservado */
+int PIN_ANALOGIC_05 = 5; /*Reservado */
+int PIN_ANALOGIC_06 = 6; /*Reservado */
+int PIN_ANALOGIC_07 = 7; /*Reservado */
+int PIN_ANALOGIC_08 = 8; /*Reservado */
+int PIN_ANALOGIC_09 = 9; /*Reservado */
+int PIN_ANALOGIC_10 = 10; /*Reservado */
+int PIN_ANALOGIC_11 = 11; /*Reservado */
+int PIN_ANALOGIC_12 = 12; /*Reservado */
+int PIN_ANALOGIC_13 = 13; /*Reservado */
+int PIN_ANALOGIC_14 = 14; /*Reservado */
+int PIN_ANALOGIC_15 = 15; /*Reservado */
 
 /*Definicao dos pinos digitais 
 *******************************/
-int PIN_DIGITAL_01 = 1; /*Reservado */
-int PIN_DIGITAL_02 = 2; /*comentario */
-int PIN_DIGITAL_03 = 3; /*comentario */
-int PIN_DIGITAL_04 = 4; /*comentario */
-int PIN_DIGITAL_05 = 5; /*comentario */
-int PIN_DIGITAL_06 = 6; /*comentario */
-int PIN_DIGITAL_07 = 7; /*comentario */
-int PIN_DIGITAL_08 = 8; /*comentario */
+int PIN_DIGITAL_01 = 1;  String PIN_DIGITAL_01_SAIDA = OUTPUT; /*Reservado */
+int PIN_DIGITAL_02 = 2;  String PIN_DIGITAL_02_SAIDA = OUTPUT; /*instalado sensor de temperatura */
+int PIN_DIGITAL_03 = 3;  String PIN_DIGITAL_03_SAIDA = OUTPUT; /*instalado sensor de temperatura */
+int PIN_DIGITAL_04 = 4;  String PIN_DIGITAL_04_SAIDA = OUTPUT; /*instalado sensor de temperatura */
+int PIN_DIGITAL_05 = 5;  String PIN_DIGITAL_05_SAIDA = OUTPUT; /*instalado sensor de temperatura */
+int PIN_DIGITAL_06 = 6;  String PIN_DIGITAL_06_SAIDA = OUTPUT; /*instalado sensor de temperatura */
+int PIN_DIGITAL_07 = 7;  String PIN_DIGITAL_07_SAIDA = OUTPUT; /*instalado sensor de temperatura */
+int PIN_DIGITAL_08 = 8;  String PIN_DIGITAL_08_SAIDA = OUTPUT; /*instalado sensor de temperatura */
+int PIN_DIGITAL_09 = 9;  String PIN_DIGITAL_09_SAIDA = OUTPUT; /*instalado sensor de temperatura */
+int PIN_DIGITAL_10 = 10; String PIN_DIGITAL_10_SAIDA = OUTPUT; /*instalado sensor de temperatura */
+int PIN_DIGITAL_11 = 11; String PIN_DIGITAL_11_SAIDA = OUTPUT; /*instalado sensor de temperatura */
 
-/*Interruptores Disponiveis 
-*******************************/
 
-/*status dos interruptores; */
-bool STATUS_IT1, STATUS_IT2, STATUS_IT3, STATUS_IT4, STATUS_IT5, STATUS_IT6, STATUS_IT7, STATUS_IT8;
 
-/*Reservatorios; */
-const float VelSom = 34000.0; /* Velocidade do Som em cm/s */
-float CX1;
 
-/*Mapa dos interruptores;    */
- bool
-    ITE1,IT1,  /*Interruptor Luz Central Varanda ativa pino 3*/
-    IT2,  /*Interruptor  */
-    IT3,  /*Interruptor  */
-    IT4,  /*Interruptor  */
-    IT5,  /*Interruptor  */
-    IT6,  /*Interruptor  */
-    IT7,  /*Interruptor  */
-    IT8,  /*Interruptor  */
-    IT9,  /*Interruptor  */
-    IT10; /*Interruptor  */
 
-/*Mapa dos Sensores de Temperatura e umidade */
-float ST1, SU1; /*Varanda     */
-float ST2, SU2; /*Disponivel  */
-float ST3, SU3; /*Disponivel  */
-float ST4, SU4; /*Disponivel  */
-float ST5, SU5; /*Disponivel  */
-float ST6, SU6; /*Disponivel  */
-float ST7, SU7; /*Disponivel  */
-float ST8, SU8; /*Disponivel  */
+/*Mapa dos componentes*/
+float C01,  C01_PARAM;                  /*instalado sensor de temperatura  */
+float C02,  C02_PARAM;                  /*instalado sensor de temperatura  */
+float C03,  C03_PARAM;                  /*instalado sensor de temperatura  */
+float C04,  C04_PARAM;                  /*instalado sensor de temperatura  */
+float C05,  C05_PARAM;                  /*instalado sensor de temperatura  */
+float C06,  C06_PARAM;                  /*instalado sensor de temperatura  */
+float C07,  C07_PARAM;                  /*instalado sensor de temperatura  */
+float C08,  C08_PARAM;                  /*instalado sensor de temperatura  */
+float C09,  C09_PARAM;                  /*instalado sensor de temperatura  */
+float C010, C010_PARAM;                 /*instalado sensor de temperatura  */
+float C011, C011_PARAM;                 /*Reservado  */
+float C012, C012_PARAM;                 /*Reservado  */
+float C013, C013_PARAM;                 /*Reservado  */
+boolean C014; unsigned long C014_PARAM; /*instalado sensor de presenca  */
+boolean C015; unsigned long C015_PARAM; /*instalado sensor de presenca  */
+boolean C016; unsigned long C016_PARAM; /*instalado sensor de presenca  */
+boolean C017; unsigned long C017_PARAM; /*instalado sensor de presenca  */
+boolean C018; unsigned long C018_PARAM; /*instalado sensor de presenca  */
+boolean C019; unsigned long C019_PARAM; /*instalado sensor de presenca  */
+boolean C020; unsigned long C020_PARAM; /*instalado sensor de presenca  */
+boolean C021; unsigned long C021_PARAM; /*instalado sensor de presenca  */
+boolean C022; unsigned long C022_PARAM; /*instalado sensor de presenca  */
+boolean C023; unsigned long C023_PARAM; /*instalado sensor de presenca  */
+boolean C024; unsigned long C024_PARAM; /*Reservado  */
+boolean C025; unsigned long C025_PARAM; /*Reservado  */
+boolean C026; unsigned long C026_PARAM; /*Reservado  */
+float C027,C027_PARAM;                  /*Instalado Reservatorio 1*/
+float C028,C028_PARAM;                  /*Instalado Reservatorio 2*/
+float C029,C029_PARAM;                  /*Reservado  */
+float C030,C030_PARAM;                  /*Reservado  */
+
 
 /*Definicao de pinos dos sensores de  Temperatura e umidade */
-DHT SENSOR_TEMPERATURA_01(PIN_ANALOGIC_01, DHT11);
-
-//Sensores Prensenca disponiveis
-boolean SP1, SP2, SP3, SP4, SP5, SP6, SP7, SP8;
-unsigned long SPT1, SPT2, SPT3, SPT4, SPT5, SPT6, SPT7, SPT8;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-int pin = 5; 
-boolean ligado = true;
-
-
-
-
-
+DHT SENSOR_TEMPERATURA_01(PIN_DIGITAL_02, DHT11);
+DHT SENSOR_TEMPERATURA_02(PIN_DIGITAL_03, DHT11);
+DHT SENSOR_TEMPERATURA_03(PIN_DIGITAL_04, DHT11);
+DHT SENSOR_TEMPERATURA_04(PIN_DIGITAL_05, DHT11);
+DHT SENSOR_TEMPERATURA_05(PIN_DIGITAL_06, DHT11);
+DHT SENSOR_TEMPERATURA_06(PIN_DIGITAL_07, DHT11);
+DHT SENSOR_TEMPERATURA_07(PIN_DIGITAL_08, DHT11);
+DHT SENSOR_TEMPERATURA_08(PIN_DIGITAL_09, DHT11);
+DHT SENSOR_TEMPERATURA_09(PIN_DIGITAL_10, DHT11);
+DHT SENSOR_TEMPERATURA_10(PIN_DIGITAL_11, DHT11);
 
 void setup()
 {
-   
+    /*Definicao dos Pinos Analogicos */
+    Serial.println("Definindo pinos e tipos de entrada e saida Analogicos");
+    pinMode(PIN_ANALOGIC_01, OUTPUT); /*Reservado   */
+
+    /*Definicao dos Pinos Digitais */
+    Serial.println("Definindo pinos e tipos de entrada e saida Digitais");
+    pinMode(PIN_DIGITAL_01, OUTPUT);       /*Reservado   */
+    pinMode(PIN_DIGITAL_02, INPUT_PULLUP); /*comentario  */
+    pinMode(PIN_DIGITAL_03, OUTPUT);       /*comentario  */
+    pinMode(PIN_DIGITAL_04, OUTPUT);        /*comentario  */
+    pinMode(PIN_DIGITAL_05, OUTPUT);       /*comentario  */
+    pinMode(PIN_DIGITAL_06, INPUT);        /*comentario  */
+    pinMode(PIN_DIGITAL_07, OUTPUT);       /*comentario  */
+    pinMode(PIN_DIGITAL_08, OUTPUT);       /*comentario  */ 
+  
     
- 
     
     Serial.begin(9600);
     /*Inicia Ethernet com as configurações definidas*/
@@ -129,44 +150,31 @@ void setup()
         client.println();
         client.print(data);
     }
-
-    /*Definicao dos Pinos Analogicos */
-    Serial.println("Definindo pinos e tipos de entrada e saida");
-    pinMode(PIN_ANALOGIC_01, OUTPUT); /*Reservado   */
-
-    /*Definicao dos Pinos Digitais */
-    Serial.println("Definindo pinos e tipos de entrada e saida");
-    pinMode(PIN_DIGITAL_01, OUTPUT);       /*Reservado   */
-    pinMode(PIN_DIGITAL_02, INPUT_PULLUP); /*comentario  */
-    pinMode(PIN_DIGITAL_03, OUTPUT);       /*comentario  */
-    pinMode(PIN_DIGITAL_04, OUTPUT);        /*comentario  */
-    pinMode(PIN_DIGITAL_05, OUTPUT);       /*comentario  */
-    pinMode(PIN_DIGITAL_06, INPUT);        /*comentario  */
-    pinMode(PIN_DIGITAL_07, OUTPUT);       /*comentario  */
-    pinMode(PIN_DIGITAL_08, OUTPUT);       /*comentario  */
-
+ 
+    /*Inicia Sensores de Temperatura instalados*/
     Serial.println("Iniciando sensores temperatura");
     SENSOR_TEMPERATURA_01.begin();
+    SENSOR_TEMPERATURA_02.begin();
+    SENSOR_TEMPERATURA_03.begin();
+    SENSOR_TEMPERATURA_04.begin();
+    SENSOR_TEMPERATURA_05.begin();
+    SENSOR_TEMPERATURA_06.begin();
+    SENSOR_TEMPERATURA_07.begin();
+    SENSOR_TEMPERATURA_08.begin();
+    SENSOR_TEMPERATURA_09.begin();
+    SENSOR_TEMPERATURA_10.begin();
 }
+
 
 void loop()
 {
     /*Atualiza Nivel Agua caixa 01  */
     iniciarTrigger();
     unsigned long tiempo = pulseIn(PIN_DIGITAL_06, HIGH);
-    CX1 = tiempo * 0.000001 * VelSom / 2.0;
-    //Serial.print(CX1);
-   // Serial.print("cm");
-//Serial.println();
+    C027 = tiempo * 0.000001 * VelSom / 2.0;
+   
 
-    /*Configuracao Interruptor  */
-    STATUS_IT1 = digitalRead(PIN_DIGITAL_02);
-    delay(200);
-    if (STATUS_IT1 == 0)
-    {
-         digitalWrite(PIN_DIGITAL_04, IT1);
-         IT1 = !IT1;
-    }
+   
      
 
       
@@ -186,7 +194,7 @@ void loop()
     }
 
     //ler a cada segundo
-    if (currentMillis - previousMillis > tempo)
+    if (currentMillis - tempoAnterior > tempo)
     {
         previousMillis = currentMillis; // Salva o tempo atual
         /*Atualiza informação dos componentes*/
