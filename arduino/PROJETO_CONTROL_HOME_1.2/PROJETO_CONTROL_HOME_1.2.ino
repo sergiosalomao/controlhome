@@ -49,20 +49,58 @@ int PIN_ANALOGIC_15 = 15; /*Reservado */
 
 /*Definicao dos pinos digitais 
 *******************************/
-int PIN_DIGITAL_01 = 1;  String PIN_DIGITAL_01_SAIDA = OUTPUT; /*Reservado */
-int PIN_DIGITAL_02 = 2;  String PIN_DIGITAL_02_SAIDA = OUTPUT; /*instalado sensor de temperatura */
-int PIN_DIGITAL_03 = 3;  String PIN_DIGITAL_03_SAIDA = OUTPUT; /*instalado sensor de temperatura */
-int PIN_DIGITAL_04 = 4;  String PIN_DIGITAL_04_SAIDA = OUTPUT; /*instalado sensor de temperatura */
-int PIN_DIGITAL_05 = 5;  String PIN_DIGITAL_05_SAIDA = OUTPUT; /*instalado sensor de temperatura */
-int PIN_DIGITAL_06 = 6;  String PIN_DIGITAL_06_SAIDA = OUTPUT; /*instalado sensor de temperatura */
-int PIN_DIGITAL_07 = 7;  String PIN_DIGITAL_07_SAIDA = OUTPUT; /*instalado sensor de temperatura */
-int PIN_DIGITAL_08 = 8;  String PIN_DIGITAL_08_SAIDA = OUTPUT; /*instalado sensor de temperatura */
-int PIN_DIGITAL_09 = 9;  String PIN_DIGITAL_09_SAIDA = OUTPUT; /*instalado sensor de temperatura */
-int PIN_DIGITAL_10 = 10; String PIN_DIGITAL_10_SAIDA = OUTPUT; /*instalado sensor de temperatura */
-int PIN_DIGITAL_11 = 11; String PIN_DIGITAL_11_SAIDA = OUTPUT; /*instalado sensor de temperatura */
-
-
-
+int PIN_DIGITAL_01 = 1;  String PIN_DIGITAL_01_SAIDA = "OUTPUT"; /*Reservado */
+int PIN_DIGITAL_02 = 2;  String PIN_DIGITAL_02_SAIDA = "INPUT"; /*instalado sensor de temperatura */
+int PIN_DIGITAL_03 = 3;  String PIN_DIGITAL_03_SAIDA = "OUTPUT"; /*instalado sensor de temperatura */
+int PIN_DIGITAL_04 = 4;  String PIN_DIGITAL_04_SAIDA = "OUTPUT"; /*instalado sensor de temperatura */
+int PIN_DIGITAL_05 = 5;  String PIN_DIGITAL_05_SAIDA = "OUTPUT"; /*instalado sensor de temperatura */
+int PIN_DIGITAL_06 = 6;  String PIN_DIGITAL_06_SAIDA = "OUTPUT"; /*instalado sensor de temperatura */
+int PIN_DIGITAL_07 = 7;  String PIN_DIGITAL_07_SAIDA = "OUTPUT"; /*instalado sensor de temperatura */
+int PIN_DIGITAL_08 = 8;  String PIN_DIGITAL_08_SAIDA = "OUTPUT"; /*instalado sensor de temperatura */
+int PIN_DIGITAL_09 = 9;  String PIN_DIGITAL_09_SAIDA = "OUTPUT"; /*instalado sensor de temperatura */
+int PIN_DIGITAL_10 = 10; String PIN_DIGITAL_10_SAIDA = "OUTPUT"; /*instalado sensor de temperatura */
+int PIN_DIGITAL_11 = 11; String PIN_DIGITAL_11_SAIDA = "OUTPUT"; /*instalado sensor de temperatura */
+int PIN_DIGITAL_12 = 12; String PIN_DIGITAL_12_SAIDA = "OUTPUT"; /*reservado */
+int PIN_DIGITAL_13 = 13; String PIN_DIGITAL_13_SAIDA = "OUTPUT"; /*reservado */
+int PIN_DIGITAL_14 = 14; String PIN_DIGITAL_14_SAIDA = "OUTPUT"; /*reservado para portas de comunicacao*/
+int PIN_DIGITAL_15 = 15; String PIN_DIGITAL_15_SAIDA = "OUTPUT"; /*reservado para portas de comunicacao*/
+int PIN_DIGITAL_16 = 16; String PIN_DIGITAL_16_SAIDA = "OUTPUT"; /*reservado para portas de comunicacao*/
+int PIN_DIGITAL_17 = 17; String PIN_DIGITAL_17_SAIDA = "OUTPUT"; /*reservado para portas de comunicacao*/
+int PIN_DIGITAL_18 = 18; String PIN_DIGITAL_18_SAIDA = "OUTPUT"; /*reservado para portas de comunicacao*/
+int PIN_DIGITAL_19 = 19; String PIN_DIGITAL_19_SAIDA = "OUTPUT"; /*reservado para portas de comunicacao*/
+int PIN_DIGITAL_20 = 20; String PIN_DIGITAL_20_SAIDA = "OUTPUT"; /*reservado para portas de comunicacao*/
+int PIN_DIGITAL_21 = 21; String PIN_DIGITAL_21_SAIDA = "OUTPUT"; /*reservado para portas de comunicacao*/
+int PIN_DIGITAL_22 = 22; String PIN_DIGITAL_22_SAIDA = "OUTPUT"; /*instalado sensor de presenca */
+int PIN_DIGITAL_23 = 23; String PIN_DIGITAL_23_SAIDA = "OUTPUT"; /*instalado sensor de presenca */
+int PIN_DIGITAL_24 = 24; String PIN_DIGITAL_24_SAIDA = "OUTPUT"; /*instalado sensor de presenca */
+int PIN_DIGITAL_25 = 25; String PIN_DIGITAL_25_SAIDA = "OUTPUT"; /*instalado sensor de presenca */
+int PIN_DIGITAL_26 = 26; String PIN_DIGITAL_26_SAIDA = "OUTPUT"; /*instalado sensor de presenca */
+int PIN_DIGITAL_27 = 27; String PIN_DIGITAL_27_SAIDA = "OUTPUT"; /*instalado sensor de presenca */
+int PIN_DIGITAL_28 = 28; String PIN_DIGITAL_28_SAIDA = "OUTPUT"; /*instalado sensor de presenca */
+int PIN_DIGITAL_29 = 29; String PIN_DIGITAL_29_SAIDA = "OUTPUT"; /*instalado sensor de presenca */
+int PIN_DIGITAL_30 = 30; String PIN_DIGITAL_30_SAIDA = "OUTPUT"; /*instalado sensor de presenca */
+int PIN_DIGITAL_31 = 31; String PIN_DIGITAL_31_SAIDA = "OUTPUT"; /*instalado sensor de presenca */
+int PIN_DIGITAL_32 = 32; String PIN_DIGITAL_32_SAIDA = "OUTPUT"; /*instalado sensor de presenca */
+int PIN_DIGITAL_33 = 33; String PIN_DIGITAL_33_SAIDA = "OUTPUT"; /*instalado sensor de presenca */
+int PIN_DIGITAL_34 = 34; String PIN_DIGITAL_34_SAIDA = "OUTPUT"; /*instalado sensor de presenca */
+int PIN_DIGITAL_35 = 35; String PIN_DIGITAL_35_SAIDA = "OUTPUT"; /*instalado sensor de presenca */
+int PIN_DIGITAL_36 = 36; String PIN_DIGITAL_36_SAIDA = "OUTPUT"; /*instalado sensor de presenca */
+int PIN_DIGITAL_37 = 37; String PIN_DIGITAL_37_SAIDA = "OUTPUT"; /*Reservado */
+int PIN_DIGITAL_38 = 38; String PIN_DIGITAL_38_SAIDA = "OUTPUT"; /*Reservado */
+int PIN_DIGITAL_39 = 39; String PIN_DIGITAL_39_SAIDA = "OUTPUT"; /*Reservado */
+int PIN_DIGITAL_40 = 40; String PIN_DIGITAL_40_SAIDA = "OUTPUT"; /*instalado sensor de nivel dagua */
+int PIN_DIGITAL_41 = 42; String PIN_DIGITAL_41_SAIDA = "OUTPUT"; /*instalado sensor de nivel dagua */
+int PIN_DIGITAL_42 = 42; String PIN_DIGITAL_42_SAIDA = "OUTPUT"; /*instalado sensor de nivel dagua */
+int PIN_DIGITAL_43 = 43; String PIN_DIGITAL_43_SAIDA = "OUTPUT"; /*instalado sensor de nivel dagua */
+int PIN_DIGITAL_44 = 44; String PIN_DIGITAL_44_SAIDA = "OUTPUT"; /*instalado sensor de nivel dagua */
+int PIN_DIGITAL_45 = 45; String PIN_DIGITAL_45_SAIDA = "OUTPUT"; /*instalado sensor de nivel dagua */
+int PIN_DIGITAL_46 = 46; String PIN_DIGITAL_46_SAIDA = "OUTPUT"; /*instalado sensor de nivel dagua */
+int PIN_DIGITAL_47 = 47; String PIN_DIGITAL_47_SAIDA = "OUTPUT"; /*instalado sensor de nivel dagua */
+int PIN_DIGITAL_48 = 48; String PIN_DIGITAL_48_SAIDA = "OUTPUT"; /*reservado */
+int PIN_DIGITAL_49 = 49; String PIN_DIGITAL_49_SAIDA = "OUTPUT"; /*reservado */
+int PIN_DIGITAL_50 = 50; String PIN_DIGITAL_50_SAIDA = "OUTPUT"; /*reservado */
+int PIN_DIGITAL_51 = 51; String PIN_DIGITAL_51_SAIDA = "OUTPUT"; /*reservado */
+int PIN_DIGITAL_52 = 52; String PIN_DIGITAL_52_SAIDA = "OUTPUT"; /*reservado */
 
 
 /*Mapa dos componentes*/
@@ -75,27 +113,34 @@ float C06,  C06_PARAM;                  /*instalado sensor de temperatura  */
 float C07,  C07_PARAM;                  /*instalado sensor de temperatura  */
 float C08,  C08_PARAM;                  /*instalado sensor de temperatura  */
 float C09,  C09_PARAM;                  /*instalado sensor de temperatura  */
-float C010, C010_PARAM;                 /*instalado sensor de temperatura  */
-float C011, C011_PARAM;                 /*Reservado  */
-float C012, C012_PARAM;                 /*Reservado  */
-float C013, C013_PARAM;                 /*Reservado  */
-boolean C014; unsigned long C014_PARAM; /*instalado sensor de presenca  */
-boolean C015; unsigned long C015_PARAM; /*instalado sensor de presenca  */
-boolean C016; unsigned long C016_PARAM; /*instalado sensor de presenca  */
-boolean C017; unsigned long C017_PARAM; /*instalado sensor de presenca  */
-boolean C018; unsigned long C018_PARAM; /*instalado sensor de presenca  */
-boolean C019; unsigned long C019_PARAM; /*instalado sensor de presenca  */
-boolean C020; unsigned long C020_PARAM; /*instalado sensor de presenca  */
-boolean C021; unsigned long C021_PARAM; /*instalado sensor de presenca  */
-boolean C022; unsigned long C022_PARAM; /*instalado sensor de presenca  */
-boolean C023; unsigned long C023_PARAM; /*instalado sensor de presenca  */
-boolean C024; unsigned long C024_PARAM; /*Reservado  */
-boolean C025; unsigned long C025_PARAM; /*Reservado  */
-boolean C026; unsigned long C026_PARAM; /*Reservado  */
-float C027,C027_PARAM;                  /*Instalado Reservatorio 1*/
-float C028,C028_PARAM;                  /*Instalado Reservatorio 2*/
-float C029,C029_PARAM;                  /*Reservado  */
-float C030,C030_PARAM;                  /*Reservado  */
+float C10, C10_PARAM;                   /*instalado sensor de temperatura  */
+float C11, C11_PARAM;                   /*Reservado  */
+float C12, C12_PARAM;                   /*Reservado  */
+float C13, C13_PARAM;                   /*Reservado  */
+boolean C14; unsigned long C14_PARAM;   /*instalado sensor de presenca  */
+boolean C15; unsigned long C15_PARAM;   /*instalado sensor de presenca  */
+boolean C16; unsigned long C16_PARAM;   /*instalado sensor de presenca  */
+boolean C17; unsigned long C17_PARAM;   /*instalado sensor de presenca  */
+boolean C18; unsigned long C18_PARAM;   /*instalado sensor de presenca  */
+boolean C19; unsigned long C19_PARAM;   /*instalado sensor de presenca  */
+boolean C20; unsigned long C20_PARAM;   /*instalado sensor de presenca  */
+boolean C21; unsigned long C21_PARAM;   /*instalado sensor de presenca  */
+boolean C22; unsigned long C22_PARAM;   /*instalado sensor de presenca  */
+boolean C23; unsigned long C23_PARAM;   /*instalado sensor de presenca  */
+boolean C24; unsigned long C24_PARAM;   /*instalado sensor de presenca  */
+boolean C25; unsigned long C25_PARAM;   /*instalado sensor de presenca  */
+boolean C26; unsigned long C26_PARAM;   /*instalado sensor de presenca  */
+boolean C27; unsigned long C27_PARAM;   /*instalado sensor de presenca  */
+boolean C28; unsigned long C28_PARAM;   /*instalado sensor de presenca  */
+boolean C29; unsigned long C29_PARAM;   /*Reservado  */
+boolean C30; unsigned long C30_PARAM;   /*Reservado  */
+boolean C31; unsigned long C31_PARAM;   /*Reservado  */
+boolean C32; unsigned long C32_PARAM;   /*Reservado  */
+boolean C33; unsigned long C33_PARAM;   /*Reservado  */
+float C34,C34_PARAM;                    /*Instalado Reservatorio 1*/
+float C35,C35_PARAM;                    /*Instalado Reservatorio 2*/
+float C36,C36_PARAM;                    /*Reservado  */
+float C37,C37_PARAM;                    /*Reservado  */
 
 
 /*Definicao de pinos dos sensores de  Temperatura e umidade */
@@ -119,7 +164,7 @@ void setup()
     /*Definicao dos Pinos Digitais */
     Serial.println("Definindo pinos e tipos de entrada e saida Digitais");
     pinMode(PIN_DIGITAL_01, OUTPUT);       /*Reservado   */
-    pinMode(PIN_DIGITAL_02, INPUT_PULLUP); /*comentario  */
+    pinMode(PIN_DIGITAL_02, OUTPUT); /*comentario  */
     pinMode(PIN_DIGITAL_03, OUTPUT);       /*comentario  */
     pinMode(PIN_DIGITAL_04, OUTPUT);        /*comentario  */
     pinMode(PIN_DIGITAL_05, OUTPUT);       /*comentario  */
@@ -170,8 +215,8 @@ void loop()
 {
     /*Atualiza Nivel Agua caixa 01  */
     iniciarTrigger();
-    unsigned long tiempo = pulseIn(PIN_DIGITAL_06, HIGH);
-    C027 = tiempo * 0.000001 * VelSom / 2.0;
+    unsigned long tiempo = pulseIn(PIN_DIGITAL_40, HIGH);
+    C34 = tiempo * 0.000001 * VelSom / 2.0;
    
 
    
@@ -181,37 +226,67 @@ void loop()
 
     /*Atualiza dados dos sensores de temperatura  */
     unsigned long currentMillis = millis();
-    ST1 = (SENSOR_TEMPERATURA_01.readTemperature());
-    SU1 = (SENSOR_TEMPERATURA_01.readHumidity());
-
+    C01 = (SENSOR_TEMPERATURA_01.readTemperature());
+    C01_PARAM = (SENSOR_TEMPERATURA_01.readHumidity());
+    
+    C02 = (SENSOR_TEMPERATURA_01.readTemperature());
+    C02_PARAM = (SENSOR_TEMPERATURA_02.readHumidity());
+    
+    C03 = (SENSOR_TEMPERATURA_01.readTemperature());
+    C03_PARAM = (SENSOR_TEMPERATURA_03.readHumidity());
+    
+    C04 = (SENSOR_TEMPERATURA_01.readTemperature());
+    C04_PARAM = (SENSOR_TEMPERATURA_04.readHumidity());
+    
+    C05 = (SENSOR_TEMPERATURA_01.readTemperature());
+    C05_PARAM = (SENSOR_TEMPERATURA_05.readHumidity());
+    
+    C06 = (SENSOR_TEMPERATURA_01.readTemperature());
+    C06_PARAM = (SENSOR_TEMPERATURA_06.readHumidity());
+    
+    C07 = (SENSOR_TEMPERATURA_01.readTemperature());
+    C07_PARAM = (SENSOR_TEMPERATURA_07.readHumidity());
+    
+    C08 = (SENSOR_TEMPERATURA_01.readTemperature());
+    C08_PARAM = (SENSOR_TEMPERATURA_08.readHumidity());
+    
+    C09 = (SENSOR_TEMPERATURA_01.readTemperature());
+    C09_PARAM = (SENSOR_TEMPERATURA_09.readHumidity());
+    
+    C10 = (SENSOR_TEMPERATURA_10.readTemperature());
+    C10_PARAM = (SENSOR_TEMPERATURA_10.readHumidity());
+    
+    
+         Serial.println( C01);
+    
     /*Configuracao sensor presenca  */
-    if (digitalRead(PIN_DIGITAL_04) != SP1)
+    if (digitalRead(PIN_DIGITAL_22) != C14)
     {
-        SP1 = !SP1;
-    //    Serial.println("Estado: " + SP1);
-    //    Serial.println("Tempo anterior: " + ((millis() - SPT1) / 1000.00, 1));
-        SPT1 = (millis() - SPT1) / 1000, 2;
+        C14 = !C14;
+        Serial.println("Estado: " + C14);
+        Serial.println("Tempo anterior: " + ((millis() - C14_PARAM) / 1000.00, 1));
+        C14_PARAM = (millis() - C14_PARAM) / 1000, 2;
     }
 
     //ler a cada segundo
-    if (currentMillis - tempoAnterior > tempo)
+    if (currentMillis - tempoAnterior > tempoEnvio)
     {
-        previousMillis = currentMillis; // Salva o tempo atual
+        tempoAnterior = currentMillis; // Salva o tempo atual
         /*Atualiza informação dos componentes*/
-        String st1 = "ST1=ST1|" + String(ST1) + ";" + String(SU1);
-        String st2 = "&ST2=ST2|" + String(ST2) + ";" + String(SU2);
-        String st3 = "&ST3=ST3|" + String(ST3) + ";" + String(SU3);
-        String st4 = "&ST4=ST4|" + String(ST4) + ";" + String(SU4);
-        String st5 = "&ST5=ST5|" + String(ST5) + ";" + String(SU5);
-        String st6 = "&ST6=ST6|" + String(ST6) + ";" + String(SU6);
-        String st7 = "&ST7=ST7|" + String(ST7) + ";" + String(SU7);
-        String st8 = "&ST8=ST8|" + String(ST8) + ";" + String(SU8);
-        String sp1 = "&SP1=SP1|" + String(SP1) + ";" + String(SPT1);
-        String sp2 = "&SP2=SP2|" + String(SP2) + ";" + String(SPT2);
-        String cx1 = "&CX1=CX1|" + String(CX1);
-        String it1 = "&IT1=IT1|" + String(IT1);
+        String c01 = "C01=C01|" + String(C01) + ";" + String(C01_PARAM);
+//        String st2 = "&ST2=ST2|" + String(ST2) + ";" + String(SU2);
+//        String st3 = "&ST3=ST3|" + String(ST3) + ";" + String(SU3);
+//        String st4 = "&ST4=ST4|" + String(ST4) + ";" + String(SU4);
+//        String st5 = "&ST5=ST5|" + String(ST5) + ";" + String(SU5);
+//        String st6 = "&ST6=ST6|" + String(ST6) + ";" + String(SU6);
+//        String st7 = "&ST7=ST7|" + String(ST7) + ";" + String(SU7);
+//        String st8 = "&ST8=ST8|" + String(ST8) + ";" + String(SU8);
+//        String sp1 = "&SP1=SP1|" + String(SP1) + ";" + String(SPT1);
+//        String sp2 = "&SP2=SP2|" + String(SP2) + ";" + String(SPT2);
+//        String cx1 = "&CX1=CX1|" + String(CX1);
+//        String it1 = "&IT1=IT1|" + String(IT1);
     //    Serial.println("Estado do Botao: " + String(IT1));
-        String data2 = st1 + st2 + st3 + st4 + st5 + st6 + st7 + st8 + sp1 + sp2 + cx1+ it1;
+        String data2 =c01;
 
         if (client.connect("192.168.0.100", 80))
         { // REPLACE WITH YOUR SERVER ADDRESS
@@ -245,26 +320,26 @@ void loop()
         //if HTTP request has ended
         if (c == '\n') {
 
-         
-          if(readString.indexOf("IT1/1") >0)
-          {
-            digitalWrite(PIN_DIGITAL_04, HIGH);    
-            STATUS_IT1 = false;
-             IT1 = 0;
-             
-              client.println("ON");
-          }
-          else{
-            if(readString.indexOf("IT1/0") >0)
-            {
-              digitalWrite(PIN_DIGITAL_04, LOW);    
-              STATUS_IT1 = true;
-              IT1 = 1;
-              client.println("OFF");
-            }
-          }
-         
-          readString="";
+//         //interruptor
+//          if(readString.indexOf("IT1/1") >0)
+//          {
+//            digitalWrite(PIN_DIGITAL_04, HIGH);    
+//            STATUS_IT1 = false;
+//             IT1 = 0;
+//             
+//              client.println("ON");
+//          }
+//          else{
+//            if(readString.indexOf("IT1/0") >0)
+//            {
+//              digitalWrite(PIN_DIGITAL_04, LOW);    
+//              STATUS_IT1 = true;
+//              IT1 = 1;
+//              client.println("OFF");
+//            }
+//          }
+//         
+//          readString="";
 
 
           ///////////////
@@ -312,13 +387,13 @@ void loop()
 void iniciarTrigger()
 {
     // Ponemos el Triiger en estado bajo y esperamos 2 ms
-    digitalWrite(PIN_DIGITAL_07, LOW);
+    digitalWrite(PIN_DIGITAL_41, LOW);
     delayMicroseconds(2);
 
     // Ponemos el pin Trigger a estado alto y esperamos 10 ms
-    digitalWrite(PIN_DIGITAL_07, HIGH);
+    digitalWrite(PIN_DIGITAL_41, HIGH);
     delayMicroseconds(10);
 
     // Comenzamos poniendo el pin Trigger en estado bajo
-    digitalWrite(PIN_DIGITAL_07, LOW);
+    digitalWrite(PIN_DIGITAL_41, LOW);
 }
