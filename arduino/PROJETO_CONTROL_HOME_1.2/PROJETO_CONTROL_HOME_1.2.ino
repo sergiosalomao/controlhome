@@ -16,7 +16,7 @@ String HARDINFO[] = {"1", "Placa Control Home", "Arduino Mega", "10101010", "ATI
 
 /* Configuracao da placa Ethernet*/
 byte mac[] = {0x90, 0xA2, 0xDA, 0x0F, 0x09, 0xA7}; //physical mac address
-byte ip[] = {192, 168, 0, 99};                     // ip in lan
+byte ip[] = {192, 168, 0, 98};                     // ip in lan
 byte gateway[] = {192, 168, 0, 1};                 // internet access via router
 byte subnet[] = {255, 255, 255, 0};                //subnet mask
 EthernetServer server(80);                         //server port
@@ -31,6 +31,7 @@ long tempoEnvio = 1000;                 /* Variável de controle do tempo usada 
 
 /*Definicao dos pinos digitais 
 *******************************/
+int PIN_ANALOGIC_A0 = 0; /*Reservado */
 int PIN_ANALOGIC_01 = 1; /*Reservado */
 int PIN_ANALOGIC_02 = 2; /*Reservado */
 int PIN_ANALOGIC_03 = 3; /*Reservado */
@@ -49,6 +50,7 @@ int PIN_ANALOGIC_15 = 15; /*Reservado */
 
 /*Definicao dos pinos digitais 
 *******************************/
+int PIN_DIGITAL_00 = 0;  String PIN_DIGITAL_00_SAIDA = "OUTPUT"; /*Reservado */
 int PIN_DIGITAL_01 = 1;  String PIN_DIGITAL_01_SAIDA = "OUTPUT"; /*Reservado */
 int PIN_DIGITAL_02 = 2;  String PIN_DIGITAL_02_SAIDA = "INPUT"; /*instalado sensor de temperatura */
 int PIN_DIGITAL_03 = 3;  String PIN_DIGITAL_03_SAIDA = "OUTPUT"; /*instalado sensor de temperatura */
@@ -155,16 +157,18 @@ DHT SENSOR_TEMPERATURA_08(PIN_DIGITAL_09, DHT11);
 DHT SENSOR_TEMPERATURA_09(PIN_DIGITAL_10, DHT11);
 DHT SENSOR_TEMPERATURA_10(PIN_DIGITAL_11, DHT11);
 
+DHT dht11(2, DHT11);
 void setup()
 {
     /*Definicao dos Pinos Analogicos */
     Serial.println("Definindo pinos e tipos de entrada e saida Analogicos");
-    pinMode(PIN_ANALOGIC_01, OUTPUT); /*Reservado   */
+    pinMode(PIN_ANALOGIC_A0, OUTPUT); /*Reservado   */
 
     /*Definicao dos Pinos Digitais */
     Serial.println("Definindo pinos e tipos de entrada e saida Digitais");
+    pinMode(PIN_DIGITAL_00, OUTPUT);       /*Reservado   */
     pinMode(PIN_DIGITAL_01, OUTPUT);       /*Reservado   */
-    pinMode(PIN_DIGITAL_02, OUTPUT); /*comentario  */
+    pinMode(PIN_DIGITAL_02, OUTPUT);       /*comentario  */
     pinMode(PIN_DIGITAL_03, OUTPUT);       /*comentario  */
     pinMode(PIN_DIGITAL_04, OUTPUT);        /*comentario  */
     pinMode(PIN_DIGITAL_05, OUTPUT);       /*comentario  */
@@ -185,10 +189,10 @@ void setup()
     /*Atualiza informação do Hardware*/
     Serial.println("Registrando dados do Hardware");
     String data = "id_hardware=" + HARDINFO[0] + "&descricao=" + HARDINFO[1] + "&modelo=" + HARDINFO[2] + "&serial=" + HARDINFO[3] + "&status=" + HARDINFO[4] + "&versao=" + HARDINFO[5];
-    if (client.connect("192.168.0.100", 80))
+    if (client.connect("192.168.0.15", 80))
     {
         client.println("POST /automation2/app/componentes/registrahardware HTTP/1.1");
-        client.println("Host: 192.168.0.100"); // SERVER ADDRESS HERE TOO
+        client.println("Host: 192.168.0.15"); // SERVER ADDRESS HERE TOO
         client.println("Content-Type: application/x-www-form-urlencoded");
         client.print("Content-Length: ");
         client.println(data.length());
@@ -218,12 +222,6 @@ void loop()
     unsigned long tiempo = pulseIn(PIN_DIGITAL_40, HIGH);
     C34 = tiempo * 0.000001 * VelSom / 2.0;
    
-
-   
-     
-
-      
-
     /*Atualiza dados dos sensores de temperatura  */
     unsigned long currentMillis = millis();
     C01 = (SENSOR_TEMPERATURA_01.readTemperature());
@@ -285,9 +283,9 @@ void loop()
 //        String sp2 = "&SP2=SP2|" + String(SP2) + ";" + String(SPT2);
 //        String cx1 = "&CX1=CX1|" + String(CX1);
 //        String it1 = "&IT1=IT1|" + String(IT1);
-    //    Serial.println("Estado do Botao: " + String(IT1));
+     
         String data2 =c01;
-
+   Serial.println("data2: " + String(data2));
         if (client.connect("192.168.0.100", 80))
         { // REPLACE WITH YOUR SERVER ADDRESS
             client.println("POST /automation2/app/componentes/recebedados HTTP/1.1");
@@ -383,6 +381,29 @@ void loop()
 }
 }
 
+void readDHT(DHT dht, String s) {
+  // Efetua a leitura e exibe dados
+  float h = dht.readHumidity();         // Umidade
+  float c = dht.readTemperature();      // Temperatura em Celsius
+  
+
+  // Verifica se houve erro na leitura
+  if (isnan(h) || isnan(c) ) {
+    Serial.println("*** Erro na leitura ***");
+    return;
+  }
+
+  // Exibicao
+  Serial.print(s + " U: ");
+  Serial.print(h, 1);
+  Serial.print("% T: ");
+  Serial.print(c, 1);
+  Serial.print("°C ");
+  
+  Serial.print("°F ST: ");
+  Serial.print(dht.computeHeatIndex(c, h, false), 1);
+  Serial.print("°C  ");
+}
 // Método que inicia la secuencia del Trigger para comenzar a medir
 void iniciarTrigger()
 {
