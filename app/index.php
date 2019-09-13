@@ -46,6 +46,16 @@
     $router->get('iluminacao', 'App\Controller\IluminacaoController@ShowIndex');
     $router->get('iluminacao/componentes/{id_ambiente}', 'App\Controller\IluminacaoController@listaComponentes');
 
+
+    #RESERVATORIOS
+    $router->get('configuracao/reservatorios', 'App\Controller\ReservatoriosController@show');
+    $router->get('configuracao/reservatorios/show/{id_ambiente}', 'App\Controller\ReservatoriosController@show');
+    $router->get('configuracao/reservatorios/create', 'App\Controller\ReservatoriosController@create');
+    $router->get('configuracao/reservatorios/delete/{id}', 'App\Controller\ReservatoriosController@delete');
+    $router->get('configuracao/reservatorios/showedit/{id}', 'App\Controller\ReservatoriosController@showEdit');
+    $router->post('configuracao/reservatorios/save', 'App\Controller\ReservatoriosController@save');
+    $router->post('configuracao/reservatorios/update', 'App\Controller\ReservatoriosController@update');
+
     #SENSORES
     $router->get('sensores/temperatura', 'App\Controller\SensoresController@showTemperatura');
     $router->get('sensores/presenca', 'App\Controller\SensoresController@showPresenca');

@@ -52,7 +52,7 @@ float CX1;
 
 /*Mapa dos interruptores;    */
  bool
-    IT1 = 0,  /*Interruptor Luz Central Varanda ativa pino 3*/
+    ITE1,IT1,  /*Interruptor Luz Central Varanda ativa pino 3*/
     IT2,  /*Interruptor  */
     IT3,  /*Interruptor  */
     IT4,  /*Interruptor  */
@@ -80,8 +80,34 @@ DHT SENSOR_TEMPERATURA_01(PIN_ANALOGIC_01, DHT11);
 boolean SP1, SP2, SP3, SP4, SP5, SP6, SP7, SP8;
 unsigned long SPT1, SPT2, SPT3, SPT4, SPT5, SPT6, SPT7, SPT8;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+int pin = 5; 
+boolean ligado = true;
+
+
+
+
+
+
 void setup()
 {
+   
+    
+ 
+    
     Serial.begin(9600);
     /*Inicia Ethernet com as configurações definidas*/
     Serial.println("Iniciando Ethernet");
@@ -113,7 +139,7 @@ void setup()
     pinMode(PIN_DIGITAL_01, OUTPUT);       /*Reservado   */
     pinMode(PIN_DIGITAL_02, INPUT_PULLUP); /*comentario  */
     pinMode(PIN_DIGITAL_03, OUTPUT);       /*comentario  */
-    pinMode(PIN_DIGITAL_04, INPUT);        /*comentario  */
+    pinMode(PIN_DIGITAL_04, OUTPUT);        /*comentario  */
     pinMode(PIN_DIGITAL_05, OUTPUT);       /*comentario  */
     pinMode(PIN_DIGITAL_06, INPUT);        /*comentario  */
     pinMode(PIN_DIGITAL_07, OUTPUT);       /*comentario  */
@@ -129,22 +155,21 @@ void loop()
     iniciarTrigger();
     unsigned long tiempo = pulseIn(PIN_DIGITAL_06, HIGH);
     CX1 = tiempo * 0.000001 * VelSom / 2.0;
-    Serial.print(CX1);
-    Serial.print("cm");
-    Serial.println();
+    //Serial.print(CX1);
+   // Serial.print("cm");
+//Serial.println();
 
     /*Configuracao Interruptor  */
     STATUS_IT1 = digitalRead(PIN_DIGITAL_02);
-    delay(300);
-
+    delay(200);
     if (STATUS_IT1 == 0)
     {
-        digitalWrite(PIN_DIGITAL_03, IT1);
-        IT1 = !IT1;
-        Serial.println("se for 0:" + IT1);
+         digitalWrite(PIN_DIGITAL_04, IT1);
+         IT1 = !IT1;
     }
-    else
-      Serial.println("se nao for zero:" + IT1);
+     
+
+      
 
     /*Atualiza dados dos sensores de temperatura  */
     unsigned long currentMillis = millis();
@@ -155,8 +180,8 @@ void loop()
     if (digitalRead(PIN_DIGITAL_04) != SP1)
     {
         SP1 = !SP1;
-        Serial.println("Estado: " + SP1);
-        Serial.println("Tempo anterior: " + ((millis() - SPT1) / 1000.00, 1));
+    //    Serial.println("Estado: " + SP1);
+    //    Serial.println("Tempo anterior: " + ((millis() - SPT1) / 1000.00, 1));
         SPT1 = (millis() - SPT1) / 1000, 2;
     }
 
@@ -177,7 +202,7 @@ void loop()
         String sp2 = "&SP2=SP2|" + String(SP2) + ";" + String(SPT2);
         String cx1 = "&CX1=CX1|" + String(CX1);
         String it1 = "&IT1=IT1|" + String(IT1);
-
+    //    Serial.println("Estado do Botao: " + String(IT1));
         String data2 = st1 + st2 + st3 + st4 + st5 + st6 + st7 + st8 + sp1 + sp2 + cx1+ it1;
 
         if (client.connect("192.168.0.100", 80))
@@ -192,61 +217,87 @@ void loop()
         }
     }
 
-    // Create a client connection
-    EthernetClient client = server.available();
-    if (client)
-    {
-        while (client.connected())
-        {
-            if (client.available())
+
+
+ // Create a client connection
+  EthernetClient client = server.available();
+  if (client) {
+    while (client.connected()) {
+      if (client.available()) {
+        char c = client.read();
+
+        //read char by char HTTP request
+        if (readString.length() < 100) {
+
+          //store characters to string
+          readString += c;
+          //Serial.print(c);
+        }
+
+        //if HTTP request has ended
+        if (c == '\n') {
+
+         
+          if(readString.indexOf("IT1/1") >0)
+          {
+            digitalWrite(PIN_DIGITAL_04, HIGH);    
+            STATUS_IT1 = false;
+             IT1 = 0;
+             
+              client.println("ON");
+          }
+          else{
+            if(readString.indexOf("IT1/0") >0)
             {
-                char c = client.read();
-                //read char by char HTTP request
-                if (readString.length() < 100)
-                {
+              digitalWrite(PIN_DIGITAL_04, LOW);    
+              STATUS_IT1 = true;
+              IT1 = 1;
+              client.println("OFF");
+            }
+          }
+         
+          readString="";
 
-                    //store characters to string
-                    readString += c;
-                    //Serial.print(c);
-                }
 
-                //if HTTP request has ended
-                if (c == '\n')
-                {
-                    client.println("HTTP/1.1 200 OK"); //send new page
+          ///////////////
+
+          client.println("HTTP/1.1 200 OK"); //send new page
+            client.println("Access-Control-Allow-Origin: 192.168.0.100");
                     client.println("Content-Type: text/html");
+                    client.println("Connection: keep-alive");
+                    client.println("Allow: GET,HEAD,POST,OPTIONS,TRACE");
                     client.println();
+          client.println();
 
-                    client.println("<html>");
-                    client.println("<head>");
-                    client.println("<title>RoboCore - Remote Automation</title>");
-                    client.println("<meta http-equiv='Content-Type' content='text/html; charset=ISO-8859-1'>");
-                    client.println("<link rel='stylesheet' type='text/css' href='http://www.robocore.net/upload/projetos/RemoteAutomationV1.0.css' />");
-                    client.println("<script type='text/javascript' src='http://www.robocore.net/upload/projetos/RemoteAutomationV1.0.js'></script>");
-                    client.println("</head>");
-                    client.println("<body>");
-                    client.println("<div id='wrapper'>RoboCore Remote Automation V1.1");
-                    client.print("<div id='rele'></div><div id='estado' style='visibility: hidden;'>");
+          client.println("<html>");
+          client.println("<head>");
+          client.println("<title>RoboCore - Remote Automation</title>");
+          client.println("<meta http-equiv='Content-Type' content='text/html; charset=ISO-8859-1'>");
+          client.println("<link rel='stylesheet' type='text/css' href='http://www.robocore.net/upload/projetos/RemoteAutomationV1.0.css' />");
+          client.println("<script type='text/javascript' src='http://www.robocore.net/upload/projetos/RemoteAutomationV1.0.js'></script>");
+          client.println("</head>");
+          client.println("<body>");
+          client.println("<div id='wrapper'>RoboCore Remote Automation V1.1");
+          client.print("<div id='rele'></div><div id='estado' style='visibility: hidden;'>");
+         
+          client.println("</div>");
+          client.println("<div id='botao'></div>");
+          client.println("</div>");
+        
+          client.println("</body>");
+          client.println("</head>");
 
-                    client.println("</div>");
-                    client.println("<div id='botao'></div>");
-                    client.println("</div>");
-                    client.println("<script>AlteraEstadoRele()</script>");
-                    client.println("</body>");
-                    client.println("</head>");
+          delay(1);
+          //stopping client
+          client.stop();
 
-                    delay(1);
 
-                    //stopping client
-                    client.stop();
 
-                    delay(1);
-                    // stopping client
-                    client.stop();
-                }
+
             }
         }
     }
+}
 }
 
 // Método que inicia la secuencia del Trigger para comenzar a medir

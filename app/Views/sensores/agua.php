@@ -16,7 +16,9 @@ use App\Models\ComponentesModel\ComponentesModel;
                 <table class="table table-hover table-striped">
                     <?php
                     $componentes = new ComponentesModel();
-                    $dados = $componentes->listaSensores(7);
+                    $dados = $componentes->listaSensoresNivelAgua(7);
+                   
+               
                     foreach ($dados as $key => $lista) {
                         $codigo = $lista['codigo_componente'];
                         $item = $lista['codigo_componente'] . '-' . $lista['descricao_tipo_componente'] . '<br>Ambiente : ' . $dados[$key]['descricao_ambiente'];
@@ -26,7 +28,7 @@ use App\Models\ComponentesModel\ComponentesModel;
                             <td style="width:1%;border:none;color:goldenrod"><i class="fas fa-stroopwafel" style="margin-left:5px"></i></td>
                             <td style="width:1%;border:none;color:goldenrod"><?php echo $item ?></a></td>
                             <td style="width:1%;border:none;color:goldenrod">
-                                Capacidade: <span id="capacidade-<?php echo $codigo?>" ><?php echo $lista['status']?></span><br>
+                                Capacidade: <span id="capacidade-<?php echo $codigo?>" ><?php echo $lista['capacidade']?>lts</span><br>
                                 Litros: <span id="sensor-<?php echo $codigo?>" ><?php echo $lista['status']?></span><br>
                             </td>
                         </tr>
