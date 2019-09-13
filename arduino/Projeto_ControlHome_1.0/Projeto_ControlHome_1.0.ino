@@ -264,7 +264,7 @@ void setup()
     SENSOR_TEMPERATURA_01.begin();
     SENSOR_TEMPERATURA_02.begin();
     SENSOR_TEMPERATURA_03.begin();
-    //    SENSOR_TEMPERATURA_04.begin();
+    SENSOR_TEMPERATURA_04.begin();
     //    SENSOR_TEMPERATURA_05.begin();
     //    SENSOR_TEMPERATURA_06.begin();
     //    SENSOR_TEMPERATURA_07.begin();

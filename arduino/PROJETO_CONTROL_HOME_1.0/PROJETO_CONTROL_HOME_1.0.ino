@@ -262,7 +262,7 @@ void loop()
           ///////////////
 
           client.println("HTTP/1.1 200 OK"); //send new page
-            client.println("Access-Control-Allow-Origin: 192.168.0.15");
+            client.println("Access-Control-Allow-Origin: 192.168.0.100");
                     client.println("Content-Type: text/html");
                     client.println("Connection: keep-alive");
                     client.println("Allow: GET,HEAD,POST,OPTIONS,TRACE");

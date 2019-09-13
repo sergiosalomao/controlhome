@@ -3,7 +3,7 @@
 <body>
   <div class="container dashboard-panel">
     <div class="row">
-      <div id="dashboard-panel-left" class="col-4"><i class="fas fa-thermometer-quarter"></i><span id="sensor-ST1"><span></div>
+      <div id="dashboard-panel-left" class="col-4"><i class="fas fa-thermometer-quarter"></i><span id="sensor-C01"><span></div>
       <div id="dashboard-panel-center" class="col-5"><span class="title-panel-home">ControlHome</span></div>
       <div id="dashboard-panel-right" class="col-3"><span id="relogio"></span>
         <div>
@@ -52,7 +52,7 @@
 <script>
   //TEMPO DOS SENSORES DE TEMPERATURA
   setInterval(function() {
-      verificaSensorHome("ST1");
+      verificaSensorHome("C01");
     },
     <?php echo TEMPO_SENSOR_TEMPERATURA ?>)
 </script>
