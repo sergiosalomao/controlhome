@@ -42,7 +42,7 @@ class ComponentesModel
         $sql .= "JOIN ambientes AS amb ON cmp.id_ambiente = amb.id_ambiente ";
         $sql .= "JOIN componentes_tipos AS ct ON cmp.tipo = ct.id_componente_tipo ";
         $sql .= "WHERE cmp.tipo IN ({$tiposSensores}) ";
-        $sql .= "ORDER BY cmp.tipo,cmp.descricao asc ";
+        $sql .= "ORDER BY cmp.codigo, cmp.tipo,cmp.descricao asc ";
 
         $st = $this->conexao->prepare($sql);
         $st->execute();

@@ -109,9 +109,9 @@ class ComponentesController extends Controller
     public function verificaStatus($codigo)
     {
         $model = new ComponentesModel();
-        $codigo = $model->verificaStatus($codigo);
+        $codigoEncontrado= $model->verificaStatus($codigo);
      
-        return $codigo['status'];
+        return $codigoEncontrado['status'];
     }
 
 

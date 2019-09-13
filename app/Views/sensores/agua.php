@@ -35,13 +35,13 @@ use App\Models\ComponentesModel\ComponentesModel;
             </div>
 </body>
 <script>
-  //TEMPO DOS SENSORES DE TEMPERATURA
+  //TEMPO DOS SENSORES DE AGUA
   setInterval(function() {
     verificaSensoresNivelAgua("CX1");
    
       
     },
-    <?php echo TEMPO_SENSOR_TEMPERATURA ?>)
+    <?php echo TEMPO_SENSOR_NIVEl_AGUA ?>)
 
 
     function verificaSensoresNivelAgua(codigo) {
