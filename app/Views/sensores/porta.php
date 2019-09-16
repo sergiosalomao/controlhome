@@ -12,7 +12,7 @@ use App\Models\ComponentesModel\ComponentesModel;
                 <div>
                 </div>
             </div>
-            <div class="lista-titulo"><i class="fas fa-dice-d6" style="margin-left:0px"></i><span style="margin-left:0px"> Sensores de portas, janelas e portões </span></div>
+            <div class="lista-titulo"><i class="fas fa-dice-d6" style="margin-left:10px"></i><span style="margin-left:10px"> Sensores de portas, janelas e portões </span></div>
             <div class="container dashboard-configuracao">
                 <table class="table table-hover table-striped">
                     <?php
