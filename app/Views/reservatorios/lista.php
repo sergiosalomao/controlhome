@@ -4,6 +4,7 @@
 
 
     $objReservatorio = new ReservatoriosModel();
+    if(isset($this->id_reservarorio))
     $dadosReservatorio = $objReservatorio->listById($this->id_reservarorio);
     ?>
 
@@ -22,7 +23,7 @@
                         $objReservatorios = new ReservatoriosModel();
                         $dadosReservatorios = $objReservatorios->listAll();
                         foreach ($dadosReservatorios as $key => $lista) {
-                            if ($lista['capacodade'] == 0) $classEstado = 'fas fa-toggle-off';
+                            if ($lista['capacidade'] == 0) $classEstado = 'fas fa-toggle-off';
                             if ($lista['status'] == 1) $classEstado = 'fas fa-toggle-on';
                             ?>
                             <tr>

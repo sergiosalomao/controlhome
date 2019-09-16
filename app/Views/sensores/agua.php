@@ -21,7 +21,7 @@ use App\Models\ComponentesModel\ComponentesModel;
           foreach ($dados as $key => $lista) {
             $codigo = $lista['codigo_componente'];
             $item = $lista['codigo_componente'] . '-' . $lista['descricao_tipo_componente'] . '<br>Ambiente : ' . $dados[$key]['descricao_ambiente'];
-            $lista['codigo_componente'] = $lista['capacidade'] - ($lista['codigo_componente'] * 10);
+            $lista['codigo_componente'] = $lista['capacidade'] - ($lista['status'] * 10);
             ?>
             <tr>
               <td style="width:1%;border:none;color:goldenrod"><i class="fas fa-stroopwafel" style="margin-left:5px"></i></td>
