@@ -7,7 +7,7 @@
         $_SESSION['autenticado']  = false;
 
     use Bramus\Router\Router;
-
+    var_dump($_SESSION);
     // Create a Router
     $router = new Router();
 
