@@ -8,7 +8,7 @@ use App\Models\UsuariosModel\UsuariosModel;
         <div id="dashboard-panel-left" class="col-3"><a href="../"><i class="fas fa-home icon-left"></i></a></div>
         <div id="dashboard-panel-center" class="col-5"><span class="title-panel">ControlHome</span></div>
         
-        <?php  if ($_SESSION['tipo_usuario'] == 1){?>
+        <?php  if (isset($_SESSION['tipo_usuario']) && ($_SESSION['tipo_usuario'] == 1)){?>
         <div id="dashboard-panel-right" class="col-4"><a href="usuarios/create"><i class="fas fa-plus-circle icon-right"></i></a>
         <?php } ?>
         
