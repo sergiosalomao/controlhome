@@ -19,6 +19,8 @@ use App\Models\ComponentesModel\ComponentesModel;
           $componentes = new ComponentesModel();
           $dados = $componentes->listaSensoresNivelAgua(7);
           foreach ($dados as $key => $lista) {
+           $status = explode(";",$lista['status']);
+           $lista['status'] = $status[0];
             $codigo = $lista['codigo_componente'];
             $item = $lista['codigo_componente'] . '-' . $lista['descricao_tipo_componente'] . '<br>Ambiente : ' . $dados[$key]['descricao_ambiente'];
             $lista['codigo_componente'] = $lista['capacidade'] - ($lista['status'] * 10);
