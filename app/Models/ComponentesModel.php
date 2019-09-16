@@ -84,7 +84,7 @@ class ComponentesModel
         $sql.= "JOIN componentes_tipos as ct ON ct.id_componente_tipo = cmp.tipo ";
         $sql.= "WHERE id_ambiente = {$id}";
         $sql.= ($tipo != '') ? " AND tipo = {$tipo} " : " ";
-        $sql.= "ORDER BY cmp.descricao";
+        $sql.= "ORDER BY codigo,cmp.descricao";
 
         $st = $this->conexao->prepare($sql);
         $st->execute();

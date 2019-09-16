@@ -26,7 +26,7 @@ use App\Models\ComponentesModel\ComponentesModel;
           <div class="form-group col-sm-11 " style="margin-left: 0px;">
           
           <label for="capacidade">Capacidade:</label>
-            <input type="text" class="form-control" id="capacidade" name="capacidade" placeholder="1000">
+            <input type="text" class="form-control" id="capacidade" name="capacidade" placeholder="">
           </div>
 
           <div class="form-group col-sm-11 " style="margin-left: 0px;">

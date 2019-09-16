@@ -155,6 +155,18 @@ a:link{
   position: relative;
 }
 
+
+.user-info-bar {
+  padding: 5px;
+  margin-left: 0px;
+  margin-top: 8px;
+  background: #222 ;
+  width: 100%;
+  text-align: left;
+  color: goldenrod;
+  position: relative;
+}
+
 #btnVoltar,
 #btnAdd {
   width: 100%;

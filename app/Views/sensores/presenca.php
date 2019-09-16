@@ -46,8 +46,21 @@ use App\Models\ComponentesModel\ComponentesModel;
 <script>
   //TEMPO DOS SENSORES DE TEMPERATURA
   setInterval(function() {
-    // verificaSensoresPresenca("SP1");
-    verificaSensoresPresenca("SP2");
+    verificaSensoresPresenca("C27");
+    verificaSensoresPresenca("C28");
+    verificaSensoresPresenca("C29");
+    verificaSensoresPresenca("C30");
+    verificaSensoresPresenca("C31");
+    verificaSensoresPresenca("C32");
+    verificaSensoresPresenca("C33");
+    verificaSensoresPresenca("C34");
+    verificaSensoresPresenca("C35");
+    verificaSensoresPresenca("C36");
+    verificaSensoresPresenca("C37");
+    verificaSensoresPresenca("C38");
+    verificaSensoresPresenca("C39");
+    verificaSensoresPresenca("C40");
+    verificaSensoresPresenca("C41");
     
       
     },

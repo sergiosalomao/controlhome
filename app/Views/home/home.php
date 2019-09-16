@@ -9,7 +9,7 @@
         <div>
         </div>
       </div>
-
+      <div class="user-info-bar"><i class="fas fa-user" style="margin-left:10px" ></i><span style="margin-left:10px"> Usuario: <?php echo $_SESSION['usuario']?></span></div>
       <div class="container">
         <div class="dashboard">
           <table class="table table stripped ">
