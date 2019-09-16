@@ -36,12 +36,13 @@ use App\Models\ComponentesModel\ComponentesModel;
       </div>
 </body>
 <script>
-  //TEMPO DOS SENSORES DE NIVEL AGUA
+//TEMPO DOS SENSORES DE NIVEL AGUA
+
   setInterval(function() {
       verificaSensoresNivelAgua("C44");
       verificaSensoresNivelAgua("C45");
     },
-    <?php echo TEMPO_SENSOR_TEMPERATURA ?>)
+    <?php echo TEMPO_SENSOR_NIVEl_AGUA ?>)
 
   function verificaSensoresNivelAgua(codigo) {
     $.get({
@@ -61,4 +62,4 @@ use App\Models\ComponentesModel\ComponentesModel;
       }
     });
   }
-</script>
+

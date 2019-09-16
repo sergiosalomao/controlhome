@@ -1,0 +1,39 @@
+[APP]
+
+TEMPO_SENSOR_PRESENCA    = 1000
+TEMPO_SENSOR_TEMPERATURA = 1000
+TEMPO_SENSOR_NIVEL_AGUA = 500
+TEMPO_LEITURA_INTERRUPTORES = 1000
+
+[SERVIDOR_APP]
+HOST = 192.168.0.15
+PORTA = 80
+
+
+[SERVIDOR_CENTRAL_1]
+HOST_CENTRAL_1 = 192.168.0.99
+PORTA_CENTRAL_1 = 80
+
+
+[BANCO]
+DBDEFAULT = controlhome
+SCHEMA  = PUBLIC
+DRIVER  = pgsql
+HOST    = 192.168.0.100
+USUARIO = postgres
+SENHA   = 210981
+PORTA   = 5432
+
+[SYSTEM_CONFIG]
+DIR_ROOT	  = http://192.168.0.15/automation2
+DIR_APP	      = http://192.168.0.15/automation2/app
+DIR_LIBS       =http://192.168.0.15/automation2/libs
+
+PhpError	  = "on"
+DbDebug	      = "on"
+PrintQuery    = "off"
+ustomVersion = "off"
+DateStyle     = "ISO,DMY"
+
+
+
