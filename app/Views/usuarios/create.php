@@ -17,7 +17,7 @@ use App\Models\UsuariosTiposModel\UsuariosTiposModel;
         <div>
         </div>
       </div>
-
+      <div class="lista-titulo"><i class="fas fa-dice-d6" style="margin-left:0px"></i><span style="margin-left:0px"> Novo Usuario </span></div>
       <div class="container dashboard">
         <form action="save" method="POST">
           <div class="form-group col-sm-11 " style="margin-left: 0px;">
