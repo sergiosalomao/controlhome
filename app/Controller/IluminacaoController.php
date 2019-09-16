@@ -8,7 +8,6 @@ class IluminacaoController extends Controller
 
   public function showIndex()
   {
-   
     $this->render("iluminacao", 'index');
     $this->layout();
   }
@@ -16,7 +15,6 @@ class IluminacaoController extends Controller
   public function listaComponentes($id)
   {
     $this->id_ambiente = $id;
-    
     $this->layout();
     $this->render("iluminacao", 'lista');
   }

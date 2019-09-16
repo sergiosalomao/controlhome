@@ -25,9 +25,7 @@ use App\Models\UsuariosTiposModel\UsuariosTiposModel;
               <option selected value="<?php echo $this->tipo ?>">Selecione um tipo de componente</option>
               <?php
               $objTipoUsuario = new UsuariosTiposModel();
-
               foreach ($objTipoUsuario->listAll() as $dado) { ?>
-
                 <option value="<?php echo $dado['id_usuario_tipo'] ?>"><?php echo $dado['descricao'] ?></option>
               <?php } ?>
             </select>
@@ -35,9 +33,10 @@ use App\Models\UsuariosTiposModel\UsuariosTiposModel;
 
           <div class="form-group col-sm-11 " style="margin-left: 0px;">
             <label for="nome">Nome:</label>
-            <input type="text" class="form-control" id="nome" name="nome" placeholder="Ex.:Sala">
+            <input type="text" class="form-control" id="nome" name="nome" ">
           </div>
-          <div class="form-group col-sm-11 " style="margin-left: 0px;">
+
+          <div class=" form-group col-sm-11 " style=" margin-left: 0px;">
             <label for="email">Email:</label>
             <input type="text" class="form-control" id="email" name="email">
           </div>
@@ -52,13 +51,10 @@ use App\Models\UsuariosTiposModel\UsuariosTiposModel;
             <input type="text" class="form-control" id="senha" name="senha">
           </div>
 
-
-
           <div class="form-group col-sm-11 " style="margin-left: 0px;">
             <label for="mac">MAC:</label>
-            <input type="text" class="form-control" id="mac" name="mac">
+            <input type="text" class="form-control" id="mac" name="mac" placeholder="00:00:00:00:00:00">
           </div>
-
 
           <div class="form-group col-sm-11 ">
             <button type="submit" class="btn btn-warning btn-block">Adicionar</button>

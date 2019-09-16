@@ -1,4 +1,5 @@
 <?php
+
 use App\Models\ReservatoriosModel\ReservatoriosModel;
 ?>
 
@@ -11,7 +12,7 @@ use App\Models\ReservatoriosModel\ReservatoriosModel;
             </div>
         </div>
 
-        <div class="lista-titulo"><i class="fas fa-dice-d6" style="margin-left:10px" ></i><span style="margin-left:10px"> Reservatorios Disponiveis</span></div>
+        <div class="lista-titulo"><i class="fas fa-dice-d6" style="margin-left:10px"></i><span style="margin-left:10px"> Reservatorios Disponiveis</span></div>
         <div class="container dashboard-configuracao">
             <table class="table table-hover table-striped">
 
@@ -28,10 +29,6 @@ use App\Models\ReservatoriosModel\ReservatoriosModel;
                         <td style="width:10%;border:none"><a href="reservatorios/show/<?php echo $lista['id_reservatorio'] ?>"><i class="fas fa-wrench"></i></a></td>
                     </tr>
                 <?php } ?>
-
-
-
             </table>
-
         </div>
         </body>

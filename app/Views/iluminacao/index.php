@@ -1,6 +1,8 @@
 <?php
+
 use App\Models\AmbientesModel\AmbientesModel;
 ?>
+
 <body>
     <div class="configuracao-dashboard-panel">
         <div class="row">

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use App\Models\AmbientesModel\AmbientesModel;
@@ -24,7 +25,6 @@ class AmbientesController extends Controller
     public function save()
     {
         $objAmbientes = new AmbientesModel();
-
         if (isset($_POST['nome'])) {
             $nome = $_POST['nome'];
             if ($objAmbientes->save($nome) == "salvo com sucesso!") {
@@ -40,10 +40,8 @@ class AmbientesController extends Controller
         $id = $_POST['id_ambiente'];
         $nome = $_POST['nome'];
         $objAmbientes = new AmbientesModel();
-
         if ($id != null) {
             if ($objAmbientes->update($id, $nome) == "atualizado com sucesso!") {
-
                 return header("location: ../../configuracao/ambientes");
             } else {
                 return header("location: ../../configuracao/ambientes");
@@ -57,7 +55,6 @@ class AmbientesController extends Controller
         $dados = $objAmbientes->listById($id);
         $this->id_ambiente = $dados['id_ambiente'];
         $this->nome = $dados['descricao'];
-        
         $this->layout();
         $this->render('ambientes', 'edit');
     }

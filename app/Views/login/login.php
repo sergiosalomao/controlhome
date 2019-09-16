@@ -1,4 +1,5 @@
 <?php
+
 use App\Models\UsuariosTiposModel\UsuariosTiposModel;
 ?>
 
@@ -6,7 +7,7 @@ use App\Models\UsuariosTiposModel\UsuariosTiposModel;
   <div class="addambiente-dashboard-panel">
     <div class="row ">
       <div id="dashboard-panel-left" class="col-3">
-        
+
       </div>
       <div id="dashboard-panel-center" class="col-4">
         <span class="title-panel">Autenticação </span>

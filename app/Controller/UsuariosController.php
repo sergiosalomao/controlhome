@@ -36,9 +36,7 @@ class UsuariosController extends Controller
         //if (password_verify('rasmuslerdorf', $hash)) {
         $objUsuarios = new UsuariosModel();
         if (isset($_POST['nome'])) {
-            
             $_POST['senha'] = password_hash($_POST['senha'], PASSWORD_DEFAULT);
-            
             if ($objUsuarios->save($_POST) == "salvo com sucesso!") {
                 return header("location: ../../configuracao/usuarios");
             } else {
@@ -50,11 +48,9 @@ class UsuariosController extends Controller
     public function update()
     {
        $objUsuarios = new UsuariosModel();
-       
        $_POST['senha'] = password_hash($_POST['senha'], PASSWORD_DEFAULT);
         if ($_POST['id_usuario'] != null) {
             if ($objUsuarios->update($_POST) == "atualizado com sucesso!") {
-
                 return header("location: ../../configuracao/usuarios");
             } else {
                 return header("location: ../../configuracao/usuarios");
@@ -66,14 +62,12 @@ class UsuariosController extends Controller
     {
         $objUsuarios = new UsuariosModel();
         $dados = $objUsuarios->listById($id);
-        
         $this->id_usuario = $dados['id_usuario'];
         $this->nome = $dados['nome'];
         $this->email = $dados['email'];
         $this->senha = $dados['senha'];
         $this->tipo = $dados['tipo'];
         $this->mac = $dados['mac'];
-        
         $this->layout();
         $this->render('usuarios', 'edit');
     }

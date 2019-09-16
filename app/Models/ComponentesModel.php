@@ -23,7 +23,6 @@ class ComponentesModel
         $sql = "SELECT * from {$this->schema}.{$this->table} ORDER BY tipo,descricao asc";
         $st = $this->conexao->prepare($sql);
         $st->execute();
-
         return $st->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -42,14 +41,9 @@ class ComponentesModel
         $sql .= "JOIN ambientes AS amb ON cmp.id_ambiente = amb.id_ambiente ";
         $sql .= "JOIN componentes_tipos AS ct ON cmp.tipo = ct.id_componente_tipo ";
         $sql .= "WHERE cmp.tipo IN ({$tiposSensores}) ";
-
         $sql .= "ORDER BY cmp.codigo, cmp.tipo,cmp.descricao asc ";
-
-        
-
         $st = $this->conexao->prepare($sql);
         $st->execute();
-
         return $st->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -72,24 +66,20 @@ class ComponentesModel
         $sql .= "JOIN componentes_tipos AS ct ON cmp.tipo = ct.id_componente_tipo ";
         $sql .= "WHERE cmp.tipo IN ({$tiposSensores}) ";
         $sql .= "ORDER BY cmp.codigo, cmp.tipo,cmp.descricao asc ";
-
-
         $st = $this->conexao->prepare($sql);
         $st->execute();
-
         return $st->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function listByAmbiente($id, $tipo = null)
     {
         $sql = "SELECT ";
-        $sql.= "cmp.status,cmp.id_componente,cmp.descricao as descricao_componente,ct.descricao as descricao_tipo_componente,icone,codigo,id_ambiente,tipo ";
-        $sql.= "from {$this->schema}.{$this->table} as cmp ";
-        $sql.= "JOIN componentes_tipos as ct ON ct.id_componente_tipo = cmp.tipo ";
-        $sql.= "WHERE id_ambiente = {$id}";
-        $sql.= ($tipo != '') ? " AND tipo = {$tipo} " : " ";
-        $sql.= "ORDER BY codigo,cmp.descricao";
-
+        $sql .= "cmp.status,cmp.id_componente,cmp.descricao as descricao_componente,ct.descricao as descricao_tipo_componente,icone,codigo,id_ambiente,tipo ";
+        $sql .= "from {$this->schema}.{$this->table} as cmp ";
+        $sql .= "JOIN componentes_tipos as ct ON ct.id_componente_tipo = cmp.tipo ";
+        $sql .= "WHERE id_ambiente = {$id}";
+        $sql .= ($tipo != '') ? " AND tipo = {$tipo} " : " ";
+        $sql .= "ORDER BY codigo,cmp.descricao";
         $st = $this->conexao->prepare($sql);
         $st->execute();
         return $st->fetchAll(PDO::FETCH_ASSOC);
@@ -132,7 +122,6 @@ class ComponentesModel
          descricao = '{$dados['descricao']}',
          codigo = '{$dados['codigo']}'
           WHERE id_componente = {$dados['id_componente']}";
-
         try {
             $st = $this->conexao->prepare($sql);
             $st->execute();
@@ -144,14 +133,10 @@ class ComponentesModel
 
     public function updateStatus($dados)
     {
-       
-      $sql = "UPDATE {$this->schema}.{$this->table} SET 
+        $sql = "UPDATE {$this->schema}.{$this->table} SET 
          status = '{$dados[1]}'
           WHERE codigo = '{$dados[0]}'";
-       
-  
-       
-       try {
+        try {
             $st = $this->conexao->prepare($sql);
             $st->execute();
         } catch (Exception $e) {
@@ -159,17 +144,13 @@ class ComponentesModel
         }
         return "atualizado com sucesso!";
     }
-
 
     public function updateStatusComponente($dados)
     {
-      $sql = "UPDATE {$this->schema}.{$this->table} SET 
+        $sql = "UPDATE {$this->schema}.{$this->table} SET 
          status = '{$dados['status']}'
           WHERE codigo = '{$dados['codigo']}'";
-       //var_dump($sql);
-  
-       
-       try {
+        try {
             $st = $this->conexao->prepare($sql);
             $st->execute();
         } catch (Exception $e) {
@@ -177,12 +158,10 @@ class ComponentesModel
         }
         return "atualizado com sucesso!";
     }
-
 
     public function delete($id)
     {
         $sql = "DELETE from {$this->schema}.{$this->table} where id_componente={$id}";
-    
         try {
             $st = $this->conexao->prepare($sql);
             $st->execute();
@@ -196,19 +175,15 @@ class ComponentesModel
     {
         $sql = "SELECT status from {$this->schema}.{$this->table} WHERE codigo = '{$codigo}'";
         $st = $this->conexao->prepare($sql);
-      
         $st->execute();
         return $st->fetch();
     }
 
-    
-
     public function adicionaDados($dados)
     {
-        
-      #verifica se salva ou edita
-      if ($dados['descricao'] != '') {
-        $sql = "INSERT INTO {$this->schema}.{$this->table}
+        #verifica se salva ou edita
+        if ($dados['descricao'] != '') {
+            $sql = "INSERT INTO {$this->schema}.{$this->table}
          (id_ambiente,tipo,descricao,codigo) VALUES
           (
           '{$dados['id_ambiente']}',
@@ -216,29 +191,21 @@ class ComponentesModel
           '{$dados['descricao']}',
           '{$dados['codigo']}'
           )";
-
-
-    }
-    try {
-        $st = $this->conexao->prepare($sql);
-        $st->execute();
-    } catch (Exception $e) {
-        return "erro: " .  $e->getMessage();
-    }
-    return "salvo com sucesso!";
+        }
+        try {
+            $st = $this->conexao->prepare($sql);
+            $st->execute();
+        } catch (Exception $e) {
+            return "erro: " .  $e->getMessage();
+        }
+        return "salvo com sucesso!";
     }
 
     public function listByCodigo($codigo)
     {
         $sql = "SELECT * from {$this->schema}.{$this->table} WHERE codigo = '{$codigo}'";
-   
-      
         $st = $this->conexao->prepare($sql);
         $st->execute();
         return $st->fetch();
     }
-
-
-
-
 }
