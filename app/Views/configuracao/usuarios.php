@@ -11,7 +11,7 @@ use App\Models\UsuariosModel\UsuariosModel;
         <?php 
         echo $_SESSION['tipo_usuario'];
         
-        if ($_SESSION['tipo_usuario'] == 'Administrador'){?>
+        if ($_SESSION['tipo_usuario'] == 1){?>
         <div id="dashboard-panel-right" class="col-4"><a href="usuarios/create"><i class="fas fa-plus-circle icon-right"></i></a>
         <?php } ?>
         
