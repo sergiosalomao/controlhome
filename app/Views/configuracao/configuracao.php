@@ -15,7 +15,7 @@
               <td style="border:none"><a href="temperatura.php"><img src="../public/images/temperatura.png" width="86pxpx" height="86pxpx"></a></td>
               <td style="border:none"><a href="iluminacao"><img src="../public/images/iluminacao.png" width="86pxpx" height="86pxpx"></a></td> -->
                             <td style="border:none"><a href="configuracao/usuarios"><i class="fas fa-user-cog icon-home"></i></a></td>
-                            <td style="border:none"><a href="configuracao/ambientes"><i class="far fa-layer-plus icon-home"></i></a></td>
+                            <td style="border:none"><a href="configuracao/ambientes"><i class="fas fa-layer-group icon-home"></i></a></td>
                             <td style="border:none"><a href="configuracao/reservatorios"><i class="fas fa-water icon-home"></i></a></td>
                     </table>
                 </div>
