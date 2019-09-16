@@ -1,4 +1,5 @@
 <?php
+
 use App\Models\ComponentesModel\ComponentesModel;
 ?>
 
@@ -20,14 +21,14 @@ use App\Models\ComponentesModel\ComponentesModel;
                     foreach ($dados as $key => $lista) {
                         $codigo = $dados[$key]['codigo_componente'];
                         $item = $dados[$key]['codigo_componente'] . '-' . $dados[$key]['descricao_tipo_componente'] . '<br>Ambiente : ' . $dados[$key]['descricao_ambiente'];
-                        $status = explode("|",$dados[$key]['status']);
+                        $status = explode("|", $dados[$key]['status']);
                         ?>
                         <tr>
                             <td style="width:1%;border:none;color:goldenrod"><i class="fas fa-stroopwafel" style="margin-left:5px"></i></td>
                             <td style="width:1%;border:none;color:goldenrod"><?php echo $item ?></a></td>
                             <td style="width:1%;border:none;color:goldenrod">
-                                Consumo Atual: <span id="sensor-<?php echo $codigo?>" ><?php isset($status[0])? $status[0]:""?></span><br>
-                                Consumo Medio/dia: <span id="sensor-<?php echo $codigo?>" ><?php isset($status[0])? $status[0]:""?></span><br>
+                                Consumo Atual: <span id="sensor-<?php echo $codigo ?>"><?php isset($status[0]) ? $status[0] : "" ?></span><br>
+                                Consumo Medio/dia: <span id="sensor-<?php echo $codigo ?>"><?php isset($status[0]) ? $status[0] : "" ?></span><br>
                             </td>
                         </tr>
                     <?php } ?>

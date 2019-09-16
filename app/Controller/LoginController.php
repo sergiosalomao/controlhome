@@ -29,34 +29,29 @@ class LoginController extends Controller
     public function autentica()
     {
         $objUsuarios = new UsuariosModel();
-        $usuario = $objUsuarios->LocalizaUsuario($_POST['email']);      
-       
-     
+        $usuario = $objUsuarios->LocalizaUsuario($_POST['email']);
         if (password_verify($_POST['senha'],  $usuario['senha'])) {
-          $_SESSION['autenticado'] = true;
-          $_SESSION['usuario'] = $usuario['nome'];
-          return header("location: ./..");
-          
-        }
-        else
-        {
+            $_SESSION['autenticado'] = true;
+            $_SESSION['usuario'] = $usuario['nome'];
+            $_SESSION['tipo_usuario'] = $usuario['tipo'];
+            $_SESSION['email'] = $usuario['email'];
+            
+            return header("location: ./..");
+        } else {
             $_SESSION['autenticado'] = false;
+            $_SESSION['tipo_usuario'] = '';
+            $_SESSION['usuario'] = '';
+            $_SESSION['email'] = '';
             return header("location: ./..");
         }
-
-
     }
-
 
     public function logout()
     {
-    
         $_SESSION['autenticado'] = false;
-            return header("location: ./..");
-        
-
-
+        $_SESSION['tipo_usuario'] = '';
+        $_SESSION['usuario'] = '';
+        $_SESSION['email'] = '';
+        return header("location: ./..");
     }
-
-  
 }

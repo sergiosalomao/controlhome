@@ -1,5 +1,5 @@
 <body>
-<div class="addambiente-dashboard-panel">
+  <div class="addambiente-dashboard-panel">
     <div class="row ">
       <div id="dashboard-panel-left" class="col-3">
         <a href="../../../configuracao/ambientes"><i class="fas fa-arrow-circle-left icon-left"></i></a>
@@ -8,11 +8,11 @@
         <span class="title-panel">ControlHome</span>
       </div>
       <div id="dashboard-panel-right" class="col-3">
-        
+
         <div>
         </div>
       </div>
-      
+
       <div class="container dashboard">
         <form action="../update" method="POST">
           <div class="form-group col-sm-11 " style="margin-left: 0px;">

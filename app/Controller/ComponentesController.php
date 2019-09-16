@@ -29,7 +29,6 @@ class ComponentesController extends Controller
         $this->render('componentes', 'create');
     }
 
-
     public function save()
     {
         $model = new  ComponentesModel();
@@ -38,7 +37,6 @@ class ComponentesController extends Controller
         $dados['tipo'] = $_POST['tipo'];
         $dados['descricao'] = $_POST['descricao'];
         $dados['codigo'] = $_POST['codigo'];
-
         if ($model->save($dados) == "salvo com sucesso!") {
             return header("location: ../componentes/show/{$_POST['id_ambiente']}");
         } else {
@@ -96,38 +94,34 @@ class ComponentesController extends Controller
         if ($codigoEncontrado == 1) $dados['status'] = 0;
         $model->updateStatusComponente($dados);
     }
-    
+
     public function verificaStatus($codigo)
     {
         $model = new ComponentesModel();
         $codigoEncontrado = $model->verificaStatus($codigo);
         return print_r($codigoEncontrado['status']);
-      
     }
-
-
 
     public function RegistraHardware()
     {
-      if ($_POST['id_hardware'] != ''){      
-      $objHardware = new HardwaresModel();
-      $id_hardware = $objHardware->listById($_POST['id_hardware']);
-      if ($id_hardware > 0)
-      $dadosHardware = $objHardware->atualizaHardware($_POST);
-      if ($id_hardware <= 0)
-      $dadosHardware = $objHardware->adicionaHardware($_POST);
-      }
+        if ($_POST['id_hardware'] != '') {
+            $objHardware = new HardwaresModel();
+            $id_hardware = $objHardware->listById($_POST['id_hardware']);
+            if ($id_hardware > 0)
+                $dadosHardware = $objHardware->atualizaHardware($_POST);
+            if ($id_hardware <= 0)
+                $dadosHardware = $objHardware->adicionaHardware($_POST);
+        }
     }
-
 
     public function RecebeDados()
     {
         $objComponentes = new ComponentesModel();
-       foreach($_POST as $componente){
-        $dadosRecebidos = explode("|",$componente);
-        if (($dado = $objComponentes->listByCodigo($dadosRecebidos[0])) > 0 ){
-            $objComponentes->updateStatus($dadosRecebidos);
+        foreach ($_POST as $componente) {
+            $dadosRecebidos = explode("|", $componente);
+            if (($dado = $objComponentes->listByCodigo($dadosRecebidos[0])) > 0) {
+                $objComponentes->updateStatus($dadosRecebidos);
+            }
         }
-       }
     }
 }

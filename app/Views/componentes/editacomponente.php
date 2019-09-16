@@ -1,8 +1,8 @@
 <?php
 
 use App\Models\TiposComponentesModel\TiposComponentesModel;
- 
 ?>
+
 <body>
   <div class="addambiente-dashboard-panel">
     <div class="row ">
@@ -13,7 +13,6 @@ use App\Models\TiposComponentesModel\TiposComponentesModel;
         <span class="title-panel">ControlHome</span>
       </div>
       <div id="dashboard-panel-right" class="col-3">
-
         <div>
         </div>
       </div>
@@ -23,18 +22,15 @@ use App\Models\TiposComponentesModel\TiposComponentesModel;
 
           <div class="form-group col-sm-11 " style="margin-left: 0px;">
             <select class="browser-default custom-select" name="tipo">
-            <option selected value="<?php echo $this->tipo ?>">Selecione um tipo de componente</option>
-              <?php 
+              <option selected value="<?php echo $this->tipo ?>">Selecione um tipo de componente</option>
+              <?php
               $objTipoComponente = new TiposComponentesModel();
-              
+
               foreach ($objTipoComponente->listAll() as $dado) { ?>
-              
                 <option value="<?php echo $dado['id_componente_tipo'] ?>"><?php echo $dado['descricao'] ?></option>
               <?php } ?>
             </select>
-
           </div>
-
 
           <div class="form-group col-sm-11 " style="margin-left: 0px;">
             <label for="nome">Adicione um novo componente:</label>
@@ -46,8 +42,6 @@ use App\Models\TiposComponentesModel\TiposComponentesModel;
             <label for="nome">Codigo de integração:</label>
             <input type="text" class="form-control" id="codigo" name="codigo" placeholder="TS01" value="<?php echo $this->codigo ?>">
           </div>
-
-
 
           <div class="form-group col-sm-11 ">
             <button type="submit" class="btn btn-warning btn-block">Atualizar</button>

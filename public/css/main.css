@@ -1,187 +1,180 @@
 body {
-  background-color: #555;
+	background-color: #555;
 }
-a:visited{
-  color:goldenrod;
+a:visited {
+	color: goldenrod;
 }
 
-a:link{
-  color:goldenrod;
+a:link {
+	color: goldenrod;
 }
- 
+
 /* Estilos Default */
 
-.icon-home{
-  color:goldenrod;
-  font-size: 40px;
-  border: 1px solid goldenrod;
-  padding-left: 26px;
-  padding-top: 22px;
-  height: 86px;
-  width: 86px;
-  margin:0px;
+.icon-home {
+	color: goldenrod;
+	font-size: 40px;
+	border: 1px solid goldenrod;
+	padding-left: 26px;
+	padding-top: 22px;
+	height: 86px;
+	width: 86px;
+	margin: 0px;
 }
 
-.icon-acionador{
-  font-size: 30px;
+.icon-acionador {
+	font-size: 30px;
 }
 
 #relogio {
-  font-weight: 600;
+	font-weight: 600;
 }
 
 #sensor-T1 {
-  font-weight: 500;
-  position: absolute;
-  width: 200px;
-  margin-left:10px; 
+	font-weight: 500;
+	position: absolute;
+	width: 200px;
+	margin-left: 10px;
 }
-
 
 .dashboard-panel {
-  background-color: #333;
-  height: 45px;
-  color: goldenrod;
-  text-align: center;
-  position: absolute;
-  width: 100%;
+	background-color: #333;
+	height: 45px;
+	color: goldenrod;
+	text-align: center;
+	position: absolute;
+	width: 100%;
 }
 
-.icon-left{
-  font-size:25px;
-  margin-left:15px;
-  position:absolute;
+.icon-left {
+	font-size: 25px;
+	margin-left: 15px;
+	position: absolute;
 }
 
-.icon-right{
-  font-size:25px;
-  margin-left:10px;
-  position:absolute;
+.icon-right {
+	font-size: 25px;
+	margin-left: 10px;
+	position: absolute;
 }
 
-
-.title-panel{
-  font-size:18px;
-  text-align:left;
-  margin-left:10px;
+.title-panel {
+	font-size: 18px;
+	text-align: left;
+	margin-left: 10px;
 }
 
-.title-panel-home{
-  font-size:18px;
-  text-align:left;
-  margin-left:-5px;
+.title-panel-home {
+	font-size: 18px;
+	text-align: left;
+	margin-left: -5px;
 }
 
 #dashboard-panel-left {
-  margin-top: 10px;
-  text-align:left;
-  
+	margin-top: 10px;
+	text-align: left;
 }
 
 #dashboard-panel-center {
-  margin-top: 10px;
+	margin-top: 10px;
 }
 
 #dashboard-panel-right {
-  margin-top: 10px;
- 
+	margin-top: 10px;
 }
 
 /* view home */
 
 .dashboard {
-  margin-top: 45px;
-  text-align: left;
+	margin-top: 45px;
+	text-align: left;
 }
 
-.dashboard-configuracao{
-  margin-top: 15px;
-  text-align: left;
+.dashboard-configuracao {
+	margin-top: 15px;
+	text-align: left;
 }
 #main-footer {
-  font-size: 10px;
- position: fixed;
-  top: 94.4%;
-  background-color: #333;
-  height: 30px;
-  color: goldenrod;
-  padding: 8px;
-  text-align: center;
-  width: 100%;
-  margin: 0px;
+	font-size: 10px;
+	position: fixed;
+	top: 94.4%;
+	background-color: #333;
+	height: 30px;
+	color: goldenrod;
+	padding: 8px;
+	text-align: center;
+	width: 100%;
+	margin: 0px;
 }
 
 /* view configuracao */
 .configuracao-dashboard-panel {
-  background-color: #333;
-  height: 45px;
-  color: goldenrod;
-  text-align: center;
-  /* position:fixed; */
-  width: 100%;
+	background-color: #333;
+	height: 45px;
+	color: goldenrod;
+	text-align: center;
+	/* position:fixed; */
+	width: 100%;
 }
 
 /* view addambiente */
 .addambiente-dashboard-panel {
-  background-color: #333;
-  height: 45px;
-  color: goldenrod;
-  text-align: center;
-
-  width: 100%;
+	background-color: #333;
+	height: 45px;
+	color: goldenrod;
+	text-align: center;
+	width: 100%;
 }
 #form {
-  margin-top: 30px;
+	margin-top: 30px;
 }
 
 .footer-panel {
-  position: fixed;
-  bottom: 0;
-  padding: 10px;
-  background: #444444;
-  width: 100%;
+	position: fixed;
+	bottom: 0;
+	padding: 10px;
+	background: #444444;
+	width: 100%;
 }
 
 .lista-titulo {
-  padding: 10px;
-  margin-left: 10px;
-  margin-top: 9px;
-  background: #222 ;
-  width: 100%;
-
-  text-align: left;
-
-  color: goldenrod;
-  position: relative;
+	padding: 10px;
+	margin-left: 10px;
+	margin-top: 9px;
+	background: #222;
+	width: 100%;
+	text-align: left;
+	color: goldenrod;
+	position: relative;
 }
 
-
 .user-info-bar {
-  padding: 5px;
-  margin-left: 0px;
-  margin-top: 8px;
-  background: #222 ;
-  width: 100%;
-  text-align: left;
-  color: goldenrod;
-  position: relative;
+	padding: 5px;
+	margin-left: 0px;
+	margin-top: 8px;
+	background: #222;
+	width: 100%;
+	text-align: left;
+	color: goldenrod;
+	position: relative;
 }
 
 #btnVoltar,
 #btnAdd {
-  width: 100%;
-  margin: 5px;
+	width: 100%;
+	margin: 5px;
 }
 
 #div-body {
-  background-color: red;
+	background-color: red;
 }
 
 #lista-ambientes {
-  margin-top: 12px;
-  width: 100%;
+	margin-top: 12px;
+	width: 100%;
 }
+
 .table {
-  color: #f2f2f2;
-  text-align: left;
+	color: #f2f2f2;
+	text-align: left;
 }

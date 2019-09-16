@@ -1,5 +1,3 @@
-
-
 <body>
   <div class="container dashboard-panel">
     <div class="row">
@@ -9,7 +7,7 @@
         <div>
         </div>
       </div>
-      <div class="user-info-bar"><i class="fas fa-user" style="margin-left:10px" ></i><span style="margin-left:10px"> Usuario: <?php echo $_SESSION['usuario']?></span></div>
+      <div class="user-info-bar"><i class="fas fa-user" style="margin-left:10px"></i><span style="margin-left:10px"> Usuario: <?php echo $_SESSION['usuario'] ?></span></div>
       <div class="container">
         <div class="dashboard">
           <table class="table table stripped ">
@@ -40,13 +38,10 @@
               <td style="border:none"><a href="sensores/portas"><i class="fas fa-door-open icon-home"></i></a></td>
               <td style="border:none"><a href="configuracao"><i class="fas fa-cog icon-home"></i></a></td>
             </tr>
-
           </table>
-
         </div>
       </div>
       <div id="main-footer"><span>Developer Sergio Salomão</span></div>
-
 </body>
 
 <script>
@@ -55,4 +50,34 @@
       verificaSensorHome("C01");
     },
     <?php echo TEMPO_SENSOR_TEMPERATURA ?>)
+
+    function verificaSensorHome(codigo) {
+	$.get({
+		url: "configuracao/componentes/verificastatus/" + codigo,
+		success: function(data) {
+			data = data.split(";");
+			temperatura = data[0];
+			umidade = data[1];
+			document.getElementById("sensor-" + codigo).innerText =
+				temperatura + "°C";
+			if (temperatura > 26)
+				document.getElementById("sensor-" + codigo).innerText =
+					temperatura + "°C[H]";
+
+			document.getElementById("sensor-SU" + codigo[2]).innerText =
+				umidade + "%";
+			if (umidade < 55)
+				document.getElementById("sensor-SU" + codigo[2]).innerText =
+					umidade + "%[L]";
+		},
+		error: function(error) {
+			console.log("erro");
+			document.getElementById("sensor-" + codigo).innerText = "E°C";
+			document.getElementById("sensor-SU" + codigo[2]).innerText = "E%";
+		}
+	});
+}
+
+
+
 </script>

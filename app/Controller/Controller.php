@@ -2,28 +2,30 @@
 
 namespace App\Controller;
 
-class Controller{
-
+class Controller
+{
     private $controller;
     private $view;
 
-   public function about(){
-       echo "about";
-   }
+    public function about()
+    {
+        echo "about";
+    }
 
-   public function layout(){
-    include_once './Views/layout/header.php';
-   }
+    public function layout()
+    {
+        include_once './Views/layout/header.php';
+    }
 
-   public function render($controller, $view){
+    public function render($controller, $view)
+    {
         $this->view = $view;
         $this->controller = $controller;
-        
         $this->view();
     }
 
-    public function view(){
-        include_once 'Views/'.$this->controller.'/'.$this->view.'.php';
+    public function view()
+    {
+        include_once 'Views/' . $this->controller . '/' . $this->view . '.php';
     }
-
 }

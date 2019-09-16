@@ -14,14 +14,13 @@ class AmbientesModel
     function __construct()
     {
         $this->schema = DBSCHEMA;
-        $this->dsn = DSN;            
+        $this->dsn = DSN;
         $this->conexao = new PDO($this->dsn);
     }
-    
+
     public function listAll()
     {
         $sql = "SELECT * from {$this->schema}.{$this->table} ORDER BY descricao,id_ambiente asc";
-        
         $st = $this->conexao->prepare($sql);
         $st->execute();
         return $st->fetchAll(PDO::FETCH_ASSOC);
@@ -39,30 +38,26 @@ class AmbientesModel
     {
         if ($nome != '') {
             $sql = "INSERT INTO {$this->schema}.{$this->table} (descricao) VALUES ('{$nome}')";
-        }else
-        return "informe um nome!";
-
+        } else
+            return "informe um nome!";
         try {
             $st = $this->conexao->prepare($sql);
             $st->execute();
         } catch (Exception $e) {
             return "erro: " .  $e->getMessage();
         }
-
         return "salvo com sucesso!";
     }
 
     public function update($id, $nome)
     {
         $sql = "UPDATE {$this->schema}.{$this->table} SET descricao = '{$nome}' WHERE id_ambiente = {$id}";
-
         try {
             $st = $this->conexao->prepare($sql);
             $st->execute();
         } catch (Exception $e) {
             return "erro: " .  $e->getMessage();
         }
-
         return "atualizado com sucesso!";
     }
 

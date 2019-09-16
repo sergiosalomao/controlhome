@@ -1,4 +1,5 @@
 <?php
+
 use App\Models\AmbientesModel\AmbientesModel;
 ?>
 
@@ -11,7 +12,7 @@ use App\Models\AmbientesModel\AmbientesModel;
             </div>
         </div>
 
-        <div class="lista-titulo"><i class="fas fa-dice-d6" style="margin-left:10px" ></i><span style="margin-left:10px"> Ambientes Disponiveis</span></div>
+        <div class="lista-titulo"><i class="fas fa-dice-d6" style="margin-left:10px"></i><span style="margin-left:10px"> Ambientes Disponiveis</span></div>
         <div class="container dashboard-configuracao">
             <table class="table table-hover table-striped">
 
@@ -27,10 +28,6 @@ use App\Models\AmbientesModel\AmbientesModel;
                         <td style="width:10%;border:none"><a href="componentes/show/<?php echo $dados[$key]['id_ambiente'] ?>"><i class="fas fa-wrench"></i></a></td>
                     </tr>
                 <?php } ?>
-
-
-
             </table>
-
         </div>
         </body>

@@ -23,9 +23,6 @@ class TiposComponentesModel
         $sql = "SELECT * from {$this->schema}.{$this->table}";
         $st = $this->conexao->prepare($sql);
         $st->execute();
-
         return $st->fetchAll(PDO::FETCH_ASSOC);
     }
-
-   
 }

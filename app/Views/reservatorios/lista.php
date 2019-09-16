@@ -1,10 +1,12 @@
     <?php
+
     use App\Models\ReservatoriosModel\ReservatoriosModel;
-   
-   
+
+
     $objReservatorio = new ReservatoriosModel();
     $dadosReservatorio = $objReservatorio->listById($this->id_reservarorio);
     ?>
+
     <body>
         <div class="configuracao-dashboard-panel">
             <div class="row">
@@ -16,13 +18,11 @@
 
                 <div class="container ">
                     <table class="table table-striped ">
-
                         <?php
                         $objReservatorios = new ReservatoriosModel();
                         $dadosReservatorios = $objReservatorios->listAll();
                         foreach ($dadosReservatorios as $key => $lista) {
                             if ($lista['capacodade'] == 0) $classEstado = 'fas fa-toggle-off';
-                            
                             if ($lista['status'] == 1) $classEstado = 'fas fa-toggle-on';
                             ?>
                             <tr>
@@ -30,12 +30,9 @@
                                 <td style="width:80%;border:none"><?php echo $lista['descricao'] ?></td>
                                 <td style="width:80%;border:none"><?php echo $lista['capacidade'] ?></td>
                                 <td style="width:10%;border:none"><a href="reservatorios/showedit/<?php echo $lista['id_reservatorio'] ?>"><i class="fas fa-edit"></i></a></td>
-                                <td style="width:10%;border:none"><a href="reservatorios/delete/<?php echo$lista['id_reservatorio']  ?> "><i class="fas fa-trash"></i></a></td>
-
+                                <td style="width:10%;border:none"><a href="reservatorios/delete/<?php echo $lista['id_reservatorio']  ?> "><i class="fas fa-trash"></i></a></td>
                             </tr>
                         <?php } ?>
-
                     </table>
                 </div>
     </body>
-    

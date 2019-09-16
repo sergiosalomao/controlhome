@@ -20,7 +20,6 @@ class HardwaresModel
 
     public function adicionaHardware($dados)
     {
-
         $sql = "INSERT INTO {$this->schema}.{$this->table}
              (descricao,modelo,serial,status,versao) VALUES
               (
@@ -30,7 +29,6 @@ class HardwaresModel
               '{$dados['status']}',
               '{$dados['versao']}'
               )";
-
         try {
             $st = $this->conexao->prepare($sql);
             $st->execute();
@@ -43,7 +41,6 @@ class HardwaresModel
 
     public function atualizaHardware($dados)
     {
-
         $sql = "UPDATE {$this->schema}.{$this->table} SET ";
         $sql .= "descricao = '{$dados['descricao']}', ";
         $sql .= "modelo = '{$dados['modelo']}', ";
@@ -51,14 +48,12 @@ class HardwaresModel
         $sql .= "status = '{$dados['status']}', ";
         $sql .= "versao = '{$dados['versao']}' ";
         $sql .= "WHERE id_hardware = {$dados['id_hardware']}";
-
         try {
             $st = $this->conexao->prepare($sql);
             $st->execute();
         } catch (Exception $e) {
             return "erro: " .  $e->getMessage();
         }
-
         return "atualizado com sucesso!";
     }
 
@@ -66,7 +61,6 @@ class HardwaresModel
     {
         $sql = "SELECT * from {$this->schema}.{$this->table} WHERE id_hardware = '{$id}'";
         $st = $this->conexao->prepare($sql);
-
         $st->execute();
         return $st->fetch();
     }
