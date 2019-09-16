@@ -31,7 +31,9 @@ use App\Models\UsuariosModel\UsuariosModel;
                         <td style="width:60%;border:none"><?php echo $dados[$key]['descricao'] ?></td>
                         <td style="width:10%;border:none"><a href="usuarios/showedit/<?php echo $dados[$key]['id_usuario'] ?>"><i class="fas fa-edit"></i></a></td>
                         <td style="width:10%;border:none"><a href="usuarios/delete/<?php echo $dados[$key]['id_usuario'] ?> "><i class="fas fa-trash"></i></a></td>
+                        <?php  if (isset($_SESSION['tipo_usuario']) && ($_SESSION['tipo_usuario'] == 1)){?>
                         <td style="width:10%;border:none"><a href="componentes/show/<?php echo $dados[$key]['id_usuario'] ?>"><i class="fas fa-wrench"></i></a></td>
+                        <?php } ?>
                     </tr>
                 <?php } ?>
             </table>
