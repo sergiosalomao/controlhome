@@ -18,7 +18,7 @@ use App\Models\UsuariosTiposModel\UsuariosTiposModel;
       </div>
 
       <div class="container dashboard">
-        <form action="save" method="POST">
+        <form action="login/autentica" method="POST">
           <div class="form-group col-sm-11 " style="margin-left: 0px;">
             <label for="email">Email:</label>
             <input type="text" class="form-control" id="email" name="email">

@@ -22,13 +22,13 @@ use App\Models\ComponentesModel\ComponentesModel;
                     foreach ($dados as $key => $lista) {
                         $codigo = $lista['codigo_componente'];
                         $item = $lista['codigo_componente'] . '-' . $lista['descricao_tipo_componente'] . '<br>Ambiente : ' . $dados[$key]['descricao_ambiente'];
-                        
+                        $lista['codigo_componente'] = $lista['capacidade'] - ($lista['codigo_componente'] * 10);
                         ?>
                         <tr>
                             <td style="width:1%;border:none;color:goldenrod"><i class="fas fa-stroopwafel" style="margin-left:5px"></i></td>
                             <td style="width:1%;border:none;color:goldenrod"><?php echo $item ?></a></td>
                             <td style="width:1%;border:none;color:goldenrod">
-                                Capacidade: <span id="capacidade-<?php echo $codigo?>" ><?php echo $lista['capacidade']?>lts</span><br>
+                                Capacidade(lts): <span id="capacidade-<?php echo $codigo?>" ><?php echo $lista['capacidade']?></span><br>
                                 Litros: <span id="sensor-<?php echo $codigo?>" ><?php echo $lista['status']?></span><br>
                             </td>
                         </tr>
@@ -39,7 +39,7 @@ use App\Models\ComponentesModel\ComponentesModel;
 <script>
   //TEMPO DOS SENSORES DE AGUA
   setInterval(function() {
-    verificaSensoresNivelAgua("CX1");
+    verificaSensoresNivelAgua("C45");
    
       
     },
@@ -51,8 +51,20 @@ use App\Models\ComponentesModel\ComponentesModel;
     $.get({
       url: "../configuracao/componentes/verificastatus/" + codigo,
       success: function(data) {
-         document.getElementById("sensor-"+ codigo).innerText = data ;
-         console.log(data)
+       var capacidade =  document.getElementById("capacidade-"+ codigo).innerText;
+       console.log(capacidade) ;
+      
+
+       data = data.split(';')
+        distancia = data[0];
+       
+
+  console.log(data)
+      data =  1000 - (distancia * capacidade / 100 ) 
+   
+        
+        document.getElementById("sensor-"+ codigo).innerText = data.toFixed(2) ;
+       
        },
       error: function(error) {
         console.log("erro");

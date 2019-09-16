@@ -1,13 +1,23 @@
     <?php
     if (!headers_sent()) session_start();    
+    
     require_once("../config/system.config.php");
     require_once("../vendor/autoload.php");
-    
+    if (isset($_SESSION['autenticado']) && ($_SESSION['autenticado']  == null))
+    $_SESSION['autenticado']  = false;
+
+
     use Bramus\Router\Router;
 
 
     // Create a Router
     $router = new Router();
+   // var_dump($_SESSION);
+    
+    if ($_SESSION['autenticado'] == true) {
+    #LOGIN
+    $router->get('/login/logout', 'App\Controller\LoginController@logout');
+    
     #HOME
     $router->get('/', 'App\Controller\HomeController\HomeController@showhome');
     #CONFIGURACAO
@@ -15,6 +25,10 @@
     $router->get('configuracao/ambientes', 'App\Controller\ConfiguracaoController\ConfiguracaoController@showAmbiente');
     $router->get('configuracao/usuarios', 'App\Controller\ConfiguracaoController\ConfiguracaoController@showUsuario');
     
+      #LOGIN
+      $router->get('login', 'App\Controller\ConfiguracaoController\LoginController@login');
+    
+      
     #AMBIENTES
     $router->get('configuracao/ambientes/create', 'App\Controller\AmbientesController@create');
     $router->get('configuracao/ambientes/showedit/{id}', 'App\Controller\AmbientesController@showedit');
@@ -63,6 +77,19 @@
     $router->get('sensores/portas', 'App\Controller\SensoresController@showPorta');
     $router->get('sensores/energia', 'App\Controller\SensoresController@showEnergia');
 
+  
+    }
+    else 
+    {
+        $_SESSION['autenticado'] = false;
+        $_SESSION['usuario'] = 'nao definido';
        
+        #LOGIN
+    $router->get('/login/logout', 'App\Controller\LoginController@logout');
+    gi
+        $router->get('/', 'App\Controller\LoginController@login'); 
+        $router->post('/login/autentica', 'App\Controller\LoginController@autentica'); 
+    
+}
     $router->run();
   
