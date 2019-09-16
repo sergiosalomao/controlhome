@@ -22,10 +22,7 @@
                         <?php
                         $objReservatorios = new ReservatoriosModel();
                         $dadosReservatorios = $objReservatorios->listAll();
-                        foreach ($dadosReservatorios as $key => $lista) {
-                            if ($lista['capacidade'] == 0) $classEstado = 'fas fa-toggle-off';
-                            if ($lista['status'] == 1) $classEstado = 'fas fa-toggle-on';
-                            ?>
+                        foreach ($dadosReservatorios as $key => $lista) { ?>
                             <tr>
                                 <td style="width:10%;border:none"><a href="#"><i class="<?php echo $lista['icone'] ?>" style="margin-left:5px"></i></a></td>
                                 <td style="width:80%;border:none"><?php echo $lista['descricao'] ?></td>
