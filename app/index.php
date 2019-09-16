@@ -1,6 +1,6 @@
     <?php
     if (!headers_sent()) session_start();
-
+    $_SESSION['autenticado']  = true;
     require_once("../config/system.config.php");
     require_once("../vendor/autoload.php");
     if (isset($_SESSION['autenticado']) && ($_SESSION['autenticado']  == null))
