@@ -16,21 +16,66 @@ use App\Models\ComponentesModel\ComponentesModel;
                 <table class="table table-hover table-striped">
                     <?php
                     $componentes = new ComponentesModel();
-                    $dados = $componentes->listaSensores(7);
+                    $dados = $componentes->listaSensoresNivelAgua(7);
+                   
+               
                     foreach ($dados as $key => $lista) {
-                        $codigo = $dados[$key]['codigo_componente'];
-                        $item = $dados[$key]['codigo_componente'] . '-' . $dados[$key]['descricao_tipo_componente'] . '<br>Ambiente : ' . $dados[$key]['descricao_ambiente'];
-                        $status = explode("|",$dados[$key]['status']);
+                        $codigo = $lista['codigo_componente'];
+                        $item = $lista['codigo_componente'] . '-' . $lista['descricao_tipo_componente'] . '<br>Ambiente : ' . $dados[$key]['descricao_ambiente'];
+                        $lista['codigo_componente'] = $lista['capacidade'] - ($lista['codigo_componente'] * 10);
                         ?>
                         <tr>
                             <td style="width:1%;border:none;color:goldenrod"><i class="fas fa-stroopwafel" style="margin-left:5px"></i></td>
                             <td style="width:1%;border:none;color:goldenrod"><?php echo $item ?></a></td>
                             <td style="width:1%;border:none;color:goldenrod">
-                                Capacidade: <span id="sensor-<?php echo $codigo?>" ><?php isset($status[0])? $status[0]:""?></span><br>
-                                Litros: <span id="sensor-<?php echo $codigo?>" ><?php isset($status[0])? $status[0]:""?></span><br>
+                                Capacidade(lts): <span id="capacidade-<?php echo $codigo?>" ><?php echo $lista['capacidade']?></span><br>
+                                Litros: <span id="sensor-<?php echo $codigo?>" ><?php echo $lista['status']?></span><br>
                             </td>
                         </tr>
                     <?php } ?>
                 </table>
             </div>
 </body>
+<script>
+  //TEMPO DOS SENSORES DE TEMPERATURA
+  setInterval(function() {
+    verificaSensoresNivelAgua("C45");
+   
+      
+    },
+    <?php echo TEMPO_SENSOR_TEMPERATURA ?>)
+
+
+    function verificaSensoresNivelAgua(codigo) {
+
+    $.get({
+      url: "../configuracao/componentes/verificastatus/" + codigo,
+      success: function(data) {
+       var capacidade =  document.getElementById("capacidade-"+ codigo).innerText;
+       console.log(capacidade) ;
+      
+
+       data = data.split(';')
+        distancia = data[0];
+       
+
+  console.log(data)
+      data =  1000 - (distancia * capacidade / 100 ) 
+   
+        
+        document.getElementById("sensor-"+ codigo).innerText = data.toFixed(2) ;
+       
+       },
+      error: function(error) {
+        console.log("erro");
+        document.getElementById("sensor-"+ codigo).innerText = "E";
+      
+      }
+    });
+  }
+
+
+
+
+
+</script>

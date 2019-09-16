@@ -1,21 +1,15 @@
-<script>
-  //TEMPO DOS SENSORES DE TEMPERATURA
-  setInterval(function() {
-      verificaSensores("ST1");
-    },
-    <?php echo TEMPO_SENSOR_TEMPERATURA ?>)
-</script>
+
 
 <body>
   <div class="container dashboard-panel">
     <div class="row">
-      <div id="dashboard-panel-left" class="col-3"><i class="fas fa-thermometer-quarter"></i><span id="sensor-ST1"><span></div>
-      <div id="dashboard-panel-center" class="col-5"><span class="title-panel">ControlHome</span></div>
-      <div id="dashboard-panel-right" class="col-4"><span id="relogio"></span>
+      <div id="dashboard-panel-left" class="col-4"><i class="fas fa-thermometer-quarter"></i><span id="sensor-C01"><span></div>
+      <div id="dashboard-panel-center" class="col-5"><span class="title-panel-home">ControlHome</span></div>
+      <div id="dashboard-panel-right" class="col-3"><span id="relogio"></span>
         <div>
         </div>
       </div>
-
+      <div class="user-info-bar"><i class="fas fa-user" style="margin-left:10px" ></i><span style="margin-left:10px"> Usuario: <?php echo $_SESSION['usuario']?></span></div>
       <div class="container">
         <div class="dashboard">
           <table class="table table stripped ">
@@ -54,3 +48,11 @@
       <div id="main-footer"><span>Developer Sergio Salomão</span></div>
 
 </body>
+
+<script>
+  //TEMPO DOS SENSORES DE TEMPERATURA
+  setInterval(function() {
+      verificaSensorHome("C01");
+    },
+    <?php echo TEMPO_SENSOR_TEMPERATURA ?>)
+</script>

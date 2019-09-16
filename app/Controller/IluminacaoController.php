@@ -6,8 +6,9 @@ class IluminacaoController extends Controller
 {
   protected $id_ambiente;
 
-  public function index()
+  public function showIndex()
   {
+   
     $this->render("iluminacao", 'index');
     $this->layout();
   }

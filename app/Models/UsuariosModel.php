@@ -71,7 +71,7 @@ class UsuariosModel
         $sql.= "mac = '{$dados['mac']}' ";
         $sql.= "WHERE id_usuario = {$dados['id_usuario']}";
 
-        var_dump($sql);
+      
         try {
             $st = $this->conexao->prepare($sql);
             $st->execute();
@@ -93,4 +93,16 @@ class UsuariosModel
         }
         return "excluido com sucesso!";
     }
+
+
+    public function LocalizaUsuario($email)
+    {
+        
+        $sql = "SELECT * from {$this->schema}.{$this->table} WHERE email = '{$email}'";
+    
+        $st = $this->conexao->prepare($sql);
+        $st->execute();
+        return $st->fetch();
+    }
+    
 }

@@ -13,35 +13,27 @@
           if (visivel) document.getElementById("relogio").innerHTML = displayDate;         
           
     }
-    //====================================================================================
-    function verificaSensores(codigo) {
-      $.get({
-        url: "configuracao/componentes/verificastatus/" + codigo,
-        success: function(data) {
-          data = data.split('|')
-          temperatura = data[0];
-          document.getElementById("sensor-ST1").innerText = temperatura + "°C";
-          if (temperatura > 26) document.getElementById("sensor-ST1").innerText = temperatura + "°C[H]";
-  
-        },
-        error: function(error) {
-          console.log("erro");
-        }
-      });
-    }
+  //====================================================================================
+  function verificaSensorHome(codigo) {
     
-    //====================================================================================
-
-    function atualizaStatusComponente(idInterruptor){
-      console.log(idInterruptor)
-      $.get({
-      url : "../../configuracao/componentes/atualizastatus/"+idInterruptor,
-      success: function(data){
-        console.log("recarrega")
-        window.location.reload()
-        },
-        error : function(error) {
+    $.get({
+      url: "configuracao/componentes/verificastatus/" + codigo,
+      success: function(data) {
+        data = data.split(';')
+        temperatura = data[0];
+        umidade = data[1];
+        document.getElementById("sensor-"+ codigo).innerText = temperatura + "°C";
+        if (temperatura > 26) document.getElementById("sensor-" + codigo).innerText = temperatura + "°C[H]";
+   
+         document.getElementById("sensor-SU"+ codigo[2]).innerText = umidade + "%";
+         if (umidade < 55) document.getElementById("sensor-SU"+  codigo[2]).innerText = umidade + "%[L]";
+      
+       
+      },
+      error: function(error) {
         console.log("erro");
-        }
+        document.getElementById("sensor-"+ codigo).innerText = "E°C";
+        document.getElementById("sensor-SU"+ codigo[2]).innerText = "E%";
+      }
     });
-    }
+  }

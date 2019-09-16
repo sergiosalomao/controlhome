@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Models\ComponentesModel\ComponentesModel;
+use App\Models\HardwaresModel\HardwaresModel;
 
 class ComponentesController extends Controller
 {
@@ -16,9 +17,7 @@ class ComponentesController extends Controller
     public function show($id_ambiente)
     {
         $this->id_ambiente = $id_ambiente;
-
         $_SESSION['id_ambiente'] = $id_ambiente;
-
         $this->layout();
         $this->render('componentes', 'componentes');
     }
@@ -91,19 +90,44 @@ class ComponentesController extends Controller
         $dados = [];
         $dados['codigo'] = $codigo;
         $model = new ComponentesModel();
-        $codigo = $model->verificaStatus($codigo);
-        $codigo = intval($codigo['status']);
-        if ($codigo == 0) $dados['status'] = 1;
-        if ($codigo == 1) $dados['status'] = 0;
-        $model->updateStatus($dados);
+        $codigoEncontrado = $model->verificaStatus($codigo);
+        $codigoEncontrado = intval($codigoEncontrado['status']);
+        if ($codigoEncontrado == 0) $dados['status'] = 1;
+        if ($codigoEncontrado == 1) $dados['status'] = 0;
+        $model->updateStatusComponente($dados);
     }
     
     public function verificaStatus($codigo)
     {
         $model = new ComponentesModel();
-        $codigo = $model->verificaStatus($codigo);
-        echo $codigo['status'];
-        return $codigo['status'];
+        $codigoEncontrado = $model->verificaStatus($codigo);
+        return print_r($codigoEncontrado['status']);
+      
     }
 
+
+
+    public function RegistraHardware()
+    {
+      if ($_POST['id_hardware'] != ''){      
+      $objHardware = new HardwaresModel();
+      $id_hardware = $objHardware->listById($_POST['id_hardware']);
+      if ($id_hardware > 0)
+      $dadosHardware = $objHardware->atualizaHardware($_POST);
+      if ($id_hardware <= 0)
+      $dadosHardware = $objHardware->adicionaHardware($_POST);
+      }
+    }
+
+
+    public function RecebeDados()
+    {
+        $objComponentes = new ComponentesModel();
+       foreach($_POST as $componente){
+        $dadosRecebidos = explode("|",$componente);
+        if (($dado = $objComponentes->listByCodigo($dadosRecebidos[0])) > 0 ){
+            $objComponentes->updateStatus($dadosRecebidos);
+        }
+       }
+    }
 }
