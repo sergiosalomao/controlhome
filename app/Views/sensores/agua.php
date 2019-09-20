@@ -1,3 +1,32 @@
+<script>
+//TEMPO DOS SENSORES DE NIVEL AGUA
+
+  setInterval(function() {
+      verificaSensoresNivelAgua("C44");
+      verificaSensoresNivelAgua("C45");
+    },
+    <?php echo TEMPO_SENSOR_NIVEL_AGUA ?>)
+
+  function verificaSensoresNivelAgua(codigo) {
+  console.log(codigo)
+    $.get({
+      url: "../configuracao/componentes/verificastatus/" + codigo,
+      success: function(data) {
+        var capacidade = document.getElementById("capacidade-" + codigo).innerText;
+        data = data.split(';')
+        distancia = data[0];
+        distancia = distancia /100;// verificar isso aqui
+        document.getElementById("sensor-" + codigo).innerText = capacidade - (distancia * 10);
+      },
+      error: function(error) {
+        console.log("erro");
+        document.getElementById("sensor-" + codigo).innerText = "E";
+      }
+    });
+  }
+
+</script>
+
 <?php
 
 use App\Models\ComponentesModel\ComponentesModel;
@@ -37,31 +66,3 @@ use App\Models\ComponentesModel\ComponentesModel;
         </table>
       </div>
 </body>
-<script>
-//TEMPO DOS SENSORES DE NIVEL AGUA
-
-  setInterval(function() {
-      verificaSensoresNivelAgua("C44");
-      verificaSensoresNivelAgua("C45");
-    },
-    <?php echo TEMPO_SENSOR_NIVEl_AGUA ?>)
-
-  function verificaSensoresNivelAgua(codigo) {
-    $.get({
-      url: "../configuracao/componentes/verificastatus/" + codigo,
-      success: function(data) {
-        var capacidade = document.getElementById("capacidade-" + codigo).innerText;
-        console.log(capacidade);
-        data = data.split(';')
-        distancia = data[0];
-        console.log(data)
-        data = 1000 - (distancia * capacidade / 100)
-        document.getElementById("sensor-" + codigo).innerText = data.toFixed(2);
-      },
-      error: function(error) {
-        console.log("erro");
-        document.getElementById("sensor-" + codigo).innerText = "E";
-      }
-    });
-  }
-
