@@ -8,15 +8,14 @@
     <?php echo TEMPO_SENSOR_NIVEL_AGUA ?>)
 
   function verificaSensoresNivelAgua(codigo) {
-  console.log(codigo)
     $.get({
       url: "../configuracao/componentes/verificastatus/" + codigo,
       success: function(data) {
         var capacidade = document.getElementById("capacidade-" + codigo).innerText;
         data = data.split(';')
         distancia = data[0];
-        distancia = distancia /100;// verificar isso aqui
-        document.getElementById("sensor-" + codigo).innerText = capacidade - (distancia * 10);
+        distancia = distancia / 100;// verificar isso aqui
+        document.getElementById("sensor-" + codigo).innerText = (capacidade - (distancia * 10)).toFixed(2);
       },
       error: function(error) {
         console.log("erro");

@@ -4,3 +4,4 @@
 tests-report/
 /.idea/
 .php_cs.cache
+/config/config.ini
